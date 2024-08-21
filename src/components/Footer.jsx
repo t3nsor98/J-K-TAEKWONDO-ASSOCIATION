@@ -1,4 +1,4 @@
-
+import logo from "../assets/logojk.jpeg";
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-8">
@@ -6,7 +6,7 @@ const Footer = () => {
         {/* Logo and Title */}
         <div className="flex items-center space-x-4">
           <img
-            src="src/assets/logojk.jpeg" // Replace with the actual logo path
+            src={logo}
             alt="J & K Taekwondo Association Logo"
             className="w-16 h-16"
           />
