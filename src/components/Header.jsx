@@ -9,7 +9,7 @@ const Header = () => {
         {/* Logo and Title */}
         <div className="flex items-center space-x-4 md:space-x-6">
           <img
-            src="src/assets/logojk.jpeg"
+            src="public\logojk.jpeg"
             alt="J & K Taekwondo Association Logo"
             className="w-16 h-16 md:w-24 md:h-24"
           />
