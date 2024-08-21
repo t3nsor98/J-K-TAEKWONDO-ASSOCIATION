@@ -1,11 +1,13 @@
-import './App.css'
-
+import './App.css';
+import Header from './components/Header';
+import Form from './components/Form';
 function App() {
   
 
   return (
     <>
-      <h1>Hello Digbijaya</h1>
+      <Header />
+      <Form />
     </>
   )
 }
