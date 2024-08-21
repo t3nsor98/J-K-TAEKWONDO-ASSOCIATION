@@ -1,4 +1,5 @@
 import { useState } from "react";
+import logo from "../assets/logojk.jpeg";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,7 +10,7 @@ const Header = () => {
         {/* Logo and Title */}
         <div className="flex items-center space-x-4 md:space-x-6">
           <img
-            src="public\logojk.jpeg"
+            src={logo}
             alt="J & K Taekwondo Association Logo"
             className="w-16 h-16 md:w-24 md:h-24"
           />
