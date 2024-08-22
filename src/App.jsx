@@ -17,13 +17,13 @@ function App() {
       <Routes>
         <Route path="/" element={<Hero />} /> {/* Home Page */}
         <Route path="/about" element={<About />} />
+        <Route path="/affiliated" element={<Affiliated />} />
         <Route path="/members" element={<Members />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/register" element={<Form />} /> {/* Register Page */}
         <Route path="*" element={<NotFound />} />{" "}
         {/* Catch-all route for 404 errors */}
       </Routes>
-      <Affiliated /> {/* Always visible */}
       <Gallery /> {/* Always visible */}
       <Footer />
     </Router>
