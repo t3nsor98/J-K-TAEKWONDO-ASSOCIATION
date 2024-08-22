@@ -15,7 +15,16 @@ function App() {
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<Hero />} /> {/* Home Page */}
+        <Route
+          path="/"
+          element={
+            <>
+              <Hero />
+              <Gallery />
+            </>
+          }
+        />{" "}
+        {/* Home Page */}
         <Route path="/about" element={<About />} />
         <Route path="/affiliated" element={<Affiliated />} />
         <Route path="/members" element={<Members />} />
@@ -24,7 +33,6 @@ function App() {
         <Route path="*" element={<NotFound />} />{" "}
         {/* Catch-all route for 404 errors */}
       </Routes>
-      <Gallery /> {/* Always visible */}
       <Footer />
     </Router>
   );
