@@ -6,25 +6,34 @@ const Hero = () => {
   const fullText =
     "Welcome to the Official Website of the J&K Taekwondo Association (JKTA)";
 
-  useEffect(() => {
-    let index = 0;
-    const timer = setInterval(() => {
-      setText(fullText.substring(0, index + 1));
-      index += 1;
-      if (index === fullText.length) {
-        clearInterval(timer);
-      }
-    }, 50); // Adjust typing speed here
+  // Check if the screen width is less than the breakpoint for small screens
+  const isSmallScreen = window.innerWidth < 768;
 
-    return () => clearInterval(timer);
-  }, [fullText]);
+  useEffect(() => {
+    if (!isSmallScreen) {
+      // Typewriter effect for larger screens
+      let index = 0;
+      const timer = setInterval(() => {
+        setText(fullText.substring(0, index + 1));
+        index += 1;
+        if (index === fullText.length) {
+          clearInterval(timer);
+        }
+      }, 50); // Adjust typing speed here
+
+      return () => clearInterval(timer);
+    } else {
+      // Directly set the full text for small screens
+      setText(fullText);
+    }
+  }, [fullText, isSmallScreen]);
 
   return (
     <section className="bg-gradient-to-r from-[#005377] via-[#052F5F] to-[#005377] text-white py-12 px-6 md:px-12 lg:px-24">
       <div className="container mx-auto text-center">
-        {/* Main Heading with Typewriter Effect */}
+        {/* Main Heading with conditional Typewriter Effect */}
         <motion.h1
-          className="text-3xl md:text-4xl font-extrabold mb-6 whitespace-nowrap"
+          className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-6 whitespace-nowrap"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
@@ -34,7 +43,7 @@ const Hero = () => {
 
         {/* Description */}
         <motion.p
-          className="text-lg md:text-xl mb-8 leading-relaxed text-[#D5C67A]"
+          className="text-base sm:text-lg md:text-xl mb-8 leading-relaxed text-[#D5C67A]"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2 }}
@@ -48,7 +57,7 @@ const Hero = () => {
 
         {/* Closing Note */}
         <motion.p
-          className="text-lg md:text-xl italic text-[#D5C67A]"
+          className="text-base sm:text-lg md:text-xl italic text-[#D5C67A]"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2 }}

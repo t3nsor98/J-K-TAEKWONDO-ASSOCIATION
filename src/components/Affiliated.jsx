@@ -1,9 +1,26 @@
-import React from "react";
 import { motion } from "framer-motion";
 
 //associations images
 import kupwara from "../../public/associations/KUPWARA.png";
 import bandipora from "../../public/associations/Bandipora.jpg";
+import udhampur from "../../public/associations/UDHAMPUR.jpg";
+import kishtwar from "../../public/associations/KISHTWAR.png";
+import budgam from "../../public/associations/BUDGAM.jpg";
+import poonch from "../../public/associations/POONCH.jpg";
+import anantnag from "../../public/associations/ANANTNAG.jpg";
+import srinagar from "../../public/associations/SRINAGAR.png";
+import jammu from "../../public/associations/JAMMU.png";
+import kathua from "../../public/associations/KATHUA.jpg";
+import samba from "../../public/associations/SAMBA.png";
+import rajouri from "../../public/associations/RAJOURI.jpg";
+import kulgam from "../../public/associations/NEWKULGAM.jpg";
+import baramulla from "../../public/associations/BARAMULLA.png";
+import ramban from "../../public/associations/RAMBAN.jpg";
+import reasi from "../../public/associations/REASI.png";
+import ganderbal from "../../public/associations/GANDERBAL.png";
+import pulwama from "../../public/associations/PULWAMA.png";
+import shopian from "../../public/associations/SHOPIAN.png";
+import kupwara2 from "../../public/associations/NEWKUPWARA.jpg"; 
 
 const taekwondoAssociations = [
   {
@@ -22,109 +39,109 @@ const taekwondoAssociations = [
     district: "Udhampur",
     association: "Taekwondo Association of District Udhampur",
     officeBearers: ["Raj Guru", "Rasal Singh"],
-    image: "../../public/associations/KUPWARA.png",
+    image: udhampur,
   },
   {
     district: "Kishtwar",
     association: "Taekwondo Association of District Kishtwar",
     officeBearers: ["Ghulam Qadir Mir", "Arslan Ahmed"],
-    image: "../../public/associations/KUPWARA.png",
+    image: kishtwar,
   },
   {
     district: "Budgam",
     association: "Taekwondo Association of District Budgam",
     officeBearers: ["A.R Qureshi", "Bashir Ahmad Sheikh"],
-    image: "../../public/associations/KUPWARA.png",
+    image: budgam,
   },
   {
     district: "Poonch",
     association: "Taekwondo Association of District Poonch",
     officeBearers: ["Priyanka Singh", "Taranpreet Kaur"],
-    image: "../../public/associations/KUPWARA.png",
+    image: poonch,
   },
   {
     district: "Anantnag",
     association: "Taekwondo Association of District Anantnag",
     officeBearers: ["Arshad Syeed Shah", "Showket Ahmad Malik"],
-    image: "../../public/associations/KUPWARA.png",
+    image: anantnag,
   },
   {
     district: "Srinagar",
     association: "Taekwondo Association of District Srinagar",
     officeBearers: ["Nissar Hussain", "Junaid Mayer Qasba"],
-    image: "../../public/associations/KUPWARA.png",
+    image: srinagar,
   },
   {
     district: "Jammu",
     association: "Taekwondo Association of District Jammu",
     officeBearers: ["Ramesh Chander Sharma", "Amit Gupta"],
-    image: "../../public/associations/KUPWARA.png",
+    image: jammu,
   },
   {
     district: "Kathua",
     association: "Taekwondo Association of District Kathua",
     officeBearers: ["Munish Sharma", "Amit Badculia"],
-    image: "../../public/associations/KUPWARA.png",
+    image: kathua,
   },
   {
     district: "Samba",
     association: "Taekwondo Association of District Samba",
     officeBearers: ["Rajesh Pangotra", "Kanav Mahajan"],
-    image: "../../public/associations/KUPWARA.png",
+    image: samba,
   },
   {
     district: "Rajouri",
     association: "Taekwondo Association of District Rajouri",
     officeBearers: ["Mohd Sayeed", "Showkat Hussain"],
-    image: "../../public/associations/KUPWARA.png",
+    image: rajouri,
   },
   {
     district: "Kulgam",
     association: "Taekwondo Association of District Kulgam",
     officeBearers: ["Atta Mohd Khan", "Mashkoor Ahmad Lone"],
-    image: "../../public/associations/KUPWARA.png",
+    image: kulgam,
   },
   {
     district: "Baramulla",
     association: "Taekwondo Association of District Baramulla",
     officeBearers: ["Adv Neelofar Masood", "H. Rameez Mehraj"],
-    image: "../../public/associations/KUPWARA.png",
+    image: baramulla,
   },
   {
     district: "Ramban",
     association: "Taekwondo Association of District Ramban",
     officeBearers: ["Sohaib Masroor", "Yasir Ali"],
-    image: "../../public/associations/KUPWARA.png",
+    image: ramban,
   },
   {
     district: "Reasi",
     association: "Taekwondo Association of District Reasi",
     officeBearers: ["Shiv Kumar Sharma", "Danish Sharma"],
-    image: "../../public/associations/KUPWARA.png",
+    image: reasi,
   },
   {
     district: "Ganderbal",
     association: "Taekwondo Association of District Ganderbal",
     officeBearers: ["Ummer Farooq", "Akib Ahmad Sofi"],
-    image: "../../public/associations/KUPWARA.png",
+    image: ganderbal,
   },
   {
     district: "Pulwama",
     association: "Taekwondo Association of District Pulwama",
     officeBearers: ["Shahid Altaf", "Syed Danish Saeed"],
-    image: "../../public/associations/KUPWARA.png",
+    image: pulwama,
   },
   {
     district: "Shopian",
     association: "Taekwondo Association of District Shopian",
     officeBearers: ["Ahtisham Zahoor", "Kamran Ashraf"],
-    image: "../../public/associations/KUPWARA.png",
+    image: shopian,
   },
   {
     district: "Kupwara",
     association: "Taekwondo Association of District Kupwara",
     officeBearers: ["A.R Malik", "Kehkashan Bashir"],
-    image: "../../public/associations/KUPWARA.png",
+    image: kupwara2,
   },
 ];
 
@@ -144,16 +161,16 @@ const Affiliated = () => {
           <img
             src={association.image}
             alt={`${association.association} Logo`}
-            className="w-full h-40 object-cover rounded-t-lg"
+            className="w-full h-60 object-cover rounded-t-lg"
           />
           <div className="text-center mt-4">
             <h2 className="text-[#052F5F] text-lg font-bold">
               {association.association}
             </h2>
-            <p className="text-[#D5C67A] text-sm mt-2">
+            <p className="text-[#000000] text-sm mt-2">
               District: {association.district}
             </p>
-            <div className="text-[#D5C67A] text-sm mt-2">
+            <div className="text-[#000000] text-sm mt-2">
               {association.officeBearers.map((bearer, i) => (
                 <p key={i}>{bearer}</p>
               ))}
