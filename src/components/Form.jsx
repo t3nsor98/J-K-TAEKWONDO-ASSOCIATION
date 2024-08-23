@@ -78,21 +78,21 @@ const Form = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-gradient-to-r from-[#F1A208] via-[#D5C67A] to-[#06A77D] shadow-lg rounded-lg">
-      <div className="flex justify-between mb-6">
+    <div className="container my-10 mx-auto p-6 rounded-lg">
+      <div className="flex gap-5 mb-6">
         <button
           onClick={() => setFormType("athlete")}
           className={`${
-            formType === "athlete" ? "bg-[#005377]" : "bg-[#D5C67A]"
-          } text-white font-semibold py-2 px-4 rounded-md transition duration-300 shadow-md hover:bg-[#005377]`}
+            formType === "athlete" ? "bg-[#005377] text-white" : "bg-white text-black"
+          } font-semibold py-2 px-4 rounded-md transition duration-300 shadow-md hover:bg-red-600 hover:text-white`}
         >
           Athlete Registration
         </button>
         <button
           onClick={() => setFormType("coach")}
           className={`${
-            formType === "coach" ? "bg-[#005377]" : "bg-[#D5C67A]"
-          } text-white font-semibold py-2 px-4 rounded-md transition duration-300 shadow-md hover:bg-[#005377]`}
+            formType === "coach" ? "bg-[#005377] text-white" : "bg-white text-black"
+          } font-semibold py-2 px-4 rounded-md transition duration-300 shadow-md hover:bg-red-600 hover:text-white`}
         >
           Coach Registration
         </button>

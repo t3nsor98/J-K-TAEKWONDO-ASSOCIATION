@@ -20,8 +20,8 @@ function App() {
           path="/"
           element={
             <>
-              <Hero />
               <Gallery />
+              <Hero />
             </>
           }
         />{" "}
@@ -31,7 +31,6 @@ function App() {
           element={
             <>
               <About />
-              <Gallery2 />
             </>
           }
         />
