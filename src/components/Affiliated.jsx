@@ -1,18 +1,22 @@
 import React from "react";
 import { motion } from "framer-motion";
 
+//associations images
+import kupwara from "../../public/associations/KUPWARA.png";
+import bandipora from "../../public/associations/Bandipora.jpg";
+
 const taekwondoAssociations = [
   {
     district: "Doda",
     association: "Taekwondo Association of District Doda",
     officeBearers: ["Junaid Ali Khan", "Burhan Ud Din Khan"],
-    image: "../../public/associations/KUPWARA.png",
+    image: kupwara,
   },
   {
     district: "Bandipora",
     association: "Taekwondo Association of District Bandipora",
     officeBearers: ["Fasil Ali", "Shabir Ahmad Dar"],
-    image: "../../public/associations/KUPWARA.png",
+    image: bandipora,
   },
   {
     district: "Udhampur",
