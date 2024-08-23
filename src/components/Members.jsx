@@ -1,123 +1,132 @@
-import placeholderImg from "../assets/Male.jpeg";
+import placeholderMale from "../assets/Male.jpeg";
+import placeholderFemale from "../assets/Female.jpeg";
 
-const membersData = [
-  [{ name: "Rajesh Pangotra", designation: "President", img: placeholderImg }],
-  [
-    {
-      name: "Nissar Hussain",
-      designation: "Sr Vice President",
-      img: placeholderImg,
-    },
-  ],
-  [
-    {
-      name: "Atta Mohd Khan",
-      designation: "Vice President (K)",
-      img: placeholderImg,
-    },
-    {
-      name: "Dr. Kanav Mahajan",
-      designation: "Vice President (J)",
-      img: placeholderImg,
-    },
-  ],
-  [
-    {
-      name: "Ramesh Chander Sharma",
-      designation: "General Secretary",
-      img: placeholderImg,
-    },
-  ],
-  [{ name: "Amit Gupta", designation: "Treasurer", img: placeholderImg }],
-  [
-    {
-      name: "Junaid Mayer",
-      designation: "Joint Secretary (K)",
-      img: placeholderImg,
-    },
-    {
-      name: "Anuj Sharma",
-      designation: "Joint Secretary (J)",
-      img: placeholderImg,
-    },
-  ],
-  [
-    {
-      name: "Amit Kumar Badculia",
-      designation: "Executive Member",
-      img: placeholderImg,
-    },
-    {
-      name: "Burhan ud Din Khan",
-      designation: "Executive Member",
-      img: placeholderImg,
-    },
-    {
-      name: "Taranpreet Kour",
-      designation: "Executive Member",
-      img: placeholderImg,
-    },
-    { name: "Fasli Ali", designation: "Executive Member", img: placeholderImg },
-    {
-      name: "Manisha Sharma",
-      designation: "Executive Member",
-      img: placeholderImg,
-    },
-    {
-      name: "Roohi Gupta",
-      designation: "Executive Member",
-      img: placeholderImg,
-    },
-    {
-      name: "Bashir Ahmed Shiekh",
-      designation: "Executive Member",
-      img: placeholderImg,
-    },
-  ],
+const data = [
+    [
+        {
+            name: "Rajesh Pangotra",
+            designation: "President",
+            gender: "male",
+        },
+    ],
+    [
+        {
+            name: "Nissar Hussain",
+            designation: "Sr Vice President",
+            gender: "male",
+        },
+    ],
+    [
+        {
+            name: "Atta Mohd Khan",
+            designation: "Vice President (K)",
+            gender: "male",
+        },
+        {
+            name: "Dr. Kanav Mahajan",
+            designation: "Vice President (J)",
+            gender: "male",
+        },
+    ],
+    [
+        {
+            name: "Ramesh Chander Sharma",
+            designation: "General Secretary",
+            gender: "male",
+        },
+    ],
+    [
+        {
+            name: "Amit Gupta",
+            designation: "Treasurer",
+            gender: "male",
+        },
+    ],
+    [
+        {
+            name: "Junaid Mayer",
+            designation: "Joint Secretary (K)",
+            gender: "male",
+        },
+        {
+            name: "Anuj Sharma",
+            designation: "Joint Secretary (J)",
+            gender: "male",
+        },
+    ],
+    [
+        {
+            name: "Amit Kumar Badculia",
+            designation: "Executive Member",
+            gender: "male",
+        },
+        {
+            name: "Burhan ud Din Khan",
+            designation: "Executive Member",
+            gender: "male",
+        },
+        {
+            name: "Taranpreet Kour",
+            designation: "Executive Member",
+            gender: "female",
+        },
+        {
+            name: "Fasli Ali",
+            designation: "Executive Member",
+            gender: "male",
+        },
+        {
+            name: "Manisha Sharma",
+            designation: "Executive Member",
+            gender: "female",
+        },
+        {
+            name: "Roohi Gupta",
+            designation: "Executive Member",
+            gender: "female",
+        },
+        {
+            name: "Bashir Ahmed Shiekh",
+            designation: "Executive Member",
+            gender: "male",
+        },
+    ],
 ];
 
-const Members = () => {
-  return (
-    <section className="relative container mx-auto py-12">
-      <h2 className="text-3xl font-bold text-center mb-8">Our Members</h2>
-      <div className="relative space-y-16">
-        {membersData.map((row, rowIndex) => (
-          <div
-            key={rowIndex}
-            className={`relative flex ${
-              row.length > 1 ? "flex-wrap justify-center" : "justify-center"
-            } ${rowIndex === membersData.length - 1 ? "overflow-x-auto" : ""}`}
-          >
-            {row.map((member, memberIndex) => (
-              <div
-                key={memberIndex}
-                className="relative flex flex-col items-center bg-white shadow-lg rounded-lg p-4 text-center mx-2 my-2"
-                style={{ minWidth: "150px" }} // Ensure a minimum width for proper alignment
-              >
-                <img
-                  src={member.img}
-                  alt={member.name}
-                  className="w-24 h-24 rounded-full object-cover mb-4"
-                />
-                <h3 className="text-xl font-semibold">{member.name}</h3>
-                <p className="text-gray-600">{member.designation}</p>
-                {rowIndex < membersData.length - 1 && (
-                  <div className="absolute -bottom-4 w-full flex justify-center">
-                    <div className="w-0.5 h-8 bg-gray-600"></div>
-                  </div>
-                )}
-              </div>
-            ))}
-            {rowIndex < membersData.length - 1 && (
-              <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-full flex justify-center">
-                <div className="w-0.5 h-8 bg-gray-600"></div>
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-};
+const TreeNode = ({ name, designation, gender }) => (
+    <div className="flex flex-col items-center text-center py-2">
+        <div className="w-full h-0.5 bg-gray-300 rounded-full"></div>
+        <div className="w-0.5 h-5 bg-gray-300 rounded-full"></div>
+        <div className="flex flex-col items-center text-center px-5">
+            <img
+                src={gender === "male" ? placeholderMale : placeholderFemale}
+                alt={name}
+                className="w-16 h-16 rounded-full border-2 border-gray-300"
+            />
+            <p className="mt-2 text-sm font-medium">{name}</p>
+            <p className="text-xs text-gray-500">{designation}</p>
+        </div>
+    </div>
+);
 
-export default Members;
+const TreeBranch = ({ children }) => (
+    <div className="flex flex-col items-center">
+        <div className="flex justify-between">{children}</div>
+    </div>
+);
+
+const Tree = () => (
+    <div className="tree flex flex-col items-center container m-auto overflow-x-auto p-5">
+        {data.map((level, index) => (
+            <TreeBranch key={index}>
+                {level.map((person, idx) => (
+                    <div key={idx} className="relative">
+                        <TreeNode {...person} />
+                    </div>
+                ))}
+            </TreeBranch>
+        ))}
+    </div>
+);
+
+export default Tree;
