@@ -72,14 +72,14 @@ const Header = () => {
             key={index}
             src={img}
             alt={`Image ${index + 1}`}
-            className="w-24 md:w-32 rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105"
+            className="w-12 md:w-32 rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105"
           />
         ))}
       </div>
 
       {/* Main Navigation for Desktop */}
       <nav
-        className={`hidden md:flex justify-center space-x-8 text-base font-semibold items-center relative`}
+        className={`hidden md:flex justify-center space-x-8 text-base font-semibold items-center relative py-4`}
       >
         <Link
           to="/"
