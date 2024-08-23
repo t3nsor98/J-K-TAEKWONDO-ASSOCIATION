@@ -1,5 +1,4 @@
-const placeholderImg =
-  "https://wellgroomedgentleman.com/wp-content/uploads/2023/10/Tony_Stark_Beard_with_Quiff_Hairstyle.width-800.jpg";
+import placeholderImg from "../assets/Male.jpeg";
 
 const membersData = [
   [{ name: "Rajesh Pangotra", designation: "President", img: placeholderImg }],
