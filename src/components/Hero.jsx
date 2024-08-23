@@ -6,10 +6,9 @@ const Hero = () => {
   const fullText =
     "Welcome to the Official Website of the J&K Taekwondo Association (JKTA)";
 
-  // Check if the screen width is less than the breakpoint for small screens
-  const isSmallScreen = window.innerWidth < 768;
-
   useEffect(() => {
+    const isSmallScreen = window.innerWidth < 768;
+
     if (!isSmallScreen) {
       // Typewriter effect for larger screens
       let index = 0;
@@ -26,14 +25,14 @@ const Hero = () => {
       // Directly set the full text for small screens
       setText(fullText);
     }
-  }, [fullText, isSmallScreen]);
+  }, [fullText]);
 
   return (
-    <section className="bg-gradient-to-r from-[#005377] via-[#052F5F] to-[#005377] text-white py-12 px-6 md:px-12 lg:px-24">
-      <div className="container mx-auto text-center">
+    <section className="bg-gradient-to-r from-[#005377] via-[#052F5F] to-[#005377] text-white py-12 px-6 sm:px-8 md:px-16 lg:px-24">
+      <div className="max-w-screen-lg mx-auto text-center">
         {/* Main Heading with conditional Typewriter Effect */}
         <motion.h1
-          className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-6 whitespace-nowrap"
+          className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold mb-6 whitespace-normal"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
@@ -43,7 +42,7 @@ const Hero = () => {
 
         {/* Description */}
         <motion.p
-          className="text-base sm:text-lg md:text-xl mb-8 leading-relaxed text-[#D5C67A]"
+          className="text-sm sm:text-base md:text-lg lg:text-xl mb-8 leading-relaxed text-[#D5C67A] max-w-screen-md mx-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2 }}
@@ -57,7 +56,7 @@ const Hero = () => {
 
         {/* Closing Note */}
         <motion.p
-          className="text-base sm:text-lg md:text-xl italic text-[#D5C67A]"
+          className="text-sm sm:text-base md:text-lg lg:text-xl italic text-[#D5C67A] max-w-screen-md mx-auto"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2 }}
