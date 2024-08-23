@@ -2,11 +2,15 @@ import { motion } from "framer-motion";
 
 const About = () => {
   return (
-    <section className="bg-gray-100 py-12 px-6 md:px-12 lg:px-24">
-      <div className="container mx-auto text-center">
+    <section className="relative bg-gradient-to-r from-[#052F5F] via-[#005377] to-[#06A77D] py-12 px-6 md:px-12 lg:px-24 overflow-hidden">
+      {/* Background Circle Animation */}
+      <div className="absolute top-0 left-0 w-80 h-80 bg-[#F1A208] rounded-full opacity-30 blur-3xl animate-pulse" />
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-[#D5C67A] rounded-full opacity-30 blur-3xl animate-pulse delay-75" />
+
+      <div className="relative z-10 container mx-auto text-center">
         {/* Heading */}
         <motion.h2
-          className="text-4xl md:text-5xl font-bold text-purple-700 mb-8"
+          className="text-4xl md:text-5xl font-bold text-[#F1A208] mb-8 drop-shadow-md"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -16,7 +20,7 @@ const About = () => {
 
         {/* Description */}
         <motion.p
-          className="text-lg md:text-xl text-gray-700 mb-10 leading-relaxed"
+          className="text-lg md:text-xl text-white mb-10 leading-relaxed drop-shadow-sm"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
@@ -30,9 +34,9 @@ const About = () => {
       </div>
 
       {/* Milestones Section */}
-      <div className="container mx-auto">
+      <div className="relative z-10 container mx-auto">
         <motion.h3
-          className="text-3xl md:text-4xl font-semibold text-purple-600 mb-6"
+          className="text-3xl md:text-4xl font-semibold text-[#F1A208] mb-6 drop-shadow-md"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -42,7 +46,7 @@ const About = () => {
 
         {/* Timeline */}
         <motion.div
-          className="space-y-10 text-gray-700"
+          className="space-y-10 text-white drop-shadow-sm"
           initial="hidden"
           animate="visible"
           variants={{
@@ -53,7 +57,7 @@ const About = () => {
         >
           {/* Foundation and Growth */}
           <div>
-            <h4 className="text-2xl md:text-3xl font-bold text-purple-500 mb-2">
+            <h4 className="text-2xl md:text-3xl font-bold text-[#D5C67A] mb-2">
               1. Foundation and Growth
             </h4>
             <ul className="list-disc pl-6 space-y-2">
@@ -71,7 +75,7 @@ const About = () => {
 
           {/* The Golden Era */}
           <div>
-            <h4 className="text-2xl md:text-3xl font-bold text-purple-500 mb-2">
+            <h4 className="text-2xl md:text-3xl font-bold text-[#D5C67A] mb-2">
               2. The Golden Era (2008 Onwards)
             </h4>
             <ul className="list-disc pl-6 space-y-2">
@@ -89,7 +93,7 @@ const About = () => {
 
           {/* National Achievements */}
           <div>
-            <h4 className="text-2xl md:text-3xl font-bold text-purple-500 mb-2">
+            <h4 className="text-2xl md:text-3xl font-bold text-[#D5C67A] mb-2">
               3. Achievements on the National Stage
             </h4>
             <ul className="list-disc pl-6 space-y-2">
@@ -103,7 +107,7 @@ const About = () => {
 
           {/* International Representation */}
           <div>
-            <h4 className="text-2xl md:text-3xl font-bold text-purple-500 mb-2">
+            <h4 className="text-2xl md:text-3xl font-bold text-[#D5C67A] mb-2">
               4. International Representation
             </h4>
             <ul className="list-disc pl-6 space-y-2">
@@ -122,7 +126,7 @@ const About = () => {
 
           {/* Recent Achievements */}
           <div>
-            <h4 className="text-2xl md:text-3xl font-bold text-purple-500 mb-2">
+            <h4 className="text-2xl md:text-3xl font-bold text-[#D5C67A] mb-2">
               5. Recent Achievements
             </h4>
             <ul className="list-disc pl-6 space-y-2">
@@ -134,6 +138,54 @@ const About = () => {
             </ul>
           </div>
         </motion.div>
+      </div>
+
+      {/* Our Strength */}
+      <div className="relative z-10 mb-12 text-center">
+        <motion.h2
+          className="text-2xl md:text-3xl font-semibold text-[#F1A208] mb-4 drop-shadow-md"
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          Our Strength
+        </motion.h2>
+        <motion.ul
+          className="list-disc list-inside text-lg md:text-xl space-y-2 text-white drop-shadow-sm"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2 }}
+        >
+          <li>1 NIS Coach</li>
+          <li>Over 150 Black Belts</li>
+          <li>1 International Referee</li>
+          <li>10 National Referees</li>
+          <li>7 International Players</li>
+        </motion.ul>
+      </div>
+
+      {/* Our Vision */}
+      <div className="relative z-10 mb-12 text-center">
+        <motion.h2
+          className="text-2xl md:text-3xl font-semibold text-[#F1A208] mb-4 drop-shadow-md"
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          Our Vision
+        </motion.h2>
+        <motion.p
+          className="text-lg md:text-xl leading-relaxed text-white drop-shadow-sm"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.2 }}
+        >
+          The J&K Taekwondo Association is committed to nurturing talent and
+          promoting Taekwondo at every level across Jammu and Kashmir. We owe
+          our success to the unwavering support of parents, the media, and the
+          State government. With their continued support, we strive to achieve
+          new heights and bring more laurels to our region.
+        </motion.p>
       </div>
     </section>
   );

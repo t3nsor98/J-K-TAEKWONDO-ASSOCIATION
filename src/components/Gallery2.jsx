@@ -1,23 +1,30 @@
 import { useState, useEffect } from "react";
+import abtimg1 from "../assets/abtimg1.webp";
+import abtimg2 from "../assets/abtimg2.webp";
+import abtimg3 from "../assets/abtimg3.webp";
+import abtimg4 from "../assets/abtimg4.webp";
+import abtimg5 from "../assets/abtimg5.webp";
+import abtimg6 from "../assets/abtimg6.webp";
+import abtimg7 from "../assets/abtimg7.webp";
 
-// Importing local images
-import image1 from "../assets/image1.jpg";
-import image2 from "../assets/image2.jpg";
-import image3 from "../assets/image3.jpg";
-import image4 from "../assets/image4.jpg";
-import image5 from "../assets/image5.jpg";
-import image6 from "../assets/image6.jpg";
-
-const Carousel = () => {
+const Gallery2 = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // List of image URLs from local assets
-  const images = [image1, image2, image3, image4, image5, image6];
+  const images = [
+    abtimg1,
+    abtimg2,
+    abtimg3,
+    abtimg4,
+    abtimg5,
+    abtimg6,
+    abtimg7,
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000); // Change image every 5 seconds
+    }, 2000); // Change image every 2 seconds
 
     return () => clearInterval(interval); // Cleanup interval on unmount
   }, [images.length]);
@@ -59,4 +66,4 @@ const Carousel = () => {
   );
 };
 
-export default Carousel;
+export default Gallery2;

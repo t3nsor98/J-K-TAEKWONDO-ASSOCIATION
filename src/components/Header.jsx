@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import logoJKTA from "../assets/logojk.jpeg"; // Replace with actual logo path
-import logoTFI from "../assets/logojk.jpeg"; // Replace with actual logo path
-import img1 from "../assets/logojk.jpeg"; // Replace with actual image paths
-import img2 from "../assets/logojk.jpeg";
-import img3 from "../assets/logojk.jpeg";
-import img4 from "../assets/logojk.jpeg";
-import img5 from "../assets/logojk.jpeg";
-import img6 from "../assets/logojk.jpeg";
+import logoTFI from "../assets/doda.png"; // Replace with actual logo path
+import img1 from "../assets/Asset1.png"; // Replace with actual image paths
+import img2 from "../assets/Asset2.png";
+import img3 from "../assets/Asset3.png";
+import img4 from "../assets/Asset4.png";
+import img5 from "../assets/Asset5.png";
+import img6 from "../assets/Asset6.png";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,12 +15,29 @@ const Header = () => {
   return (
     <header className="bg-gradient-to-r from-gray-800 via-gray-900 to-gray-800 text-white shadow-lg">
       {/* Top Navigation */}
-      <div className="container mx-auto flex justify-between items-center p-4 md:p-6">
-        <h1 className="text-3xl font-extrabold tracking-wide drop-shadow-lg">
-          TAEKWONDO ASSOCIATION OF DISTRICT ANANTNAG
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between p-4 md:p-6">
+        {/* Left Logo */}
+        <img
+          src={logoJKTA}
+          alt="JKTA Logo"
+          className="w-24 h-24 md:w-48 md:h-48 shadow-md rounded-full border-4 border-purple-500 transition-transform duration-300 transform hover:scale-105"
+        />
+
+        {/* Title */}
+        <h1 className="text-2xl md:text-5xl font-extrabold tracking-wide text-center uppercase">
+          J&K TAEKWONDO ASSOCIATION OF INDIA
         </h1>
+
+        {/* Right Logo */}
+        <img
+          src={logoTFI}
+          alt="TFI Logo"
+          className="w-24 h-24 md:w-48 md:h-48 shadow-md rounded-full border-4 border-purple-500 transition-transform duration-300 transform hover:scale-105"
+        />
+
+        {/* Hamburger Menu Button for Mobile */}
         <button
-          className="md:hidden focus:outline-none"
+          className="md:hidden focus:outline-none mt-4"
           onClick={() => setIsOpen(!isOpen)}
         >
           <svg
@@ -38,52 +55,72 @@ const Header = () => {
             />
           </svg>
         </button>
-
-        {/* Main Navigation */}
-        <nav
-          className={`hidden md:flex md:space-x-8 text-base font-semibold items-center relative`}
-        >
-          <Link
-            to="/"
-            className="hover:text-purple-400 transition duration-300 relative before:absolute before:-bottom-1 before:left-0 before:w-full before:h-1 before:bg-purple-500 before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100"
-          >
-            Home
-          </Link>
-          <Link
-            to="/about"
-            className="hover:text-purple-400 transition duration-300 relative before:absolute before:-bottom-1 before:left-0 before:w-full before:h-1 before:bg-purple-500 before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100"
-          >
-            About
-          </Link>
-          <Link
-            to="/affiliated"
-            className="hover:text-purple-400 transition duration-300 relative before:absolute before:-bottom-1 before:left-0 before:w-full before:h-1 before:bg-purple-500 before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100"
-          >
-            Affiliated
-          </Link>
-          <Link
-            to="/members"
-            className="hover:text-purple-400 transition duration-300 relative before:absolute before:-bottom-1 before:left-0 before:w-full before:h-1 before:bg-purple-500 before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100"
-          >
-            Member
-          </Link>
-          <Link
-            to="/contact"
-            className="hover:text-purple-400 transition duration-300 relative before:absolute before:-bottom-1 before:left-0 before:w-full before:h-1 before:bg-purple-500 before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100"
-          >
-            Contact
-          </Link>
-          <Link to="/register">
-            <button className="bg-purple-500 hover:bg-purple-600 transition duration-300 px-6 py-2 rounded-md text-white font-semibold shadow-md hover:shadow-lg">
-              Register
-            </button>
-          </Link>
-        </nav>
       </div>
+
+      {/* Affiliated Section */}
+      <div className="container mx-auto text-center py-4">
+        <p className="text-lg md:text-2xl font-semibold capitalize">
+          Affiliated with: Taekwondo Federation of India & Indian Olympic
+          Association
+        </p>
+      </div>
+
+      {/* Image Section */}
+      <div className="container mx-auto flex justify-center items-center space-x-4 py-8 overflow-x-auto">
+        {[img1, img2, img3, img4, img5, img6].map((img, index) => (
+          <img
+            key={index}
+            src={img}
+            alt={`Image ${index + 1}`}
+            className="w-24 md:w-32 rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105"
+          />
+        ))}
+      </div>
+
+      {/* Main Navigation for Desktop */}
+      <nav
+        className={`hidden md:flex justify-center space-x-8 text-base font-semibold items-center relative`}
+      >
+        <Link
+          to="/"
+          className="hover:text-purple-400 transition-all duration-300 relative before:absolute before:-bottom-1 before:left-0 before:w-full before:h-1 before:bg-purple-500 before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100"
+        >
+          Home
+        </Link>
+        <Link
+          to="/about"
+          className="hover:text-purple-400 transition-all duration-300 relative before:absolute before:-bottom-1 before:left-0 before:w-full before:h-1 before:bg-purple-500 before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100"
+        >
+          About
+        </Link>
+        <Link
+          to="/affiliated"
+          className="hover:text-purple-400 transition-all duration-300 relative before:absolute before:-bottom-1 before:left-0 before:w-full before:h-1 before:bg-purple-500 before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100"
+        >
+          Affiliated
+        </Link>
+        <Link
+          to="/members"
+          className="hover:text-purple-400 transition-all duration-300 relative before:absolute before:-bottom-1 before:left-0 before:w-full before:h-1 before:bg-purple-500 before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100"
+        >
+          Member
+        </Link>
+        <Link
+          to="/contact"
+          className="hover:text-purple-400 transition-all duration-300 relative before:absolute before:-bottom-1 before:left-0 before:w-full before:h-1 before:bg-purple-500 before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100"
+        >
+          Contact
+        </Link>
+        <Link to="/register">
+          <button className="bg-purple-500 hover:bg-purple-600 transition-all duration-300 px-6 py-2 rounded-md text-white font-semibold shadow-md hover:shadow-lg">
+            Register
+          </button>
+        </Link>
+      </nav>
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <nav className="md:hidden bg-gray-800 text-white text-center py-4">
+        <nav className="md:hidden bg-gray-800 text-white text-center py-4 transition-transform duration-300 transform translate-y-0">
           <Link
             to="/"
             className="block py-2 hover:text-purple-400 transition duration-300"
@@ -120,81 +157,12 @@ const Header = () => {
             Contact
           </Link>
           <Link to="/register">
-            <button className="bg-purple-500 hover:bg-purple-600 transition duration-300 px-6 py-2 rounded-md text-white font-semibold my-2 shadow-md hover:shadow-lg">
+            <button className="bg-purple-500 hover:bg-purple-600 transition-all duration-300 px-6 py-2 rounded-md text-white font-semibold my-2 shadow-md hover:shadow-lg">
               Register
             </button>
           </Link>
         </nav>
       )}
-
-      {/* Main Content */}
-      <div className="container mx-auto flex flex-col items-center justify-center text-center py-12">
-        <div className="flex items-center justify-between w-full md:w-2/3 mb-8">
-          {/* Left Logo */}
-          <img
-            src={logoJKTA}
-            alt="JKTA Logo"
-            className="w-24 md:w-32 shadow-md rounded-full border-4 border-purple-500"
-          />
-
-          {/* Affiliations */}
-          <div className="text-sm md:text-lg font-semibold text-white px-4">
-            <p className="leading-relaxed">
-              AFFILIATED TO: <br />
-              J & K TAEKWONDO ASSOCIATION (REGD)
-              <br />
-              WHICH IS AFFILIATED WITH:
-              <br />
-              TAEKWONDO FEDERATION OF INDIA (TFI) & J&K SPORTS COUNCIL (JKSC)
-              <br />
-              RECOGNISED BY:
-              <br /> INDIAN OLYMPIC ASSOCIATION (IOA)
-              <br /> MINISTRY OF YOUTH AFFAIRS & SPORTS, GOVT. OF INDIA
-            </p>
-          </div>
-
-          {/* Right Logo */}
-          <img
-            src={logoTFI}
-            alt="TFI Logo"
-            className="w-24 md:w-32 shadow-md rounded-full border-4 border-purple-500"
-          />
-        </div>
-
-        {/* Image Section */}
-        <div className="flex justify-center items-center space-x-4 py-8 overflow-x-auto w-full">
-          <img
-            src={img1}
-            alt="Image 1"
-            className="w-24 md:w-32 rounded-lg shadow-lg"
-          />
-          <img
-            src={img2}
-            alt="Image 2"
-            className="w-24 md:w-32 rounded-lg shadow-lg"
-          />
-          <img
-            src={img3}
-            alt="Image 3"
-            className="w-24 md:w-32 rounded-lg shadow-lg"
-          />
-          <img
-            src={img4}
-            alt="Image 4"
-            className="w-24 md:w-32 rounded-lg shadow-lg"
-          />
-          <img
-            src={img5}
-            alt="Image 5"
-            className="w-24 md:w-32 rounded-lg shadow-lg"
-          />
-          <img
-            src={img6}
-            alt="Image 6"
-            className="w-24 md:w-32 rounded-lg shadow-lg"
-          />
-        </div>
-      </div>
     </header>
   );
 };

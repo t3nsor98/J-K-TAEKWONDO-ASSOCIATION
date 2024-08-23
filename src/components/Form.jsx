@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const Form = () => {
-  const [formType, setFormType] = useState("athlete"); // 'athlete' or 'coach'
+  const [formType, setFormType] = useState("athlete");
   const [athleteFormData, setAthleteFormData] = useState({
     athleteName: "",
     fatherName: "",
@@ -75,31 +75,30 @@ const Form = () => {
     } else {
       console.log("Coach Data:", coachFormData);
     }
-    // Add logic to handle form submission
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg">
+    <div className="max-w-4xl mx-auto p-6 bg-gradient-to-r from-[#F1A208] via-[#D5C67A] to-[#06A77D] shadow-lg rounded-lg">
       <div className="flex justify-between mb-6">
         <button
           onClick={() => setFormType("athlete")}
           className={`${
-            formType === "athlete" ? "bg-purple-600" : "bg-purple-400"
-          } text-white font-semibold py-2 px-4 rounded-md transition duration-300`}
+            formType === "athlete" ? "bg-[#005377]" : "bg-[#D5C67A]"
+          } text-white font-semibold py-2 px-4 rounded-md transition duration-300 shadow-md hover:bg-[#005377]`}
         >
           Athlete Registration
         </button>
         <button
           onClick={() => setFormType("coach")}
           className={`${
-            formType === "coach" ? "bg-purple-600" : "bg-purple-400"
-          } text-white font-semibold py-2 px-4 rounded-md transition duration-300`}
+            formType === "coach" ? "bg-[#005377]" : "bg-[#D5C67A]"
+          } text-white font-semibold py-2 px-4 rounded-md transition duration-300 shadow-md hover:bg-[#005377]`}
         >
           Coach Registration
         </button>
       </div>
 
-      <h2 className="text-2xl font-bold mb-6">
+      <h2 className="text-2xl font-bold mb-6 text-[#005377]">
         {formType === "athlete"
           ? "Athlete Registration Form"
           : "Coach Registration Form"}
@@ -108,14 +107,13 @@ const Form = () => {
       <form onSubmit={handleSubmit} className="space-y-4">
         {formType === "athlete" ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Athlete Form */}
             <input
               type="text"
               name="athleteName"
               placeholder="Name of the Athlete"
               value={athleteFormData.athleteName}
               onChange={handleAthleteChange}
-              className="border border-gray-300 p-3 rounded-md w-full"
+              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
               required
             />
             <input
@@ -124,7 +122,7 @@ const Form = () => {
               placeholder="Father's Name"
               value={athleteFormData.fatherName}
               onChange={handleAthleteChange}
-              className="border border-gray-300 p-3 rounded-md w-full"
+              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
               required
             />
             <input
@@ -133,23 +131,22 @@ const Form = () => {
               placeholder="Mother's Name"
               value={athleteFormData.motherName}
               onChange={handleAthleteChange}
-              className="border border-gray-300 p-3 rounded-md w-full"
+              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
               required
             />
             <input
               type="date"
               name="dob"
-              placeholder="Date of Birth"
               value={athleteFormData.dob}
               onChange={handleAthleteChange}
-              className="border border-gray-300 p-3 rounded-md w-full"
+              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
               required
             />
             <select
               name="gender"
               value={athleteFormData.gender}
               onChange={handleAthleteChange}
-              className="border border-gray-300 p-3 rounded-md w-full"
+              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
               required
             >
               <option value="">Select Gender</option>
@@ -161,7 +158,7 @@ const Form = () => {
               name="district"
               value={athleteFormData.district}
               onChange={handleAthleteChange}
-              className="border border-gray-300 p-3 rounded-md w-full"
+              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
               required
             >
               <option value="">Select District</option>
@@ -177,7 +174,7 @@ const Form = () => {
               placeholder="PIN"
               value={athleteFormData.pin}
               onChange={handleAthleteChange}
-              className="border border-gray-300 p-3 rounded-md w-full"
+              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
               required
             />
             <input
@@ -186,7 +183,7 @@ const Form = () => {
               placeholder="Mobile Number"
               value={athleteFormData.mob}
               onChange={handleAthleteChange}
-              className="border border-gray-300 p-3 rounded-md w-full"
+              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
               required
             />
             <input
@@ -195,7 +192,7 @@ const Form = () => {
               placeholder="Email Address"
               value={athleteFormData.email}
               onChange={handleAthleteChange}
-              className="border border-gray-300 p-3 rounded-md w-full"
+              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
               required
             />
             <input
@@ -204,7 +201,7 @@ const Form = () => {
               placeholder="Aadhar Number"
               value={athleteFormData.adharNumber}
               onChange={handleAthleteChange}
-              className="border border-gray-300 p-3 rounded-md w-full"
+              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
               required
             />
             <input
@@ -213,7 +210,7 @@ const Form = () => {
               placeholder="PAN Number (Optional)"
               value={athleteFormData.panNumber}
               onChange={handleAthleteChange}
-              className="border border-gray-300 p-3 rounded-md w-full"
+              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
             />
             <input
               type="text"
@@ -221,7 +218,7 @@ const Form = () => {
               placeholder="Address"
               value={athleteFormData.address}
               onChange={handleAthleteChange}
-              className="border border-gray-300 p-3 rounded-md w-full"
+              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
               required
             />
             <input
@@ -230,7 +227,7 @@ const Form = () => {
               placeholder="Academy Name"
               value={athleteFormData.academyName}
               onChange={handleAthleteChange}
-              className="border border-gray-300 p-3 rounded-md w-full"
+              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
               required
             />
             <input
@@ -239,62 +236,58 @@ const Form = () => {
               placeholder="Coach Name"
               value={athleteFormData.coachName}
               onChange={handleAthleteChange}
-              className="border border-gray-300 p-3 rounded-md w-full"
+              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
               required
             />
-            <div className="border border-gray-300 p-3 rounded-md">
+            <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
               <label className="block mb-2 font-semibold">
                 Upload Athlete Photo
               </label>
               <input
                 type="file"
                 name="photo"
-                accept="image/*"
                 onChange={handleAthleteChange}
-                className="w-full p-2 border border-gray-300 rounded-md"
+                className="border-none"
                 required
               />
             </div>
-            <div className="border border-gray-300 p-3 rounded-md">
+            <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
               <label className="block mb-2 font-semibold">
                 Upload Birth or Resident Certificate
               </label>
               <input
                 type="file"
                 name="certificate"
-                accept="image/*"
                 onChange={handleAthleteChange}
-                className="w-full p-2 border border-gray-300 rounded-md"
+                className="border-none"
                 required
               />
             </div>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Coach Form */}
             <input
               type="text"
               name="playerName"
               placeholder="Name of the Player"
               value={coachFormData.playerName}
               onChange={handleCoachChange}
-              className="border border-gray-300 p-3 rounded-md w-full"
+              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
               required
             />
             <input
               type="date"
               name="dob"
-              placeholder="Date of Birth"
               value={coachFormData.dob}
               onChange={handleCoachChange}
-              className="border border-gray-300 p-3 rounded-md w-full"
+              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
               required
             />
             <select
               name="gender"
               value={coachFormData.gender}
               onChange={handleCoachChange}
-              className="border border-gray-300 p-3 rounded-md w-full"
+              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
               required
             >
               <option value="">Select Gender</option>
@@ -308,27 +301,26 @@ const Form = () => {
               placeholder="Aadhar Number"
               value={coachFormData.adharNumber}
               onChange={handleCoachChange}
-              className="border border-gray-300 p-3 rounded-md w-full"
+              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
               required
             />
-            <div className="border border-gray-300 p-3 rounded-md">
-              <label className="block mb-2 font-semibold">Upload Photo</label>
+            <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
+              <label className="block mb-2 font-semibold">
+                Upload Photo
+              </label>
               <input
                 type="file"
                 name="photo"
-                accept="image/*"
                 onChange={handleCoachChange}
-                className="w-full p-2 border border-gray-300 rounded-md"
+                className="border-none"
                 required
               />
             </div>
           </div>
         )}
-
-        {/* Submit Button */}
         <button
           type="submit"
-          className="bg-purple-500 text-white font-semibold py-3 px-6 rounded-md shadow-md hover:bg-purple-600 transition duration-300"
+          className="bg-[#005377] text-white font-semibold py-3 px-6 rounded-md shadow-md hover:bg-[#052F5F] transition duration-300"
         >
           Submit
         </button>

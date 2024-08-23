@@ -1,47 +1,60 @@
-import logo from "../assets/logojk.jpeg";
+import logo from "../assets/logojk.jpeg"; // Ensure correct path to logo
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white py-8">
-      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+    <footer className="bg-gradient-to-r from-gray-800 via-gray-900 to-gray-800 text-white py-8 shadow-lg">
+      <div className="container mx-auto flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 p-4 md:p-6">
         {/* Logo and Title */}
         <div className="flex items-center space-x-4">
           <img
             src={logo}
             alt="J & K Taekwondo Association Logo"
-            className="w-16 h-16"
+            className="w-24 h-24 md:w-32 md:h-32 shadow-md rounded-full border-4 border-purple-500 transition-transform duration-300 transform hover:scale-105"
           />
           <h2 className="text-xl md:text-2xl font-bold">
-            J & K Taekwondo Association
+            J & K Taekwondo Association of India
           </h2>
         </div>
 
-        {/* Quick Links */}
-        <div className="flex space-x-6 text-sm md:text-base">
-          <a
-            href="#community"
-            className="hover:text-purple-400 transition duration-300"
+        {/* Navigation Links */}
+        <nav className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6 text-sm md:text-base">
+          <Link
+            to="/"
+            className="hover:text-purple-400 transition duration-300 relative before:absolute before:-bottom-1 before:left-0 before:w-full before:h-1 before:bg-purple-500 before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100"
           >
-            Community
-          </a>
-          <a
-            href="#about"
-            className="hover:text-purple-400 transition duration-300"
+            Home
+          </Link>
+          <Link
+            to="/about"
+            className="hover:text-purple-400 transition duration-300 relative before:absolute before:-bottom-1 before:left-0 before:w-full before:h-1 before:bg-purple-500 before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100"
           >
             About
-          </a>
-          <a
-            href="#support"
-            className="hover:text-purple-400 transition duration-300"
+          </Link>
+          <Link
+            to="/affiliated"
+            className="hover:text-purple-400 transition duration-300 relative before:absolute before:-bottom-1 before:left-0 before:w-full before:h-1 before:bg-purple-500 before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100"
           >
-            Support
-          </a>
-          <a
-            href="#contact"
-            className="hover:text-purple-400 transition duration-300"
+            Affiliated
+          </Link>
+          <Link
+            to="/members"
+            className="hover:text-purple-400 transition duration-300 relative before:absolute before:-bottom-1 before:left-0 before:w-full before:h-1 before:bg-purple-500 before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100"
+          >
+            Member
+          </Link>
+          <Link
+            to="/contact"
+            className="hover:text-purple-400 transition duration-300 relative before:absolute before:-bottom-1 before:left-0 before:w-full before:h-1 before:bg-purple-500 before:scale-x-0 before:transition-transform before:duration-300 hover:before:scale-x-100"
           >
             Contact
-          </a>
-        </div>
+          </Link>
+          <Link to="/register">
+            <button className="bg-purple-500 hover:bg-purple-600 transition-all duration-300 px-6 py-2 rounded-md text-white font-semibold shadow-md hover:shadow-lg">
+              Register
+            </button>
+          </Link>
+        </nav>
 
         {/* Social Media Icons */}
         <div className="flex space-x-6 text-sm">
@@ -84,19 +97,14 @@ const Footer = () => {
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path d="M12 2.16c3.18 0 3.56 0 4.82.07 1.17.06 1.8.25 2.22.42a4.43 4.43 0 0 1 1.62 1.05c.42.42.75.92 1.05 1.62.18.42.37 1.05.43 2.22.07 1.26.07 1.64.07 4.82s0 3.56-.07 4.82c-.06 1.17-.25 1.8-.42 2.22a4.43 4.43 0 0 1-1.05 1.62c-.42.42-.92.75-1.62 1.05-.42.18-1.05.37-2.22.43-1.26.07-1.64.07-4.82.07s-3.56 0-4.82-.07c-1.17-.06-1.8-.25-2.22-.42a4.43 4.43 0 0 1-1.62-1.05c-.42-.42-.75-.92-1.05-1.62-.18-.42-.37-1.05-.43-2.22-.07-1.26-.07-1.64-.07-4.82s0-3.56.07-4.82c.06-1.17.25-1.8.42-2.22a4.43 4.43 0 0 1 1.05-1.62c.42-.42.92-.75 1.62-1.05.42-.18 1.05-.37 2.22-.43 1.26-.07 1.64-.07 4.82-.07M12 0C8.7 0 8.31 0 7.05.07 5.81.14 4.97.35 4.24.68c-.8.34-1.47.8-2.14 1.47-.67.67-1.13 1.34-1.47 2.14-.33.73-.54 1.57-.61 2.81C.09 8.31 0 8.7 0 12s.09 3.69.07 4.95c.07 1.24.28 2.08.61 2.81.34.8.8 1.47 1.47 2.14.67.67 1.34 1.13 2.14 1.47.73.33 1.57.54 2.81.61C8.31 23.91 8.7 24 12 24s3.69-.09 4.95-.07c1.24-.07 2.08-.28 2.81-.61.8-.34 1.47-.8 2.14-1.47.67-.67 1.13-1.34 1.47-2.14.33-.73.54-1.57.61-2.81C23.91 15.69 24 15.3 24 12s-.09-3.69-.07-4.95c-.07-1.24-.28-2.08-.61-2.81-.34-.8-.8-1.47-1.47-2.14-.67-.67-1.34-1.13-2.14-1.47-.73-.33-1.57-.54-2.81-.61C15.69.09 15.3 0 12 0z"></path>
-              <path d="M12 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 1 0 12 5.84zm0 10.08A3.92 3.92 0 1 1 12 8.08 3.92 3.92 0 0 1 12 15.92zm7.84-10.56a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"></path>
+              <path d="M12 2.16c3.18 0 3.56 0 4.82.07 1.17.06 1.8.25 2.22.42a4.43 4.43 0 0 1 1.62 1.05c.42.42.75.92 1.05 1.62.18.42.37 1.05.43 2.22.07 1.26.07 1.64.07 4.82s0 3.56-.07 4.82c-.06 1.17-.25 1.8-.42 2.22a4.43 4.43 0 0 1-1.05 1.62c-.42.42-.92.75-1.62 1.05-.42.18-1.05.37-2.22.43-1.26.07-1.64.07-4.82.07s-3.56 0-4.82-.07c-1.17-.06-1.8-.25-2.22-.42a4.43 4.43 0 0 1-1.62-1.05c-.42-.42-.75-.92-1.05-1.62-.18-.42-.37-1.05-.43-2.22-.07-1.26-.07-1.64-.07-4.82s0-3.56.07-4.82c.06-1.17.25-1.8.42-2.22a4.43 4.43 0 0 1 1.05-1.62c.42-.42.92-.75 1.62-1.05.42-.18 1.05-.37 2.22-.43 1.26-.07 1.64-.07 4.82-.07M12 0C8.7 0 8.31 0 7.05.07 5.81.14 4.97.35 4.24.68c-.8.34-1.47.8-2.14 1.47-.67.67-1.13 1.34-1.47 2.14-.33.73-.54 1.57-.61 2.81C.09 8.31 0 8.7 0 12s.09 3.69.07 4.95c.07 1.24.28 2.08.61 2.81.34.8.8 1.47 1.47 2.14.67.67 1.34 1.13 2.14 1.47.73.33 1.57.54 2.81.61 1.26.07 1.64.07 4.95.07s3.69 0 4.95-.07c1.24-.07 2.08-.28 2.81-.61.8-.34 1.47-.8 2.14-1.47.67-.67 1.13-1.34 1.47-2.14.33-.73.54-1.57.61-2.81.07-1.26.07-1.64.07-4.95s0-3.69-.07-4.95c-.07-1.24-.28-2.08-.61-2.81a4.44 4.44 0 0 0-1.47-2.14c-.67-.67-1.34-1.13-2.14-1.47-.73-.33-1.57-.54-2.81-.61C15.69.09 15.3 0 12 0zm0 5.91c-3.36 0-6.09 2.73-6.09 6.09s2.73 6.09 6.09 6.09 6.09-2.73 6.09-6.09-2.73-6.09-6.09-6.09zm0 10.93c-2.66 0-4.8-2.14-4.8-4.8s2.14-4.8 4.8-4.8 4.8 2.14 4.8 4.8-2.14 4.8-4.8 4.8zm4.44-9.87a1.4 1.4 0 1 0-2.81 0 1.4 1.4 0 0 0 2.81 0z"></path>
             </svg>
           </a>
         </div>
       </div>
 
-      {/* Bottom Section */}
-      <div className="text-center pt-8 border-t border-gray-700">
-        <p>
-          &copy; {new Date().getFullYear()} J & K Taekwondo Association. All
-          rights reserved.
-        </p>
+      <div className="text-center mt-8 text-xs md:text-sm text-gray-400">
+        <p>&copy; 2024 J & K Taekwondo Association of India. All rights reserved.</p>
       </div>
     </footer>
   );
