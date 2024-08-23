@@ -23,8 +23,8 @@ const Carousel = () => {
   }, [images.length]);
 
   return (
-    <div className="relative flex justify-center items-center w-full h-screen bg-gray-900">
-      <div className="w-11/12 md:w-3/4 lg:w-1/2 h-3/4 overflow-hidden rounded-lg shadow-lg relative">
+    <div className="relative flex justify-center items-center w-full">
+      <div className="max-h-[800px] overflow-hidden relative">
         <div
           className="flex transition-transform duration-1000 ease-in-out"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -37,7 +37,7 @@ const Carousel = () => {
               <img
                 src={image}
                 alt={`Slide ${index}`}
-                className="w-full h-full object-cover rounded-lg"
+                className="w-full h-full object-cover object-center"
               />
             </div>
           ))}

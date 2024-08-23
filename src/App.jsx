@@ -20,8 +20,8 @@ function App() {
           path="/"
           element={
             <>
-              <Hero />
               <Gallery />
+              <Hero />
             </>
           }
         />{" "}
