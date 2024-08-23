@@ -150,27 +150,27 @@ const taekwondoAssociations = [
 
 const Affiliated = () => {
   return (
-    <div className="bg-gradient-to-r from-[#005377] via-[#052F5F] to-[#06A77D] p-10 min-h-screen flex flex-wrap justify-center items-center gap-8">
+    <div className="py-10 container m-auto flex flex-wrap justify-around items-center gap-8">
       {taekwondoAssociations.map((association, index) => (
         <motion.div
           key={index}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="bg-[#F1A208] rounded-xl shadow-lg p-4 w-64 transform transition-transform duration-300"
+          className=" rounded-xl shadow-lg p-4 w-64 transform transition-transform duration-300 border"
         >
           <img
             src={association.image}
             alt={`${association.association} Logo`}
-            className="w-full h-60 object-cover rounded-t-lg"
+            className="w-full h-36 object-contain rounded-t-lg"
           />
-          <div className="text-center mt-4">
-            <h2 className="text-[#052F5F] text-lg font-bold">
+          <div className="text-center mt-1">
+            <h2 className="text-[#052F5F] text-lg font-bold leading-tight">
               {association.association}
             </h2>
-            <p className="text-[#000000] text-sm mt-2">
+            <p className="text-[#000000] text-sm">
               District: {association.district}
             </p>
-            <div className="text-[#000000] text-sm mt-2">
+            <div className="text-[#000000] text-sm">
               {association.officeBearers.map((bearer, i) => (
                 <p key={i}>{bearer}</p>
               ))}

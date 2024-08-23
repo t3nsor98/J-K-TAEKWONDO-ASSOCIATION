@@ -39,10 +39,10 @@ const Footer = () => {
                         <h2 className="text-xl md:text-2xl font-bold">
                             J & K Taekwondo Association of India
                         </h2>
-                        <p className="text-sm md:text-base">
+                        {/* <p className="text-sm md:text-base">
                             Affiliated with: Taekwondo Federation of India &
                             Indian Olympic Association
-                        </p>
+                        </p> */}
                     </div>
                 </div>
 
@@ -111,7 +111,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div className="text-center mt-8 text-xs md:text-sm text-white font-bold">
+            <div className="text-center mt-8 text-xs md:text-sm text-white font-bold container px-4 m-auto">
                 <p>
                     &copy; 2024 J & K Taekwondo Association of India. All rights
                     reserved.

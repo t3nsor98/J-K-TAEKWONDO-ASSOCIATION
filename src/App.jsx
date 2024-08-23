@@ -31,7 +31,6 @@ function App() {
           element={
             <>
               <About />
-              <Gallery2 />
             </>
           }
         />

@@ -39,7 +39,7 @@ const Hero = () => {
             >
                 <span className="text-red-600">{text}</span>
             </motion.h1>
-            <div className="flex container m-auto">
+            <div className="md:flex container m-auto">
                 <img
                     src={assetImg}
                     alt="Taekwondo"
@@ -48,7 +48,7 @@ const Hero = () => {
                 <div className="mx-auto text-justify">
                     {/* Description */}
                     <motion.p
-                        className="text-sm sm:text-base md:text-lg lg:text-xl mb-8 leading-relaxed  mx-auto"
+                        className="text-sm sm:text-base md:text-lg lg:text-xl mb-8 leading-relaxed  mx-auto px-6"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 1.2 }}
