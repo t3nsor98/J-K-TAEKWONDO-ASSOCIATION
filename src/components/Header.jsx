@@ -20,7 +20,7 @@ const Header = () => {
                     <img
                         src={logoJKTA}
                         alt="JKTA Logo"
-                        className="w-24 md:w-48 rounded-full transition-transform duration-300 transform"
+                        className="w-20 md:w-48 rounded-full transition-transform duration-300 transform"
                     />
 
                     {/* Title */}

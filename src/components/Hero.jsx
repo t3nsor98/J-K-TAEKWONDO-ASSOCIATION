@@ -76,7 +76,7 @@ const Hero = () => {
             </div>
             {/* Closing Note */}
             <motion.p
-                className="text-sm sm:text-base md:text-lg lg:text-xl italic text-red-600 mx-auto text-center"
+                className="text-sm sm:text-base md:text-lg lg:text-xl italic text-red-600 mx-auto text-center px-4"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1.2 }}
