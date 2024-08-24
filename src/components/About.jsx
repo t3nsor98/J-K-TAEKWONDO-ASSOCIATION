@@ -3,7 +3,7 @@ import Gallery2 from "./Gallery2";
 
 const About = () => {
     return (
-        <section className="relative bg-gradient-to-r from-[#ffff] via-[#ffff] to-[#ffff] overflow-hidden">
+        <section className="relative bg-gradient-to-r from-[#ffff] via-[#ffff] to-[#ffff] overflow-hidden ">
             {/* Background Circle Animation */}
             <div className="absolute bottom-0 right-0 w-80 h-80 bg-red-600 rounded-full opacity-30 blur-3xl animate-pulse delay-75" />
 
@@ -78,7 +78,7 @@ const About = () => {
             </div>
 
             {/* Milestones Section */}
-            <div className="relative z-10 container mx-auto px-4">
+            <div className="relative z-10 container mx-auto px-4 text-base md:text-xl">
                 <motion.h3
                     className="text-3xl md:text-4xl font-semibold text-black mb-6"
                     initial={{ opacity: 0, y: 50 }}
@@ -200,7 +200,7 @@ const About = () => {
                     Our Vision
                 </motion.h2>
                 <motion.p
-                    className="text- md:text-xl leading-relaxed"
+                    className="leading-relaxed text-base md:text-xl"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1.2 }}
