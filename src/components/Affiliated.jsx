@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-//associations images
+// associations images
 import kupwara from "../../public/associations/KUPWARA.png";
 import bandipora from "../../public/associations/Bandipora.jpg";
 import udhampur from "../../public/associations/UDHAMPUR.jpg";
@@ -20,7 +20,7 @@ import reasi from "../../public/associations/REASI.png";
 import ganderbal from "../../public/associations/GANDERBAL.png";
 import pulwama from "../../public/associations/PULWAMA.png";
 import shopian from "../../public/associations/SHOPIAN.png";
-import kupwara2 from "../../public/associations/NEWKUPWARA.jpg"; 
+import kupwara2 from "../../public/associations/NEWKUPWARA.jpg";
 
 const taekwondoAssociations = [
   {
@@ -143,10 +143,7 @@ const taekwondoAssociations = [
     officeBearers: ["A.R Malik", "Kehkashan Bashir"],
     image: kupwara2,
   },
-];
-
-
-
+].sort((a, b) => a.district.localeCompare(b.district)); // Sorting by district name
 
 const Affiliated = () => {
   return (
