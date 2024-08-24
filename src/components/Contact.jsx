@@ -40,6 +40,7 @@ const Contact = () => {
                             <i className="fas fa-phone mr-2"></i>
                             Call
                         </a>
+                        
                     </div>
 
                     {/* Email Address and Send Email Button */}

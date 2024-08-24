@@ -21,7 +21,7 @@ import ganderbal from "/associations/GANDERBAL.png";
 import pulwama from "/associations/PULWAMA.png";
 import shopian from "/associations/SHOPIAN.png";
 import kupwara2 from "/associations/NEWKUPWARA.jpg";
-import doda from "/associations/doda.png";
+import doda from "/associations/doda.jpg";
 
 const taekwondoAssociations = [
   {
@@ -171,8 +171,8 @@ const Affiliated = () => {
             <div className="text-[#000000] text-sm">
               {association.officeBearers.map((bearer, i) => (
                 <p key={i}>
-                  {bearer} {i === 0 && "(President)"} 
-                  {/* only the first bearer is president */}
+                  {bearer} {i === 0 && "(President)"} {i === 1 && "(Secretary)"}
+                  {/* only the first bearer is president, and the second is secretary */}
                 </p>
               ))}
             </div>

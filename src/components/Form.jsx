@@ -38,7 +38,8 @@ const Form = () => {
     pin: "",
     panNumber: "",
     photo: null,
-    birthCertificate: null,
+    blackBeltCertificate: null,
+    // birthCertificate: null,
     // residentCertificate: null,
     adharFrontPhoto: null,
     adharBackPhoto: null,
@@ -238,7 +239,7 @@ const Form = () => {
             <input
               type="text"
               name="panNumber"
-              placeholder="PAN Number"
+              placeholder="PAN Number (Optional)"
               value={athleteFormData.panNumber}
               onChange={handleAthleteChange}
               className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
@@ -425,7 +426,7 @@ const Form = () => {
             <input
               type="text"
               name="panNumber"
-              placeholder="PAN Number"
+              placeholder="PAN Number (Optional)"
               value={coachFormData.panNumber}
               onChange={handleCoachChange}
               className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
@@ -442,11 +443,11 @@ const Form = () => {
             </div>
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
               <label className="block mb-2 font-semibold">
-                Upload Birth Certificate
+                Upload Black Belt Certificate
               </label>
               <input
                 type="file"
-                name="birthCertificate"
+                name="blackBeltCertificate"
                 onChange={handleCoachChange}
                 className="border-none"
                 required
