@@ -20,6 +20,7 @@ const Form = () => {
     coachName: "",
     photo: null,
     certificate: null,
+    residentCertificate: null,
     adharFrontPhoto: null,
     adharBackPhoto: null,
   });
@@ -38,6 +39,7 @@ const Form = () => {
     panNumber: "",
     photo: null,
     birthCertificate: null,
+    // residentCertificate: null,
     adharFrontPhoto: null,
     adharBackPhoto: null,
   });
@@ -151,14 +153,17 @@ const Form = () => {
               className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
               required
             />
-            <input
-              type="date"
-              name="dob"
-              value={athleteFormData.dob}
-              onChange={handleAthleteChange}
-              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-              required
-            />
+            <label>
+              Date Of Birth
+              <input
+                type="date"
+                name="dob"
+                value={athleteFormData.dob}
+                onChange={handleAthleteChange}
+                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+                required
+              />
+            </label>
             <select
               name="gender"
               value={athleteFormData.gender}
@@ -280,6 +285,18 @@ const Form = () => {
             </div>
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
               <label className="block mb-2 font-semibold">
+                Upload Resident Certificate
+              </label>
+              <input
+                type="file"
+                name="residentCertificate"
+                onChange={handleAthleteChange}
+                className="border-none"
+                required
+              />
+            </div>
+            <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
+              <label className="block mb-2 font-semibold">
                 Upload Aadhar Front Photo
               </label>
               <input
@@ -323,14 +340,17 @@ const Form = () => {
               className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
               required
             />
-            <input
-              type="date"
-              name="dob"
-              value={coachFormData.dob}
-              onChange={handleCoachChange}
-              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-              required
-            />
+            <label>
+              Date of Birth
+              <input
+                type="date"
+                name="dob"
+                value={coachFormData.dob}
+                onChange={handleCoachChange}
+                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+                required
+              />
+            </label>
             <select
               name="gender"
               value={coachFormData.gender}
@@ -432,6 +452,18 @@ const Form = () => {
                 required
               />
             </div>
+            {/* <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
+              <label className="block mb-2 font-semibold">
+                Upload Resident Certificate
+              </label>
+              <input
+                type="file"
+                name="residentCertificate"
+                onChange={handleCoachChange}
+                className="border-none"
+                required
+              />
+            </div> */}
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
               <label className="block mb-2 font-semibold">
                 Upload Aadhar Front Photo
