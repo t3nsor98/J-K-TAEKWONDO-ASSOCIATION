@@ -56,15 +56,15 @@ const Header = () => {
                     </div>
 
                     {/* Right Logo */}
-                    <img
+                    {/* <img
                         src={img1Trans}
                         alt="TFI Logo"
                         className="md:hidden w-14 md:w-48 transition-transform duration-300 transform order-2 absolute md:relative right-3 bottom-3"
-                    />
+                    /> */}
                     <img
                         src={img1}
                         alt="TFI Logo"
-                        className="hidden md:block w-14 md:w-48 transition-transform duration-300 transform order-2 absolute md:relative right-3 bottom-3"
+                        className="w-14 md:w-48 transition-transform duration-300 transform order-2 absolute md:relative right-3 bottom-3"
                     />
                 </div>
             </>
