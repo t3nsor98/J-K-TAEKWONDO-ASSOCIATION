@@ -2,6 +2,7 @@ import { useState } from "react";
 
 const Form = () => {
   const [formType, setFormType] = useState("athlete");
+
   const [athleteFormData, setAthleteFormData] = useState({
     athleteName: "",
     fatherName: "",
@@ -9,26 +10,36 @@ const Form = () => {
     dob: "",
     gender: "",
     district: "",
-    pin: "",
     mob: "",
     email: "",
     adharNumber: "",
-    panNumber: "",
-    photo: null,
     address: "",
+    pin: "",
+    panNumber: "",
     academyName: "",
     coachName: "",
+    photo: null,
     certificate: null,
-    aadharFront: null,
-    aadharBack: null,
+    adharFrontPhoto: null,
+    adharBackPhoto: null,
   });
 
   const [coachFormData, setCoachFormData] = useState({
     playerName: "",
+    fatherName: "",
     dob: "",
     gender: "",
+    district: "",
+    mob: "",
+    email: "",
     adharNumber: "",
+    address: "",
+    pin: "",
+    panNumber: "",
     photo: null,
+    birthCertificate: null,
+    adharFrontPhoto: null,
+    adharBackPhoto: null,
   });
 
   const districts = [
@@ -194,6 +205,24 @@ const Form = () => {
             />
             <input
               type="text"
+              name="adharNumber"
+              placeholder="Aadhar Number"
+              value={athleteFormData.adharNumber}
+              onChange={handleAthleteChange}
+              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+              required
+            />
+            <input
+              type="text"
+              name="address"
+              placeholder="Address"
+              value={athleteFormData.address}
+              onChange={handleAthleteChange}
+              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+              required
+            />
+            <input
+              type="text"
               name="pin"
               placeholder="Pincode"
               value={athleteFormData.pin}
@@ -212,7 +241,7 @@ const Form = () => {
             <input
               type="text"
               name="academyName"
-              placeholder="Academy Name"
+              placeholder="Name of the Academy"
               value={athleteFormData.academyName}
               onChange={handleAthleteChange}
               className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
@@ -221,16 +250,14 @@ const Form = () => {
             <input
               type="text"
               name="coachName"
-              placeholder="Coach Name"
+              placeholder="Name of the Coach"
               value={athleteFormData.coachName}
               onChange={handleAthleteChange}
               className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
               required
             />
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
-              <label className="block mb-2 font-semibold">
-                Upload Student Photo
-              </label>
+              <label className="block mb-2 font-semibold">Upload Photo</label>
               <input
                 type="file"
                 name="photo"
@@ -241,7 +268,7 @@ const Form = () => {
             </div>
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
               <label className="block mb-2 font-semibold">
-                Upload Resident Certificate
+                Upload Birth Certificate
               </label>
               <input
                 type="file"
@@ -253,11 +280,11 @@ const Form = () => {
             </div>
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
               <label className="block mb-2 font-semibold">
-                Upload Aadhar Card Front
+                Upload Aadhar Front Photo
               </label>
               <input
                 type="file"
-                name="aadharFront"
+                name="adharFrontPhoto"
                 onChange={handleAthleteChange}
                 className="border-none"
                 required
@@ -265,11 +292,11 @@ const Form = () => {
             </div>
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
               <label className="block mb-2 font-semibold">
-                Upload Aadhar Card Back
+                Upload Aadhar Back Photo
               </label>
               <input
                 type="file"
-                name="aadharBack"
+                name="adharBackPhoto"
                 onChange={handleAthleteChange}
                 className="border-none"
                 required
@@ -281,8 +308,17 @@ const Form = () => {
             <input
               type="text"
               name="playerName"
-              placeholder="Name of the Player"
+              placeholder="Name"
               value={coachFormData.playerName}
+              onChange={handleCoachChange}
+              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+              required
+            />
+            <input
+              type="text"
+              name="fatherName"
+              placeholder="Father's Name"
+              value={coachFormData.fatherName}
               onChange={handleCoachChange}
               className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
               required
@@ -307,6 +343,38 @@ const Form = () => {
               <option value="Female">Female</option>
               <option value="Other">Other</option>
             </select>
+            <select
+              name="district"
+              value={coachFormData.district}
+              onChange={handleCoachChange}
+              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+              required
+            >
+              <option value="">Select District</option>
+              {districts.map((district) => (
+                <option key={district} value={district}>
+                  {district}
+                </option>
+              ))}
+            </select>
+            <input
+              type="tel"
+              name="mob"
+              placeholder="Mobile Number"
+              value={coachFormData.mob}
+              onChange={handleCoachChange}
+              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              value={coachFormData.email}
+              onChange={handleCoachChange}
+              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+              required
+            />
             <input
               type="text"
               name="adharNumber"
@@ -316,10 +384,34 @@ const Form = () => {
               className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
               required
             />
+            <input
+              type="text"
+              name="address"
+              placeholder="Address"
+              value={coachFormData.address}
+              onChange={handleCoachChange}
+              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+              required
+            />
+            <input
+              type="text"
+              name="pin"
+              placeholder="Pincode"
+              value={coachFormData.pin}
+              onChange={handleCoachChange}
+              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+              required
+            />
+            <input
+              type="text"
+              name="panNumber"
+              placeholder="PAN Number"
+              value={coachFormData.panNumber}
+              onChange={handleCoachChange}
+              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+            />
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
-              <label className="block mb-2 font-semibold">
-                Upload Player Photo
-              </label>
+              <label className="block mb-2 font-semibold">Upload Photo</label>
               <input
                 type="file"
                 name="photo"
@@ -328,12 +420,47 @@ const Form = () => {
                 required
               />
             </div>
+            <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
+              <label className="block mb-2 font-semibold">
+                Upload Birth Certificate
+              </label>
+              <input
+                type="file"
+                name="birthCertificate"
+                onChange={handleCoachChange}
+                className="border-none"
+                required
+              />
+            </div>
+            <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
+              <label className="block mb-2 font-semibold">
+                Upload Aadhar Front Photo
+              </label>
+              <input
+                type="file"
+                name="adharFrontPhoto"
+                onChange={handleCoachChange}
+                className="border-none"
+                required
+              />
+            </div>
+            <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
+              <label className="block mb-2 font-semibold">
+                Upload Aadhar Back Photo
+              </label>
+              <input
+                type="file"
+                name="adharBackPhoto"
+                onChange={handleCoachChange}
+                className="border-none"
+                required
+              />
+            </div>
           </div>
         )}
-
         <button
           type="submit"
-          className="bg-[#005377] text-white py-2 px-4 rounded-md hover:bg-[#F1A208] transition duration-300"
+          className="bg-[#005377] text-white font-semibold py-3 px-6 rounded-md shadow-md hover:bg-[#052F5F] transition duration-300"
         >
           Submit
         </button>
