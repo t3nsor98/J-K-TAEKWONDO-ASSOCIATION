@@ -42,7 +42,7 @@ To get started with the project, follow these steps:
 
 To start the development server, use the following command:
 ```bash
-npm start
+npm run dev
 ```
 
 This will open the project in your default web browser at `http://localhost:3000`.
