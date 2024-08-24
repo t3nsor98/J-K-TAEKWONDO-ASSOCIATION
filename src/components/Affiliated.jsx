@@ -21,13 +21,14 @@ import ganderbal from "../../public/associations/GANDERBAL.png";
 import pulwama from "../../public/associations/PULWAMA.png";
 import shopian from "../../public/associations/SHOPIAN.png";
 import kupwara2 from "../../public/associations/NEWKUPWARA.jpg";
+import doda from "../../public/associations/doda.png";
 
 const taekwondoAssociations = [
   {
     district: "Doda",
     association: "Taekwondo Association of District Doda",
     officeBearers: ["Junaid Ali Khan", "Burhan Ud Din Khan"],
-    image: kupwara,
+    image: doda,
   },
   {
     district: "Bandipora",
@@ -169,7 +170,10 @@ const Affiliated = () => {
             </p>
             <div className="text-[#000000] text-sm">
               {association.officeBearers.map((bearer, i) => (
-                <p key={i}>{bearer}</p>
+                <p key={i}>
+                  {bearer} {i === 0 && "(President)"} 
+                  {/* only the first bearer is president */}
+                </p>
               ))}
             </div>
           </div>
