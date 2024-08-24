@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+// form redsign hoga
 const Form = () => {
   const [formType, setFormType] = useState("athlete");
   const [athleteFormData, setAthleteFormData] = useState({
@@ -251,6 +251,7 @@ const Form = () => {
                 required
               />
             </div>
+            {/* Birth and resident certificate */}
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
               <label className="block mb-2 font-semibold">
                 Upload Birth or Resident Certificate
