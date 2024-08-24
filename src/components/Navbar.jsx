@@ -15,11 +15,11 @@ const menuItems = [
         href: "/about",
     },
     {
-        name: "Affiliated",
+        name: "Affiliated Unit",
         href: "/affiliated",
     },
     {
-        name: "Members",
+        name: "Executive Member's",
         href: "/members",
     },
     {
