@@ -30,26 +30,26 @@ const Form = () => {
   });
 
   const districts = [
-    "Srinagar",
-    "Jammu",
     "Anantnag",
+    "Bandipora",
     "Baramulla",
     "Budgam",
-    "Kupwara",
-    "Pulwama",
-    "Kulgam",
-    "Bandipora",
-    "Shopian",
-    "Rajouri",
-    "Poonch",
-    "Udhampur",
-    "Reasi",
-    "Kathua",
     "Doda",
-    "Kishtwar",
-    "Ramban",
-    "Samba",
     "Ganderbal",
+    "Jammu",
+    "Kathua",
+    "Kishtwar",
+    "Kulgam",
+    "Kupwara",
+    "Poonch",
+    "Pulwama",
+    "Rajouri",
+    "Ramban",
+    "Reasi",
+    "Samba",
+    "Shopian",
+    "Srinagar",
+    "Udhampur",
   ];
 
   const handleAthleteChange = (e) => {
@@ -83,7 +83,9 @@ const Form = () => {
         <button
           onClick={() => setFormType("athlete")}
           className={`${
-            formType === "athlete" ? "bg-[#005377] text-white" : "bg-white text-black"
+            formType === "athlete"
+              ? "bg-[#005377] text-white"
+              : "bg-white text-black"
           } font-semibold py-2 px-4 rounded-md transition duration-300 shadow-md hover:bg-red-600 hover:text-white`}
         >
           Athlete Registration
@@ -91,7 +93,9 @@ const Form = () => {
         <button
           onClick={() => setFormType("coach")}
           className={`${
-            formType === "coach" ? "bg-[#005377] text-white" : "bg-white text-black"
+            formType === "coach"
+              ? "bg-[#005377] text-white"
+              : "bg-white text-black"
           } font-semibold py-2 px-4 rounded-md transition duration-300 shadow-md hover:bg-red-600 hover:text-white`}
         >
           Coach Registration
@@ -306,9 +310,7 @@ const Form = () => {
               required
             />
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
-              <label className="block mb-2 font-semibold">
-                Upload Photo
-              </label>
+              <label className="block mb-2 font-semibold">Upload Photo</label>
               <input
                 type="file"
                 name="photo"

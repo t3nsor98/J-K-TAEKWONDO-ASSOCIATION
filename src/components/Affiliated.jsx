@@ -1,27 +1,27 @@
 import { motion } from "framer-motion";
 
 // associations images
-import kupwara from "../../public/associations/KUPWARA.png";
-import bandipora from "../../public/associations/Bandipora.jpg";
-import udhampur from "../../public/associations/UDHAMPUR.jpg";
-import kishtwar from "../../public/associations/KISHTWAR.png";
-import budgam from "../../public/associations/BUDGAM.jpg";
-import poonch from "../../public/associations/POONCH.jpg";
-import anantnag from "../../public/associations/ANANTNAG.jpg";
-import srinagar from "../../public/associations/SRINAGAR.png";
-import jammu from "../../public/associations/JAMMU.png";
-import kathua from "../../public/associations/KATHUA.jpg";
-import samba from "../../public/associations/SAMBA.png";
-import rajouri from "../../public/associations/RAJOURI.jpg";
-import kulgam from "../../public/associations/NEWKULGAM.jpg";
-import baramulla from "../../public/associations/BARAMULLA.png";
-import ramban from "../../public/associations/RAMBAN.jpg";
-import reasi from "../../public/associations/REASI.png";
-import ganderbal from "../../public/associations/GANDERBAL.png";
-import pulwama from "../../public/associations/PULWAMA.png";
-import shopian from "../../public/associations/SHOPIAN.png";
-import kupwara2 from "../../public/associations/NEWKUPWARA.jpg";
-import doda from "../../public/associations/doda.png";
+import kupwara from "/associations/KUPWARA.png";
+import bandipora from "/associations/Bandipora.jpg";
+import udhampur from "/associations/UDHAMPUR.jpg";
+import kishtwar from "/associations/KISHTWAR.png";
+import budgam from "/associations/BUDGAM.jpg";
+import poonch from "/associations/POONCH.jpg";
+import anantnag from "/associations/ANANTNAG.jpg";
+import srinagar from "/associations/SRINAGAR.png";
+import jammu from "/associations/JAMMU.png";
+import kathua from "/associations/KATHUA.jpg";
+import samba from "/associations/SAMBA.png";
+import rajouri from "/associations/RAJOURI.jpg";
+import kulgam from "/associations/NEWKULGAM.jpg";
+import baramulla from "/associations/BARAMULLA.png";
+import ramban from "/associations/RAMBAN.jpg";
+import reasi from "/associations/REASI.png";
+import ganderbal from "/associations/GANDERBAL.png";
+import pulwama from "/associations/PULWAMA.png";
+import shopian from "/associations/SHOPIAN.png";
+import kupwara2 from "/associations/NEWKUPWARA.jpg";
+import doda from "/associations/doda.png";
 
 const taekwondoAssociations = [
   {
