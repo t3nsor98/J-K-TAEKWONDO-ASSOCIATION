@@ -1,0 +1,39 @@
+{
+  "name": "JKTA - J & K Taekwondo Association",
+  "short_name": "JKTA",
+  "description": "Official website of JKTA - J & K Taekwondo Association.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#052F5F",
+  "theme_color": "#F1A208",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/jkta-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/jkta-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "scope": "/",
+  "lang": "en-US"
+}
