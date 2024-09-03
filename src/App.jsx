@@ -13,6 +13,7 @@ import NotFound from "./components/NotFound"; // Create this component to handle
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsAndConditions from "./components/TnC";
 import RefundPolicy from "./components/Refund";
+import DonationPage from "./components/Donate";
 
 function App() {
     return (
@@ -45,6 +46,8 @@ function App() {
                 <Route path="/privacy" element={<PrivacyPolicy />} />
                 <Route path="/terms" element={<TermsAndConditions />} />
                 <Route path="/refund" element={<RefundPolicy />} />
+                {/* Temporary Donate */}
+                <Route path="/donate" element={<DonationPage />} />
                 <Route path="*" element={<NotFound />} />{" "}
                 {/* Catch-all route for 404 errors */}
             </Routes>
