@@ -103,7 +103,18 @@ const Footer = () => {
                 </div>
             </div>
             <hr className="border-white mt-7" />
-            <div className="text-center -mb-3 py-3 text-xs md:text-sm text-white font-bold container px-4 m-auto">
+            <div className="text-center -mb-3 py-3 text-xs md:text-sm text-white font-bold container px-4 m-auto lg:flex lg:justify-between">
+                <p className="flex gap-3 justify-center">
+                    <Link to="/privacy" className="hover:underline">
+                        Privacy Policy
+                    </Link>
+                    <Link to="/terms" className="hover:underline">
+                        TnC
+                    </Link>
+                    <Link to="/refund" className="hover:underline">
+                        Refund Policy
+                    </Link>
+                </p>
                 <p>
                     &copy; 2024 J & K Taekwondo Association of India. All rights
                     reserved.
