@@ -10,40 +10,50 @@ import Hero from "./components/Hero";
 import Affiliated from "./components/Affiliated";
 import Gallery2 from "./components/Gallery2";
 import NotFound from "./components/NotFound"; // Create this component to handle 404 errors
+import PrivacyPolicy from "./components/PrivacyPolicy";
+import TermsAndConditions from "./components/TnC";
+import RefundPolicy from "./components/Refund";
+import DonationPage from "./components/Donate";
 
 function App() {
-  return (
-    <Router>
-      <Header />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Gallery />
-              <Hero />
-            </>
-          }
-        />{" "}
-        {/* Home Page */}
-        <Route
-          path="/about"
-          element={
-            <>
-              <About />
-            </>
-          }
-        />
-        <Route path="/affiliated" element={<Affiliated />} />
-        <Route path="/members" element={<Members />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/register" element={<Form />} /> {/* Register Page */}
-        <Route path="*" element={<NotFound />} />{" "}
-        {/* Catch-all route for 404 errors */}
-      </Routes>
-      <Footer />
-    </Router>
-  );
+    return (
+        <Router>
+            <Header />
+            <Routes>
+                <Route
+                    path="/"
+                    element={
+                        <>
+                            <Gallery />
+                            <Hero />
+                        </>
+                    }
+                />{" "}
+                {/* Home Page */}
+                <Route
+                    path="/about"
+                    element={
+                        <>
+                            <About />
+                        </>
+                    }
+                />
+                <Route path="/affiliated" element={<Affiliated />} />
+                <Route path="/members" element={<Members />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/register" element={<Form />} />{" "}
+                {/* Register Page */}
+                <Route path="/privacy" element={<PrivacyPolicy />} />
+                <Route path="/terms" element={<TermsAndConditions />} />
+                <Route path="/refund" element={<RefundPolicy />} />
+                {/* Temporary Donate */}
+                <Route path="/donate" element={<DonationPage />} />
+                <Route path="*" element={<NotFound />} />{" "}
+                {/* Catch-all route for 404 errors */}
+            </Routes>
+            <Footer />
+        </Router>
+    );
 }
 
 export default App;
