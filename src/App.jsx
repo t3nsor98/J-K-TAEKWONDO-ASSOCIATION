@@ -8,7 +8,7 @@ import Form from "./components/Form";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import Affiliated from "./components/Affiliated";
-import Gallery2 from "./components/Gallery2";
+// import Gallery2 from "./components/Gallery2";
 import NotFound from "./components/NotFound"; // Create this component to handle 404 errors
 
 function App() {
