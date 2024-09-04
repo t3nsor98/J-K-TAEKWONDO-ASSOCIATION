@@ -8,7 +8,7 @@ import Form from "./components/Form";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import Affiliated from "./components/Affiliated";
-import Gallery2 from "./components/Gallery2";
+// import Gallery2 from "./components/Gallery2";
 import NotFound from "./components/NotFound"; // Create this component to handle 404 errors
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsAndConditions from "./components/TnC";
@@ -47,7 +47,7 @@ function App() {
                 <Route path="/terms" element={<TermsAndConditions />} />
                 <Route path="/refund" element={<RefundPolicy />} />
                 {/* Temporary Donate */}
-                <Route path="/donate" element={<DonationPage />} />
+                {/* <Route path="/donate" element={<DonationPage />} /> */}
                 <Route path="*" element={<NotFound />} />{" "}
                 {/* Catch-all route for 404 errors */}
             </Routes>

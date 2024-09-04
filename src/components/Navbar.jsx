@@ -26,10 +26,6 @@ const menuItems = [
         name: "Contact",
         href: "/contact",
     },
-    {
-        name: "Donate Now",
-        href: "/donate",
-    }
 ];
 
 export function Navbar() {
