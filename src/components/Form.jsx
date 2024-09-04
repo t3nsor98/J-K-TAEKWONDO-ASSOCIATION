@@ -497,7 +497,7 @@ const Form = () => {
           type="submit"
           className="bg-[#005377] text-white font-semibold py-3 px-6 rounded-md shadow-md hover:bg-[#052F5F] transition duration-300"
         >
-          Submit
+          Proceed to Pay Fee
         </button>
       </form>
     </div>
