@@ -25,7 +25,7 @@ To get started with the project, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/t3nsor98/client-work-august.git
+   git clone https://github.com/t3nsor98/J-K-TAEKWONDO-ASSOCIATION
    ```
 
 2. Navigate to the project directory:
