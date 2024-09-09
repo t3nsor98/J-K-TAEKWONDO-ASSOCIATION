@@ -129,35 +129,44 @@ const Form = () => {
       <form onSubmit={handleSubmit} className="space-y-4">
         {formType === "athlete" ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input
-              type="text"
-              name="athleteName"
-              placeholder="Name of the Athlete"
-              value={athleteFormData.athleteName}
-              onChange={handleAthleteChange}
-              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-              required
-            />
-            <input
-              type="text"
-              name="fatherName"
-              placeholder="Father's Name"
-              value={athleteFormData.fatherName}
-              onChange={handleAthleteChange}
-              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-              required
-            />
-            <input
-              type="text"
-              name="motherName"
-              placeholder="Mother's Name"
-              value={athleteFormData.motherName}
-              onChange={handleAthleteChange}
-              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-              required
-            />
-            <label>
-              Date Of Birth
+            <label htmlFor="athleteName">
+              Athlete Name:
+              <input
+                type="text"
+                name="athleteName"
+                placeholder="Name of the Athlete"
+                value={athleteFormData.athleteName}
+                onChange={handleAthleteChange}
+                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+                required
+              />
+            </label>
+            <label htmlFor="fatherName">
+              Father's Name:
+              <input
+                type="text"
+                name="fatherName"
+                placeholder="Father's Name"
+                value={athleteFormData.fatherName}
+                onChange={handleAthleteChange}
+                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+                required
+              />
+            </label>
+            <label htmlFor="motherName">
+              Mother's Name:
+              <input
+                type="text"
+                name="motherName"
+                placeholder="Mother's Name"
+                value={athleteFormData.motherName}
+                onChange={handleAthleteChange}
+                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+                required
+              />
+            </label>
+            <label htmlFor="dob">
+              Date Of Birth:
               <input
                 type="date"
                 name="dob"
@@ -167,105 +176,135 @@ const Form = () => {
                 required
               />
             </label>
-            <select
-              name="gender"
-              value={athleteFormData.gender}
-              onChange={handleAthleteChange}
-              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-              required
-            >
-              <option value="">Select Gender</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-              <option value="Other">Other</option>
-            </select>
-            <select
-              name="district"
-              value={athleteFormData.district}
-              onChange={handleAthleteChange}
-              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-              required
-            >
-              <option value="">Select District</option>
-              {districts.map((district) => (
-                <option key={district} value={district}>
-                  {district}
-                </option>
-              ))}
-            </select>
-            <input
-              type="tel"
-              name="mob"
-              placeholder="Mobile Number"
-              value={athleteFormData.mob}
-              onChange={handleAthleteChange}
-              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email Address"
-              value={athleteFormData.email}
-              onChange={handleAthleteChange}
-              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-              required
-            />
-            <input
-              type="text"
-              name="adharNumber"
-              placeholder="Aadhar Number"
-              value={athleteFormData.adharNumber}
-              onChange={handleAthleteChange}
-              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-              required
-            />
-            <input
-              type="text"
-              name="address"
-              placeholder="Address"
-              value={athleteFormData.address}
-              onChange={handleAthleteChange}
-              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-              required
-            />
-            <input
-              type="text"
-              name="pin"
-              placeholder="Pincode"
-              value={athleteFormData.pin}
-              onChange={handleAthleteChange}
-              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-              required
-            />
-            <input
-              type="text"
-              name="panNumber"
-              placeholder="PAN Number (Optional)"
-              value={athleteFormData.panNumber}
-              onChange={handleAthleteChange}
-              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-            />
-            <input
-              type="text"
-              name="academyName"
-              placeholder="Name of the Academy"
-              value={athleteFormData.academyName}
-              onChange={handleAthleteChange}
-              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-              required
-            />
-            <input
-              type="text"
-              name="coachName"
-              placeholder="Name of the Coach"
-              value={athleteFormData.coachName}
-              onChange={handleAthleteChange}
-              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-              required
-            />
+            <label htmlFor="gender">
+              Gender:
+              <select
+                name="gender"
+                value={athleteFormData.gender}
+                onChange={handleAthleteChange}
+                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+                required
+              >
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </label>
+            <label htmlFor="district">
+              District:
+              <select
+                name="district"
+                value={athleteFormData.district}
+                onChange={handleAthleteChange}
+                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+                required
+              >
+                <option value="">Select District</option>
+                {districts.map((district) => (
+                  <option key={district} value={district}>
+                    {district}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label htmlFor="mob">
+              Mobile Number:
+              <input
+                type="tel"
+                name="mob"
+                placeholder="Mobile Number"
+                value={athleteFormData.mob}
+                onChange={handleAthleteChange}
+                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+                required
+              />
+            </label>
+            <label htmlFor="email">
+              Email:
+              <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                value={athleteFormData.email}
+                onChange={handleAthleteChange}
+                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+                required
+              />
+            </label>
+            <label htmlFor="adharNumber">
+              Aadhar Number:
+              <input
+                type="text"
+                name="adharNumber"
+                placeholder="Aadhar Number"
+                value={athleteFormData.adharNumber}
+                onChange={handleAthleteChange}
+                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+                required
+              />
+            </label>
+            <label htmlFor="address">
+              Address:
+              <input
+                type="text"
+                name="address"
+                placeholder="Address"
+                value={athleteFormData.address}
+                onChange={handleAthleteChange}
+                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+                required
+              />
+            </label>
+            <label htmlFor="pin">
+              Pincode:
+              <input
+                type="text"
+                name="pin"
+                placeholder="Pincode"
+                value={athleteFormData.pin}
+                onChange={handleAthleteChange}
+                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+                required
+              />
+            </label>
+            <label htmlFor="panNumber">
+              PAN Number (Optional):
+              <input
+                type="text"
+                name="panNumber"
+                placeholder="PAN Number (Optional)"
+                value={athleteFormData.panNumber}
+                onChange={handleAthleteChange}
+                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+              />
+            </label>
+            <label htmlFor="academyName">
+              Name of the Academy:
+              <input
+                type="text"
+                name="academyName"
+                placeholder="Name of the Academy"
+                value={athleteFormData.academyName}
+                onChange={handleAthleteChange}
+                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+                required
+              />
+            </label>
+            <label htmlFor="coachName">
+              Name of the Coach:
+              <input
+                type="text"
+                name="coachName"
+                placeholder="Name of the Coach"
+                value={athleteFormData.coachName}
+                onChange={handleAthleteChange}
+                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+                required
+              />
+            </label>
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
-              <label className="block mb-2 font-semibold">Upload Photo</label>
+              <label className="block mb-2 font-semibold">Upload Photo:</label>
               <input
                 type="file"
                 name="photo"
@@ -276,7 +315,7 @@ const Form = () => {
             </div>
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
               <label className="block mb-2 font-semibold">
-                Upload Birth Certificate
+                Upload Birth Certificate:
               </label>
               <input
                 type="file"
@@ -288,7 +327,7 @@ const Form = () => {
             </div>
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
               <label className="block mb-2 font-semibold">
-                Upload Resident Certificate
+                Upload Resident Certificate:
               </label>
               <input
                 type="file"
@@ -300,7 +339,7 @@ const Form = () => {
             </div>
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
               <label className="block mb-2 font-semibold">
-                Upload Aadhar Front Photo
+                Upload Aadhar Front Photo:
               </label>
               <input
                 type="file"
@@ -312,7 +351,7 @@ const Form = () => {
             </div>
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
               <label className="block mb-2 font-semibold">
-                Upload Aadhar Back Photo
+                Upload Aadhar Back Photo:
               </label>
               <input
                 type="file"
@@ -325,26 +364,32 @@ const Form = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input
-              type="text"
-              name="playerName"
-              placeholder="Name"
-              value={coachFormData.playerName}
-              onChange={handleCoachChange}
-              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-              required
-            />
-            <input
-              type="text"
-              name="fatherName"
-              placeholder="Father's Name"
-              value={coachFormData.fatherName}
-              onChange={handleCoachChange}
-              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-              required
-            />
+            <label htmlFor="playerName">
+              Name of the Coach:
+              <input
+                type="text"
+                name="playerName"
+                placeholder="Name"
+                value={coachFormData.playerName}
+                onChange={handleCoachChange}
+                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+                required
+              />
+            </label>
+            <label htmlFor="fatherName">
+              Father's Name:
+              <input
+                type="text"
+                name="fatherName"
+                placeholder="Father's Name"
+                value={coachFormData.fatherName}
+                onChange={handleCoachChange}
+                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+                required
+              />
+            </label>
             <label>
-              Date of Birth
+              Date of Birth:
               <input
                 type="date"
                 name="dob"
@@ -354,87 +399,111 @@ const Form = () => {
                 required
               />
             </label>
-            <select
-              name="gender"
-              value={coachFormData.gender}
-              onChange={handleCoachChange}
-              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-              required
-            >
-              <option value="">Select Gender</option>
-              <option value="Male">Male</option>
-              <option value="Female">Female</option>
-              <option value="Other">Other</option>
-            </select>
-            <select
-              name="district"
-              value={coachFormData.district}
-              onChange={handleCoachChange}
-              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-              required
-            >
-              <option value="">Select District</option>
-              {districts.map((district) => (
-                <option key={district} value={district}>
-                  {district}
-                </option>
-              ))}
-            </select>
-            <input
-              type="tel"
-              name="mob"
-              placeholder="Mobile Number"
-              value={coachFormData.mob}
-              onChange={handleCoachChange}
-              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email Address"
-              value={coachFormData.email}
-              onChange={handleCoachChange}
-              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-              required
-            />
-            <input
-              type="text"
-              name="adharNumber"
-              placeholder="Aadhar Number"
-              value={coachFormData.adharNumber}
-              onChange={handleCoachChange}
-              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-              required
-            />
-            <input
-              type="text"
-              name="address"
-              placeholder="Address"
-              value={coachFormData.address}
-              onChange={handleCoachChange}
-              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-              required
-            />
-            <input
-              type="text"
-              name="pin"
-              placeholder="Pincode"
-              value={coachFormData.pin}
-              onChange={handleCoachChange}
-              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-              required
-            />
-            <input
-              type="text"
-              name="panNumber"
-              placeholder="PAN Number (Optional)"
-              value={coachFormData.panNumber}
-              onChange={handleCoachChange}
-              className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-            />
+            <label htmlFor="gender">
+              Gender:
+              <select
+                name="gender"
+                value={coachFormData.gender}
+                onChange={handleCoachChange}
+                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+                required
+              >
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </label>
+            <label htmlFor="district">
+              District:
+              <select
+                name="district"
+                value={coachFormData.district}
+                onChange={handleCoachChange}
+                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+                required
+              >
+                <option value="">Select District</option>
+                {districts.map((district) => (
+                  <option key={district} value={district}>
+                    {district}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label htmlFor="mob">
+              Mobile Number:
+              <input
+                type="tel"
+                name="mob"
+                placeholder="Mobile Number"
+                value={coachFormData.mob}
+                onChange={handleCoachChange}
+                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+                required
+              />
+            </label>
+            <label htmlFor="email">
+              Email:
+              <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                value={coachFormData.email}
+                onChange={handleCoachChange}
+                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+                required
+              />
+            </label>
+            <label htmlFor="adharNumber">
+              Aadhar Number:
+              <input
+                type="text"
+                name="adharNumber"
+                placeholder="Aadhar Number"
+                value={coachFormData.adharNumber}
+                onChange={handleCoachChange}
+                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+                required
+              />
+            </label>
+            <label htmlFor="address">
+              Address:
+              <input
+                type="text"
+                name="address"
+                placeholder="Address"
+                value={coachFormData.address}
+                onChange={handleCoachChange}
+                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+                required
+              />
+            </label>
+            <label htmlFor="pin">
+              Pincode:
+              <input
+                type="text"
+                name="pin"
+                placeholder="Pincode"
+                value={coachFormData.pin}
+                onChange={handleCoachChange}
+                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+                required
+              />
+            </label>
+            <label htmlFor="panNumber">
+              PAN Number:
+              <input
+                type="text"
+                name="panNumber"
+                placeholder="PAN Number (Optional)"
+                value={coachFormData.panNumber}
+                onChange={handleCoachChange}
+                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
+              />
+            </label>
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
-              <label className="block mb-2 font-semibold">Upload Photo</label>
+              <label className="block mb-2 font-semibold">Upload Photo:</label>
               <input
                 type="file"
                 name="photo"
@@ -445,7 +514,7 @@ const Form = () => {
             </div>
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
               <label className="block mb-2 font-semibold">
-                Upload Black Belt Certificate
+                Upload Black Belt Certificate:
               </label>
               <input
                 type="file"
@@ -469,7 +538,7 @@ const Form = () => {
             </div> */}
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
               <label className="block mb-2 font-semibold">
-                Upload Aadhar Front Photo
+                Upload Aadhar Front Photo:
               </label>
               <input
                 type="file"
@@ -481,7 +550,7 @@ const Form = () => {
             </div>
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
               <label className="block mb-2 font-semibold">
-                Upload Aadhar Back Photo
+                Upload Aadhar Back Photo:
               </label>
               <input
                 type="file"
