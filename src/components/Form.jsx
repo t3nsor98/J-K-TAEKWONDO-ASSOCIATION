@@ -312,6 +312,14 @@ const Form = () => {
                 className="border-none"
                 required
               />
+              {/* Instruction Image */}
+              <div className="mt-3">
+                <img
+                  src="instructionImg2.png"
+                  alt="Instruction for Aadhar Back Photo"
+                  className="w-full h-auto rounded-md"
+                />
+              </div>
             </div>
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
               <label className="block mb-2 font-semibold">
@@ -324,6 +332,14 @@ const Form = () => {
                 className="border-none"
                 required
               />
+              {/* Instruction Image */}
+              <div className="mt-3">
+                <img
+                  src="instructionImg3.png"
+                  alt="Instruction for Aadhar Back Photo"
+                  className="w-full h-auto rounded-md"
+                />
+              </div>
             </div>
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
               <label className="block mb-2 font-semibold">
@@ -336,6 +352,14 @@ const Form = () => {
                 className="border-none"
                 required
               />
+              {/* Instruction Image */}
+              <div className="mt-3">
+                <img
+                  src="instructionImg3.png"
+                  alt="Instruction for Aadhar Back Photo"
+                  className="w-full h-auto rounded-md"
+                />
+              </div>
             </div>
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
               <label className="block mb-2 font-semibold">
@@ -348,6 +372,14 @@ const Form = () => {
                 className="border-none"
                 required
               />
+              {/* Instruction Image */}
+              <div className="mt-3">
+                <img
+                  src="instructionImg1.png"
+                  alt="Instruction for Aadhar Back Photo"
+                  className="w-full h-auto rounded-md"
+                />
+              </div>
             </div>
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
               <label className="block mb-2 font-semibold">
@@ -360,6 +392,14 @@ const Form = () => {
                 className="border-none"
                 required
               />
+              {/* Instruction Image */}
+              <div className="mt-3">
+                <img
+                  src="instructionImg1.png"
+                  alt="Instruction for Aadhar Back Photo"
+                  className="w-full h-auto rounded-md"
+                />
+              </div>
             </div>
           </div>
         ) : (
@@ -502,6 +542,7 @@ const Form = () => {
                 className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
               />
             </label>
+            <hr />
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
               <label className="block mb-2 font-semibold">Upload Photo:</label>
               <input
@@ -511,6 +552,14 @@ const Form = () => {
                 className="border-none"
                 required
               />
+              {/* Instruction Image */}
+              <div className="mt-3">
+                <img
+                  src="instructionImg2.png"
+                  alt="Instruction for Aadhar Back Photo"
+                  className="w-full h-auto rounded-md"
+                />
+              </div>
             </div>
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
               <label className="block mb-2 font-semibold">
@@ -523,6 +572,14 @@ const Form = () => {
                 className="border-none"
                 required
               />
+              {/* Instruction Image */}
+              <div className="mt-3">
+                <img
+                  src="instructionImg3.png"
+                  alt="Instruction for Aadhar Back Photo"
+                  className="w-full h-auto rounded-md"
+                />
+              </div>
             </div>
             {/* <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
               <label className="block mb-2 font-semibold">
@@ -547,6 +604,14 @@ const Form = () => {
                 className="border-none"
                 required
               />
+              {/* Instruction Image */}
+              <div className="mt-3">
+                <img
+                  src="instructionImg1.png"
+                  alt="Instruction for Aadhar Back Photo"
+                  className="w-full h-auto rounded-md"
+                />
+              </div>
             </div>
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
               <label className="block mb-2 font-semibold">
@@ -559,9 +624,18 @@ const Form = () => {
                 className="border-none"
                 required
               />
+              {/* Instruction Image */}
+              <div className="mt-3">
+                <img
+                  src="instructionImg1.png"
+                  alt="Instruction for Aadhar Back Photo"
+                  className="w-full h-auto rounded-md"
+                />
+              </div>
             </div>
           </div>
         )}
+
         <button
           type="submit"
           className="bg-[#005377] text-white font-semibold py-3 px-6 rounded-md shadow-md hover:bg-[#052F5F] transition duration-300"
