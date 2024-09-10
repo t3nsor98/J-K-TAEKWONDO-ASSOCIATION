@@ -69,20 +69,20 @@ const Form = () => {
     "Srinagar",
     "Udhampur",
   ];
-
+  //code update to transform text to upper case in the form
   const handleAthleteChange = (e) => {
-    const { name, value, files } = e.target;
+    const { name, value, files, type } = e.target;
     setAthleteFormData({
       ...athleteFormData,
-      [name]: files ? files[0] : value,
+      [name]: files ? files[0] : type === "text" ? value.toUpperCase() : value,
     });
   };
 
   const handleCoachChange = (e) => {
-    const { name, value, files } = e.target;
+    const { name, value, files, type } = e.target;
     setCoachFormData({
       ...coachFormData,
-      [name]: files ? files[0] : value,
+      [name]: files ? files[0] : type === "text" ? value.toUpperCase() : value,
     });
   };
 
