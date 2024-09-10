@@ -1,6 +1,4 @@
 import { useState } from "react";
-// t3nsor - update form to work with backend
-// add 4 direction/guide photos
 
 const Form = () => {
   const [formType, setFormType] = useState("athlete");
