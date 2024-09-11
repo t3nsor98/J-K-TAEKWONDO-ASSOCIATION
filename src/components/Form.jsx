@@ -1,7 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import ImageCrop from "./ImageCrop";
 
 const Form = () => {
   const [formType, setFormType] = useState("athlete");
+  const [tempPhoto, setTempPhoto] = useState(null);
+  const [showCropper, setShowCropper] = useState(false);
 
   const [athleteFormData, setAthleteFormData] = useState({
     athleteName: "",
@@ -82,6 +85,28 @@ const Form = () => {
       ...coachFormData,
       [name]: files ? files[0] : type === "text" ? value.toUpperCase() : value,
     });
+  };
+
+  const handlePhotoUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        setTempPhoto(reader.result);
+        setShowCropper(true);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleCroppedImage = (croppedImg) => {
+    if (formType === "athlete") {
+      setAthleteFormData({ ...athleteFormData, photo: croppedImg });
+    } else {
+      setCoachFormData({ ...coachFormData, photo: croppedImg });
+    }
+    setShowCropper(false);
+    setTempPhoto(null);
   };
 
   const handleSubmit = (e) => {
@@ -306,15 +331,22 @@ const Form = () => {
               <input
                 type="file"
                 name="photo"
-                onChange={handleAthleteChange}
+                onChange={handlePhotoUpload}
                 className="border-none"
                 required
               />
+              {athleteFormData.photo && (
+                <img
+                  src={athleteFormData.photo}
+                  alt="Cropped athlete photo"
+                  className="mt-2 w-32 h-32 object-cover rounded-md"
+                />
+              )}
               {/* Instruction Image */}
               <div className="mt-3">
                 <img
                   src="instructionImg2.png"
-                  alt="Instruction for Aadhar Back Photo"
+                  alt="Instruction for Athlete Photo"
                   className="w-full h-auto rounded-md"
                 />
               </div>
@@ -546,15 +578,22 @@ const Form = () => {
               <input
                 type="file"
                 name="photo"
-                onChange={handleCoachChange}
+                onChange={handlePhotoUpload}
                 className="border-none"
                 required
               />
+              {coachFormData.photo && (
+                <img
+                  src={coachFormData.photo}
+                  alt="Cropped coach photo"
+                  className="mt-2 w-32 h-32 object-cover rounded-md"
+                />
+              )}
               {/* Instruction Image */}
               <div className="mt-3">
                 <img
                   src="instructionImg2.png"
-                  alt="Instruction for Aadhar Back Photo"
+                  alt="Instruction for Coach Photo"
                   className="w-full h-auto rounded-md"
                 />
               </div>
@@ -641,6 +680,14 @@ const Form = () => {
           Proceed to Pay Fee
         </button>
       </form>
+
+      {showCropper && tempPhoto && (
+        <ImageCrop
+          imageSrc={tempPhoto}
+          onComplete={handleCroppedImage}
+          aspect={1}
+        />
+      )}
     </div>
   );
 };
