@@ -156,6 +156,7 @@ const Form = () => {
               Athlete Name:
               <input
                 type="text"
+                id="athleteName"
                 name="athleteName"
                 placeholder="Name of the Athlete"
                 value={athleteFormData.athleteName}
@@ -168,6 +169,7 @@ const Form = () => {
               Father's Name:
               <input
                 type="text"
+                id="fatherName"
                 name="fatherName"
                 placeholder="Father's Name"
                 value={athleteFormData.fatherName}
@@ -180,6 +182,7 @@ const Form = () => {
               Mother's Name:
               <input
                 type="text"
+                id="motherName"
                 name="motherName"
                 placeholder="Mother's Name"
                 value={athleteFormData.motherName}
@@ -192,6 +195,7 @@ const Form = () => {
               Date Of Birth:
               <input
                 type="date"
+                id="dob"
                 name="dob"
                 value={athleteFormData.dob}
                 onChange={handleAthleteChange}
@@ -203,6 +207,7 @@ const Form = () => {
               Gender:
               <select
                 name="gender"
+                id="gender"
                 value={athleteFormData.gender}
                 onChange={handleAthleteChange}
                 className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
@@ -218,6 +223,7 @@ const Form = () => {
               District:
               <select
                 name="district"
+                id="district"
                 value={athleteFormData.district}
                 onChange={handleAthleteChange}
                 className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
@@ -235,6 +241,7 @@ const Form = () => {
               Mobile Number:
               <input
                 type="tel"
+                id="mob"
                 name="mob"
                 placeholder="Mobile Number"
                 value={athleteFormData.mob}
@@ -247,6 +254,7 @@ const Form = () => {
               Email:
               <input
                 type="email"
+                id="email"
                 name="email"
                 placeholder="Email Address"
                 value={athleteFormData.email}
@@ -259,6 +267,7 @@ const Form = () => {
               Aadhar Number:
               <input
                 type="text"
+                id="adharNumber"
                 name="adharNumber"
                 placeholder="Aadhar Number"
                 value={athleteFormData.adharNumber}
@@ -271,6 +280,7 @@ const Form = () => {
               Address:
               <input
                 type="text"
+                id="address"
                 name="address"
                 placeholder="Address"
                 value={athleteFormData.address}
@@ -283,6 +293,7 @@ const Form = () => {
               Pincode:
               <input
                 type="text"
+                id="pin"
                 name="pin"
                 placeholder="Pincode"
                 value={athleteFormData.pin}
@@ -295,6 +306,7 @@ const Form = () => {
               PAN Number (Optional):
               <input
                 type="text"
+                id="panNumber"
                 name="panNumber"
                 placeholder="PAN Number (Optional)"
                 value={athleteFormData.panNumber}
@@ -306,6 +318,7 @@ const Form = () => {
               Name of the Academy:
               <input
                 type="text"
+                id="academyName"
                 name="academyName"
                 placeholder="Name of the Academy"
                 value={athleteFormData.academyName}
@@ -318,6 +331,7 @@ const Form = () => {
               Name of the Coach:
               <input
                 type="text"
+                id="coachName"
                 name="coachName"
                 placeholder="Name of the Coach"
                 value={athleteFormData.coachName}
@@ -327,10 +341,13 @@ const Form = () => {
               />
             </label>
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
-              <label className="block mb-2 font-semibold">Upload Photo:</label>
+              <label htmlFor="photo" className="block mb-2 font-semibold">
+                Upload Photo:
+              </label>
               <input
                 type="file"
                 name="photo"
+                id="photo"
                 onChange={handlePhotoUpload}
                 className="border-none"
                 required
@@ -352,11 +369,12 @@ const Form = () => {
               </div>
             </div>
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
-              <label className="block mb-2 font-semibold">
+              <label htmlFor="certificate" className="block mb-2 font-semibold">
                 Upload Birth Certificate:
               </label>
               <input
                 type="file"
+                id="certificate"
                 name="certificate"
                 onChange={handleAthleteChange}
                 className="border-none"
@@ -372,11 +390,15 @@ const Form = () => {
               </div>
             </div>
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
-              <label className="block mb-2 font-semibold">
+              <label
+                htmlFor="residentCertificate"
+                className="block mb-2 font-semibold"
+              >
                 Upload Resident Certificate:
               </label>
               <input
                 type="file"
+                id="residentCertificate"
                 name="residentCertificate"
                 onChange={handleAthleteChange}
                 className="border-none"
@@ -392,12 +414,16 @@ const Form = () => {
               </div>
             </div>
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
-              <label className="block mb-2 font-semibold">
+              <label
+                htmlFor="adharFrontPhoto"
+                className="block mb-2 font-semibold"
+              >
                 Upload Aadhar Front Photo:
               </label>
               <input
                 type="file"
                 name="adharFrontPhoto"
+                id="adharFrontPhoto"
                 onChange={handleAthleteChange}
                 className="border-none"
                 required
@@ -412,11 +438,15 @@ const Form = () => {
               </div>
             </div>
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
-              <label className="block mb-2 font-semibold">
+              <label
+                htmlFor="adharBackPhoto"
+                className="block mb-2 font-semibold"
+              >
                 Upload Aadhar Back Photo:
               </label>
               <input
                 type="file"
+                id="adharBackPhoto"
                 name="adharBackPhoto"
                 onChange={handleAthleteChange}
                 className="border-none"
@@ -438,6 +468,7 @@ const Form = () => {
               Name of the Coach:
               <input
                 type="text"
+                id="playerName"
                 name="playerName"
                 placeholder="Name"
                 value={coachFormData.playerName}
@@ -450,6 +481,7 @@ const Form = () => {
               Father's Name:
               <input
                 type="text"
+                id="fatherName"
                 name="fatherName"
                 placeholder="Father's Name"
                 value={coachFormData.fatherName}
@@ -458,10 +490,11 @@ const Form = () => {
                 required
               />
             </label>
-            <label>
+            <label htmlFor="dob">
               Date of Birth:
               <input
                 type="date"
+                id="dob"
                 name="dob"
                 value={coachFormData.dob}
                 onChange={handleCoachChange}
@@ -473,6 +506,7 @@ const Form = () => {
               Gender:
               <select
                 name="gender"
+                id="gender"
                 value={coachFormData.gender}
                 onChange={handleCoachChange}
                 className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
@@ -488,6 +522,7 @@ const Form = () => {
               District:
               <select
                 name="district"
+                id="district"
                 value={coachFormData.district}
                 onChange={handleCoachChange}
                 className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
@@ -505,6 +540,7 @@ const Form = () => {
               Mobile Number:
               <input
                 type="tel"
+                id="mob"
                 name="mob"
                 placeholder="Mobile Number"
                 value={coachFormData.mob}
@@ -517,6 +553,7 @@ const Form = () => {
               Email:
               <input
                 type="email"
+                id="email"
                 name="email"
                 placeholder="Email Address"
                 value={coachFormData.email}
@@ -529,6 +566,7 @@ const Form = () => {
               Aadhar Number:
               <input
                 type="text"
+                id="adharNumber"
                 name="adharNumber"
                 placeholder="Aadhar Number"
                 value={coachFormData.adharNumber}
@@ -541,6 +579,7 @@ const Form = () => {
               Address:
               <input
                 type="text"
+                id="address"
                 name="address"
                 placeholder="Address"
                 value={coachFormData.address}
@@ -553,6 +592,7 @@ const Form = () => {
               Pincode:
               <input
                 type="text"
+                id="pin"
                 name="pin"
                 placeholder="Pincode"
                 value={coachFormData.pin}
@@ -565,6 +605,7 @@ const Form = () => {
               PAN Number:
               <input
                 type="text"
+                id="panNumber"
                 name="panNumber"
                 placeholder="PAN Number (Optional)"
                 value={coachFormData.panNumber}
@@ -574,9 +615,12 @@ const Form = () => {
             </label>
             <hr />
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
-              <label className="block mb-2 font-semibold">Upload Photo:</label>
+              <label htmlFor="photo" className="block mb-2 font-semibold">
+                Upload Photo:
+              </label>
               <input
                 type="file"
+                id="photo"
                 name="photo"
                 onChange={handlePhotoUpload}
                 className="border-none"
@@ -599,11 +643,15 @@ const Form = () => {
               </div>
             </div>
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
-              <label className="block mb-2 font-semibold">
+              <label
+                htmlFor="blackBeltCertificate"
+                className="block mb-2 font-semibold"
+              >
                 Upload Black Belt Certificate:
               </label>
               <input
                 type="file"
+                id="blackBeltCertificate"
                 name="blackBeltCertificate"
                 onChange={handleCoachChange}
                 className="border-none"
@@ -631,12 +679,16 @@ const Form = () => {
               />
             </div> */}
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
-              <label className="block mb-2 font-semibold">
+              <label
+                htmlFor="adharFrontPhoto"
+                className="block mb-2 font-semibold"
+              >
                 Upload Aadhar Front Photo:
               </label>
               <input
                 type="file"
                 name="adharFrontPhoto"
+                id="adharFrontPhoto"
                 onChange={handleCoachChange}
                 className="border-none"
                 required
@@ -651,11 +703,15 @@ const Form = () => {
               </div>
             </div>
             <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
-              <label className="block mb-2 font-semibold">
+              <label
+                htmlFor="adharBackPhoto"
+                className="block mb-2 font-semibold"
+              >
                 Upload Aadhar Back Photo:
               </label>
               <input
                 type="file"
+                id="adharBackPhoto"
                 name="adharBackPhoto"
                 onChange={handleCoachChange}
                 className="border-none"
