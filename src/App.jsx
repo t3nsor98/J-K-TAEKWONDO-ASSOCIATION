@@ -14,6 +14,7 @@ import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsAndConditions from "./components/TnC";
 import RefundPolicy from "./components/Refund";
 import DonationPage from "./components/Donate";
+import TestForm from "./components/TestForm";
 
 function App() {
     return (
@@ -46,6 +47,7 @@ function App() {
                 <Route path="/privacy" element={<PrivacyPolicy />} />
                 <Route path="/terms" element={<TermsAndConditions />} />
                 <Route path="/refund" element={<RefundPolicy />} />
+                <Route path="/test" element={<TestForm />} />
                 {/* Temporary Donate */}
                 {/* <Route path="/donate" element={<DonationPage />} /> */}
                 <Route path="*" element={<NotFound />} />{" "}
