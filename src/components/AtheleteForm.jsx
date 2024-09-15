@@ -440,21 +440,13 @@ function AthleteForm() {
     return (
         <div className="container px-8 m-auto mt-10 mb-16">
             <div className="flex items-center gap-2">
-                <span
-                    // disabled
-                    className=" text-gray-700 px-4 py-2 rounded-md border border-gray-500 cursor-default text-center"
-                    rel="noreferrer"
-                >
-                    Athlete Registration
-                </span>
-
                 <a
                     href="/register-coach"
-                    className="bg-blue-500 text-white px-4 py-2 rounded-md text-center"
+                    className="text-blue-500 font-semibold px-4 py-2 rounded-md text-center ml-auto"
                     rel="noreferrer"
                 >
-                    <i className="far fa-user mr-2"></i>
-                    Coach Registration
+                    Go To Coach Registration
+                    <i className="fas fa-arrow-right ml-2"></i>
                 </a>
             </div>
 

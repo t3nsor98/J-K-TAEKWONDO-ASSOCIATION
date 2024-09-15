@@ -400,20 +400,12 @@ function CoachForm() {
             <div className="flex items-center gap-2">
                 <a
                     href="/register"
-                    className="bg-blue-500 text-white px-4 py-2 rounded-md text-center"
+                    className="text-blue-500 font-semibold px-4 py-2 rounded-md text-center ml-auto"
                     rel="noreferrer"
                 >
-                    Athlete Registration
+                    Go To Athlete Registration 
+                    <i className="fas fa-arrow-right ml-2"></i>
                 </a>
-
-                <span
-                    // disabled
-                    className=" text-gray-700 px-4 py-2 rounded-md border border-gray-500 cursor-default text-center"
-                    rel="noreferrer"
-                >
-                    <i className="far fa-user mr-2"></i>
-                    Coach Registration
-                </span>
             </div>
 
             <div className="bg-white lg:p-8 rounded-md lg:shadow-md mt-8 lg:border">
