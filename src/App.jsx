@@ -15,6 +15,8 @@ import TermsAndConditions from "./components/TnC";
 import RefundPolicy from "./components/Refund";
 import DonationPage from "./components/Donate";
 import TestForm from "./components/TestForm";
+import AthleteForm from "./components/AtheleteForm";
+import CoachForm from "./components/CoachForm";
 
 function App() {
     return (
@@ -42,12 +44,13 @@ function App() {
                 <Route path="/affiliated" element={<Affiliated />} />
                 <Route path="/members" element={<Members />} />
                 <Route path="/contact" element={<Contact />} />
-                <Route path="/register" element={<Form />} />{" "}
+                <Route path="/register" element={<AthleteForm />} />
+                <Route path="/register-coach" element={<CoachForm />} />
                 {/* Register Page */}
                 <Route path="/privacy" element={<PrivacyPolicy />} />
                 <Route path="/terms" element={<TermsAndConditions />} />
                 <Route path="/refund" element={<RefundPolicy />} />
-                <Route path="/test" element={<TestForm />} />
+                {/* <Route path="/test" element={<TestForm />} /> */}
                 {/* Temporary Donate */}
                 {/* <Route path="/donate" element={<DonationPage />} /> */}
                 <Route path="*" element={<NotFound />} />{" "}

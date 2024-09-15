@@ -1,10 +1,8 @@
 import { useState } from "react";
-import PropTypes from "prop-types";
 import ProfilePictureUpload from "./ProfilePictureUpload";
 import axios from "axios";
 import base64ToBinary from "./base64ToBinary";
 import FormField from "./FormField";
-// import Razorpay from "razorpay";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -33,8 +31,8 @@ const districts = [
 
 const PersonalDetails = [
     {
-        name: "athleteName",
-        label: "Athlete Name",
+        name: "playerName",
+        label: "Coach Name",
         type: "text",
         image: null,
         required: true,
@@ -61,22 +59,6 @@ const PersonalDetails = [
                 value: /^[A-Za-z\s]{1,30}$/,
                 message:
                     "Father's name can only contain letters and spaces, up to 30 characters",
-            },
-        },
-    },
-    {
-        name: "motherName",
-        label: "Mother Name",
-        type: "text",
-        image: null,
-        required: true,
-        placeholder: "Enter your mother's name",
-        maxLength: 30,
-        validation: {
-            pattern: {
-                value: /^[A-Za-z\s]{1,30}$/,
-                message:
-                    "Mother's name can only contain letters and spaces, up to 30 characters",
             },
         },
     },
@@ -199,33 +181,6 @@ const ContactDetails = [
     },
 ];
 
-const AcademyDetails = [
-    {
-        name: "academyName",
-        label: "Academy Name",
-        type: "text",
-        image: null,
-        required: true,
-        maxLength: 50,
-        placeholder: "Enter the academy name",
-    },
-    {
-        name: "coachName",
-        label: "Coach Name",
-        type: "text",
-        image: null,
-        required: true,
-        maxLength: 30,
-        placeholder: "Enter the coach's name",
-        validation: {
-            pattern: {
-                value: /^[A-Za-z\s]{1,30}$/,
-                message:
-                    "Coach name can only contain letters and spaces, up to 30 characters",
-            },
-        },
-    },
-];
 
 const DocumentDetails = [
     {
@@ -251,12 +206,19 @@ const DocumentDetails = [
         required: true,
     },
     {
-        name: "certificate",
+        name: "birthCertificate",
         label: "Birth Certificate",
         type: "file",
         // image: "instructionDocs.png",
         required: true,
     },
+    {
+        name: "blackBeltCertificate",
+        label: "blackBeltCertificate",
+        type: "file",
+        // image: "instructionDocs.png",
+        required: true,
+    }
 ];
 
 const fields = [
@@ -268,13 +230,9 @@ const fields = [
         label: "Contact Details",
         fields: ContactDetails,
     },
-    {
-        label: "Academy Details",
-        fields: AcademyDetails,
-    },
 ];
 
-function AthleteForm() {
+function CoachForm() {
     const [athleteFormData, setAthleteFormData] = useState({});
     const [formErrors, setFormErrors] = useState({});
 
@@ -320,7 +278,7 @@ function AthleteForm() {
             });
 
             axios
-                .post(`${BACKEND_URL}/register-user`, formData, {
+                .post(`${BACKEND_URL}/register-coach`, formData, {
                     headers: {
                         "Content-Type": "multipart/form-data",
                     },
@@ -335,7 +293,7 @@ function AthleteForm() {
                         order_id: orderId,
                         handler: function (response) {
                             axios
-                                .post(`${BACKEND_URL}/verify-payment`, {
+                                .post(`${BACKEND_URL}/verify-payment-coach`, {
                                     razorpay_order_id:
                                         response.razorpay_order_id,
                                     razorpay_payment_id:
@@ -440,32 +398,32 @@ function AthleteForm() {
     return (
         <div className="container px-8 m-auto mt-10 mb-16">
             <div className="flex items-center gap-2">
+                <a
+                    href="/register"
+                    className="bg-blue-500 text-white px-4 py-2 rounded-md text-center"
+                    rel="noreferrer"
+                >
+                    Athlete Registration
+                </a>
+
                 <span
                     // disabled
                     className=" text-gray-700 px-4 py-2 rounded-md border border-gray-500 cursor-default text-center"
                     rel="noreferrer"
                 >
-                    Athlete Registration
-                </span>
-
-                <a
-                    href="/register-coach"
-                    className="bg-blue-500 text-white px-4 py-2 rounded-md text-center"
-                    rel="noreferrer"
-                >
                     <i className="far fa-user mr-2"></i>
                     Coach Registration
-                </a>
+                </span>
             </div>
 
             <div className="bg-white lg:p-8 rounded-md lg:shadow-md mt-8 lg:border">
                 <h1 className="text-3xl font-bold text-center">
-                    Athlete Registration Form
+                    Coach Registration Form
                 </h1>
                 <p className="text-gray-800 text-sm font-semibold text-center max-w-lg m-auto">
-                    Please fill in the details below to register as an athlete.
+                    Please fill in the details below to register as a coach.
                     Carefully fill in all the details and upload the required
-                    documents. Registration fee is Rs. 300.
+                    documents. Registration fee is Rs. 500.
                 </p>
                 <form onSubmit={handleSubmit}>
                     {fields.map((fieldGroup) => (
@@ -539,7 +497,7 @@ function AthleteForm() {
                         </button>
                         <p className="text-gray-800 text-xs font-semibold mt-1">
                             Registration fee:{" "}
-                            <span className="text-green-500">Rs. 300</span>
+                            <span className="text-green-500">Rs. 500</span>
                         </p>
                     </div>
                 </form>
@@ -548,4 +506,4 @@ function AthleteForm() {
     );
 }
 
-export default AthleteForm;
+export default CoachForm;
