@@ -2,6 +2,8 @@ import { useState } from "react";
 import demoImg from "../assets/abtimg1.webp";
 import axios from "axios";
 
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
 const Form = () => {
     const [formType, setFormType] = useState("athlete");
 
@@ -106,15 +108,11 @@ const Form = () => {
 
             // Step 1: Send form data to backend to create a user and generate a Razorpay order
             axios
-                .post(
-                    "https://jkta-backend.onrender.com/register-user",
-                    formData,
-                    {
-                        headers: {
-                            "Content-Type": "multipart/form-data",
-                        },
-                    }
-                )
+                .post(`${BACKEND_URL}/register-user`, formData, {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                    },
+                })
                 .then((res) => {
                     // Step 2: After receiving the response, call Razorpay with the generated order ID
                     const { orderId, amount, currency, userId } = res.data;
@@ -126,18 +124,15 @@ const Form = () => {
                         order_id: orderId,
                         handler: function (response) {
                             axios
-                                .post(
-                                    "https://jkta-backend.onrender.com/verify-payment",
-                                    {
-                                        razorpay_order_id:
-                                            response.razorpay_order_id,
-                                        razorpay_payment_id:
-                                            response.razorpay_payment_id,
-                                        razorpay_signature:
-                                            response.razorpay_signature,
-                                        userId: userId, // Send userId to the backend to get user details for ID cards
-                                    }
-                                )
+                                .post(`${BACKEND_URL}/verify-payment`, {
+                                    razorpay_order_id:
+                                        response.razorpay_order_id,
+                                    razorpay_payment_id:
+                                        response.razorpay_payment_id,
+                                    razorpay_signature:
+                                        response.razorpay_signature,
+                                    userId: userId, // Send userId to the backend to get user details for ID cards
+                                })
                                 .then((verifyRes) => {
                                     console.log(
                                         "Payment Verified:",
@@ -190,15 +185,11 @@ const Form = () => {
 
             // Step 1: Send form data to backend to create a coach and generate a Razorpay order
             axios
-                .post(
-                    "https://jkta-backend.onrender.com/register-coach",
-                    formData,
-                    {
-                        headers: {
-                            "Content-Type": "multipart/form-data",
-                        },
-                    }
-                )
+                .post(`${BACKEND_URL}/register-coach`, formData, {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                    },
+                })
                 .then((res) => {
                     // Step 2: After receiving the response, call Razorpay with the generated order ID
                     const { orderId, amount, currency, userId } = res.data;
@@ -210,18 +201,15 @@ const Form = () => {
                         order_id: orderId,
                         handler: function (response) {
                             axios
-                                .post(
-                                    "https://jkta-backend.onrender.com/verify-payment-coach",
-                                    {
-                                        razorpay_order_id:
-                                            response.razorpay_order_id,
-                                        razorpay_payment_id:
-                                            response.razorpay_payment_id,
-                                        razorpay_signature:
-                                            response.razorpay_signature,
-                                        userId: userId, // Send coachId to the backend for verification
-                                    }
-                                )
+                                .post(`${BACKEND_URL}/verify-payment-coach`, {
+                                    razorpay_order_id:
+                                        response.razorpay_order_id,
+                                    razorpay_payment_id:
+                                        response.razorpay_payment_id,
+                                    razorpay_signature:
+                                        response.razorpay_signature,
+                                    userId: userId, // Send coachId to the backend for verification
+                                })
                                 .then((verifyRes) => {
                                     console.log(
                                         "Payment Verified:",
