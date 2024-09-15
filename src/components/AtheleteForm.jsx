@@ -1,6 +1,11 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import ProfilePictureUpload from "./ProfilePictureUpload";
+import axios from "axios";
+import base64ToBinary from "./base64ToBinary";
+// import Razorpay from "razorpay";
+
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 const districts = [
     "Anantnag",
@@ -232,7 +237,7 @@ const AcademyDetails = [
 
 const DocumentDetails = [
     {
-        name: "adharCardFront",
+        name: "adharFrontPhoto",
         label: "Aadhar Card Front",
         type: "file",
         image: null,
@@ -240,21 +245,21 @@ const DocumentDetails = [
     },
 
     {
-        name: "adharCardBack",
+        name: "adharBackPhoto",
         label: "Aadhar Card Back",
         type: "file",
         image: null,
         required: true,
     },
     {
-        name: "residenceCertificate",
+        name: "residentCertificate",
         label: "Residence Certificate",
         type: "file",
         image: null,
         required: true,
     },
     {
-        name: "birthCertificate",
+        name: "certificate",
         label: "Birth Certificate",
         type: "file",
         image: null,
@@ -283,13 +288,15 @@ function AthleteForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
+    
+        console.log(athleteFormData);
+    
         const errors = {};
-
+    
         fields.forEach((fieldGroup) => {
             fieldGroup.fields.forEach((field) => {
                 const value = athleteFormData[field.name];
-
+    
                 if (field.required && !value) {
                     errors[field.name] = `${field.label} is required`;
                 } else if (field.validation?.pattern) {
@@ -300,13 +307,79 @@ function AthleteForm() {
                 }
             });
         });
-
+    
         if (Object.keys(errors).length === 0) {
-            console.log(athleteFormData);
+            const formData = new FormData();
+    
+            // Append all fields from athleteFormData to formData (handles file uploads)
+            Object.keys(athleteFormData).forEach((key) => {
+                if (athleteFormData[key] instanceof File) {
+                    formData.append(key, athleteFormData[key]);
+                } else if (
+                    typeof athleteFormData[key] === "string" &&
+                    athleteFormData[key].startsWith("data:image")
+                ) {
+                    // Convert base64 image data to binary Blob
+                    const binaryBlob = base64ToBinary(athleteFormData[key]);
+                    formData.append(key, binaryBlob);
+                } else {
+                    formData.append(key, athleteFormData[key]);
+                }
+            });
+    
+            axios
+                .post(`${BACKEND_URL}/register-user`, formData, {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                    },
+                })
+                .then((res) => {
+                    const { orderId, amount, currency, userId } = res.data;
+    
+                    const options = {
+                        key: import.meta.env.VITE_KEY_RAZORPAY,
+                        amount: amount,
+                        currency: currency,
+                        order_id: orderId,
+                        handler: function (response) {
+                            axios
+                                .post(`${BACKEND_URL}/verify-payment`, {
+                                    razorpay_order_id: response.razorpay_order_id,
+                                    razorpay_payment_id: response.razorpay_payment_id,
+                                    razorpay_signature: response.razorpay_signature,
+                                    userId: userId,
+                                })
+                                .then((verifyRes) => {
+                                    alert("Payment successful and verified!");
+                                })
+                                .catch((err) => {
+                                    alert("Payment verification failed");
+                                });
+                        },
+                        prefill: {
+                            name: athleteFormData.athleteName,
+                            email: athleteFormData.email,
+                            contact: athleteFormData.mob,
+                        },
+                        notes: {
+                            address: athleteFormData.address,
+                        },
+                        theme: {
+                            color: "#3399cc",
+                        },
+                    };
+    
+                    const rzp1 = new Razorpay(options);
+                    rzp1.open();
+                })
+                .catch((err) => {
+                    alert("Error in form submission or Razorpay order creation.");
+                });
         } else {
             setFormErrors(errors);
         }
     };
+    
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -343,6 +416,29 @@ function AthleteForm() {
             ...prevState,
             [name]: error,
         }));
+    };
+
+    const handleFileChange = (e) => {
+        const { name, files } = e.target;
+
+        if (files.length > 0) {
+            const file = files[0];
+
+            // Assuming you need to convert file to base64
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setAthleteFormData((prevState) => ({
+                    ...prevState,
+                    [name]: reader.result,
+                }));
+            };
+            reader.readAsDataURL(file);
+        } else {
+            setAthleteFormData((prevState) => ({
+                ...prevState,
+                [name]: null,
+            }));
+        }
     };
 
     return (
@@ -404,7 +500,7 @@ function AthleteForm() {
                                 type={field.type}
                                 options={field.options}
                                 value={athleteFormData[field.name] || ""}
-                                handleChange={handleChange}
+                                handleChange={handleFileChange}
                                 placeholder={field.placeholder}
                                 required={field.required}
                                 error={formErrors[field.name]}
@@ -438,7 +534,7 @@ const FormField = ({
     charLimitText = "",
 }) => {
     return (
-        <div className="mb-4">
+        <div className="">
             <label
                 htmlFor={name}
                 className="block text-sm font-medium text-gray-700 mb-1"
@@ -480,6 +576,8 @@ const FormField = ({
                 </select>
             ) : type === "file" ? (
                 <input
+                    id={name}
+                    name={name}
                     type={type}
                     accept="image/*"
                     onChange={handleChange}

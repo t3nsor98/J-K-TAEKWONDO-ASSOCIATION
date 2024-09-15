@@ -70,6 +70,7 @@ const Form = () => {
     "Srinagar",
     "Udhampur",
   ];
+  
   //code update to transform text to upper case in the form
   const handleAthleteChange = (e) => {
     const { name, value, files, type } = e.target;
