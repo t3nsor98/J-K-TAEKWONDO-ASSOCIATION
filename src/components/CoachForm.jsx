@@ -181,7 +181,6 @@ const ContactDetails = [
     },
 ];
 
-
 const DocumentDetails = [
     {
         name: "adharFrontPhoto",
@@ -213,12 +212,12 @@ const DocumentDetails = [
         required: true,
     },
     {
-        name: "Black Belt Certificate",
-        label: "blackBeltCertificate",
+        name: "blackBeltCertificate",
+        label: "Black Belt Certificate",
         type: "file",
         // image: "instructionDocs.png",
         required: true,
-    }
+    },
 ];
 
 const fields = [
@@ -403,7 +402,7 @@ function CoachForm() {
                     className="text-blue-500 font-semibold px-4 py-2 rounded-md text-center ml-auto"
                     rel="noreferrer"
                 >
-                    Go To Athlete Registration 
+                    Go To Athlete Registration
                     <i className="fas fa-arrow-right ml-2"></i>
                 </a>
             </div>
