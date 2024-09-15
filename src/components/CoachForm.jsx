@@ -213,7 +213,7 @@ const DocumentDetails = [
         required: true,
     },
     {
-        name: "blackBeltCertificate",
+        name: "Black Belt Certificate",
         label: "blackBeltCertificate",
         type: "file",
         // image: "instructionDocs.png",
