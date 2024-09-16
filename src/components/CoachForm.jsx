@@ -98,12 +98,6 @@ const PersonalDetails = [
         required: false,
         placeholder: "Enter your PAN number",
         maxLength: 10,
-        validation: {
-            pattern: {
-                value: /^$|^[A-Z]{5}[0-9]{4}[A-Z]{1}$/,
-                message: "PAN must be in the format AAAAA0000A",
-            },
-        },
     },
 ];
 
@@ -235,7 +229,7 @@ function CoachForm() {
             nextFormLabel="Athlete Registration Form"
             nextFormLink="/register"
             fee={"500"}
-            backendPaymentUrl={"/register-coach`"}
+            backendPaymentUrl={"/register-coach"}
             backendPaymentVerifyUrl={"/verify-payment-coach"}
         />
     );
