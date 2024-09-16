@@ -116,7 +116,7 @@ const PersonalDetails = [
         maxLength: 10,
         validation: {
             pattern: {
-                value: /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/,
+                value: /^$|^[A-Z]{5}[0-9]{4}[A-Z]{1}$/,
                 message: "PAN must be in the format AAAAA0000A",
             },
         },
