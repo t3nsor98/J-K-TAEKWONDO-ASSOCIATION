@@ -4,7 +4,6 @@ import About from "./components/About";
 import Gallery from "./components/Gallery";
 import Members from "./components/Members";
 import Contact from "./components/Contact";
-import Form from "./components/Form";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
 import Affiliated from "./components/Affiliated";
@@ -13,8 +12,6 @@ import NotFound from "./components/NotFound"; // Create this component to handle
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import TermsAndConditions from "./components/TnC";
 import RefundPolicy from "./components/Refund";
-import DonationPage from "./components/Donate";
-import TestForm from "./components/TestForm";
 import AthleteForm from "./components/AtheleteForm";
 import CoachForm from "./components/CoachForm";
 

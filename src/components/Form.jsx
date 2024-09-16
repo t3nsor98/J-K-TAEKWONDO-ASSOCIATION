@@ -1,752 +1,505 @@
-import React, { useState } from "react";
-import ImageCrop from "./ImageCrop";
+import { useEffect, useState } from "react";
+import ProfilePictureUpload from "./ProfilePictureUpload";
+import axios from "axios";
+import base64ToBinary from "./base64ToBinary";
+import FormField from "./FormField";
+import propTypes from "prop-types";
+import geeenTick from "../assets/greenTick.png";
 
-const Form = () => {
-  const [formType, setFormType] = useState("athlete");
-  const [tempPhoto, setTempPhoto] = useState(null);
-  const [showCropper, setShowCropper] = useState(false);
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
-  const [athleteFormData, setAthleteFormData] = useState({
-    athleteName: "",
-    fatherName: "",
-    motherName: "",
-    dob: "",
-    gender: "",
-    district: "",
-    mob: "",
-    email: "",
-    adharNumber: "",
-    address: "",
-    pin: "",
-    panNumber: "",
-    academyName: "",
-    coachName: "",
-    photo: null,
-    certificate: null,
-    residentCertificate: null,
-    adharFrontPhoto: null,
-    adharBackPhoto: null,
-  });
+const loadingTexts = [
+    "Please wait while we process your registration",
+    "Please wait while we validate your details",
+    "Please wait while we upload your documents",
+    "Please wait while we verify your documents",
+    "Please wait while we process your payment",
+    "Upload speed depends on your internet connection",
+    "Please be patient",
+    "Please wait",
+    "Almost there",
+];
 
-  const [coachFormData, setCoachFormData] = useState({
-    playerName: "",
-    fatherName: "",
-    dob: "",
-    gender: "",
-    district: "",
-    mob: "",
-    email: "",
-    adharNumber: "",
-    address: "",
-    pin: "",
-    panNumber: "",
-    photo: null,
-    blackBeltCertificate: null,
-    // birthCertificate: null,
-    // residentCertificate: null,
-    adharFrontPhoto: null,
-    adharBackPhoto: null,
-  });
+function Form({
+    fields,
+    DocumentDetails,
+    fee,
+    fromTitle,
+    formDesc,
+    nextFormLabel,
+    nextFormLink,
+    backendPaymentUrl,
+    backendPaymentVerifyUrl,
+}) {
+    const [athleteFormData, setAthleteFormData] = useState({});
+    const [formErrors, setFormErrors] = useState({});
+    const [errorMsg, setErrorMsg] = useState("");
+    const [loading, setLoading] = useState(false);
+    const [fakeLoadingText, setFakeLoadingText] = useState(
+        "Please wait while we process your registration"
+    );
+    const [regSuccess, setRegSuccess] = useState(false);
+    const [regData, setRegData] = useState({});
 
-  const districts = [
-    "Anantnag",
-    "Bandipora",
-    "Baramulla",
-    "Budgam",
-    "Doda",
-    "Ganderbal",
-    "Jammu",
-    "Kathua",
-    "Kishtwar",
-    "Kulgam",
-    "Kupwara",
-    "Poonch",
-    "Pulwama",
-    "Rajouri",
-    "Ramban",
-    "Reasi",
-    "Samba",
-    "Shopian",
-    "Srinagar",
-    "Udhampur",
-  ];
-  
-  //code update to transform text to upper case in the form
-  const handleAthleteChange = (e) => {
-    const { name, value, files, type } = e.target;
-    setAthleteFormData({
-      ...athleteFormData,
-      [name]: files ? files[0] : type === "text" ? value.toUpperCase() : value,
-    });
-  };
+    useEffect(() => {
+        // Function to pick a random loading text from the array
+        const getRandomLoadingText = () => {
+            const randomIndex = Math.floor(Math.random() * loadingTexts.length);
+            return loadingTexts[randomIndex];
+        };
 
-  const handleCoachChange = (e) => {
-    const { name, value, files, type } = e.target;
-    setCoachFormData({
-      ...coachFormData,
-      [name]: files ? files[0] : type === "text" ? value.toUpperCase() : value,
-    });
-  };
+        // Set an interval to update the fake loading text every 3 seconds (for example)
+        const intervalId = setInterval(() => {
+            setFakeLoadingText(getRandomLoadingText());
+        }, 3000); // Change message every 3 seconds
 
-  const handlePhotoUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setTempPhoto(reader.result);
-        setShowCropper(true);
-      };
-      reader.readAsDataURL(file);
-    }
-  };
+        // Cleanup function to clear the interval when the component unmounts
+        return () => clearInterval(intervalId);
+    }, []);
 
-  const handleCroppedImage = (croppedImg) => {
-    if (formType === "athlete") {
-      setAthleteFormData({ ...athleteFormData, photo: croppedImg });
-    } else {
-      setCoachFormData({ ...coachFormData, photo: croppedImg });
-    }
-    setShowCropper(false);
-    setTempPhoto(null);
-  };
+    useEffect(() => {
+        // remove errorMsg after 10 seconds
+        const timeoutId = setTimeout(() => {
+            setErrorMsg("");
+        }, 10000);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (formType === "athlete") {
-      console.log("Athlete Data:", athleteFormData);
-    } else {
-      console.log("Coach Data:", coachFormData);
-    }
-  };
+        return () => clearTimeout(timeoutId);
+    }, [errorMsg]);
 
-  return (
-    <div className="container my-10 mx-auto p-6 rounded-lg">
-      <div className="flex gap-5 mb-6">
-        <button
-          onClick={() => setFormType("athlete")}
-          className={`${
-            formType === "athlete"
-              ? "bg-[#005377] text-white"
-              : "bg-white text-black"
-          } font-semibold py-2 px-4 rounded-md transition duration-300 shadow-md hover:bg-red-600 hover:text-white`}
-        >
-          Athlete Registration
-        </button>
-        <button
-          onClick={() => setFormType("coach")}
-          className={`${
-            formType === "coach"
-              ? "bg-[#005377] text-white"
-              : "bg-white text-black"
-          } font-semibold py-2 px-4 rounded-md transition duration-300 shadow-md hover:bg-red-600 hover:text-white`}
-        >
-          Coach Registration
-        </button>
-      </div>
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setLoading(true);
 
-      <h2 className="text-2xl font-bold mb-6 text-[#005377]">
-        {formType === "athlete"
-          ? "Athlete Registration Form"
-          : "Coach Registration Form"}
-      </h2>
+        const errors = {};
 
-      <form onSubmit={handleSubmit} className="space-y-4">
-        {formType === "athlete" ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <label htmlFor="athleteName">
-              Athlete Name:
-              <input
-                type="text"
-                id="athleteName"
-                name="athleteName"
-                placeholder="Name of the Athlete"
-                value={athleteFormData.athleteName}
-                onChange={handleAthleteChange}
-                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-                required
-              />
-            </label>
-            <label htmlFor="fatherName">
-              Father's Name:
-              <input
-                type="text"
-                id="fatherName"
-                name="fatherName"
-                placeholder="Father's Name"
-                value={athleteFormData.fatherName}
-                onChange={handleAthleteChange}
-                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-                required
-              />
-            </label>
-            <label htmlFor="motherName">
-              Mother's Name:
-              <input
-                type="text"
-                id="motherName"
-                name="motherName"
-                placeholder="Mother's Name"
-                value={athleteFormData.motherName}
-                onChange={handleAthleteChange}
-                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-                required
-              />
-            </label>
-            <label htmlFor="dob">
-              Date Of Birth:
-              <input
-                type="date"
-                id="dob"
-                name="dob"
-                value={athleteFormData.dob}
-                onChange={handleAthleteChange}
-                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-                required
-              />
-            </label>
-            <label htmlFor="gender">
-              Gender:
-              <select
-                name="gender"
-                id="gender"
-                value={athleteFormData.gender}
-                onChange={handleAthleteChange}
-                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-                required
-              >
-                <option value="">Select Gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
-              </select>
-            </label>
-            <label htmlFor="district">
-              District:
-              <select
-                name="district"
-                id="district"
-                value={athleteFormData.district}
-                onChange={handleAthleteChange}
-                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-                required
-              >
-                <option value="">Select District</option>
-                {districts.map((district) => (
-                  <option key={district} value={district}>
-                    {district}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <label htmlFor="mob">
-              Mobile Number:
-              <input
-                type="tel"
-                id="mob"
-                name="mob"
-                placeholder="Mobile Number"
-                value={athleteFormData.mob}
-                onChange={handleAthleteChange}
-                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-                required
-              />
-            </label>
-            <label htmlFor="email">
-              Email:
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Email Address"
-                value={athleteFormData.email}
-                onChange={handleAthleteChange}
-                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-                required
-              />
-            </label>
-            <label htmlFor="adharNumber">
-              Aadhar Number:
-              <input
-                type="text"
-                id="adharNumber"
-                name="adharNumber"
-                placeholder="Aadhar Number"
-                value={athleteFormData.adharNumber}
-                onChange={handleAthleteChange}
-                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-                required
-              />
-            </label>
-            <label htmlFor="address">
-              Address:
-              <input
-                type="text"
-                id="address"
-                name="address"
-                placeholder="Address"
-                value={athleteFormData.address}
-                onChange={handleAthleteChange}
-                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-                required
-              />
-            </label>
-            <label htmlFor="pin">
-              Pincode:
-              <input
-                type="text"
-                id="pin"
-                name="pin"
-                placeholder="Pincode"
-                value={athleteFormData.pin}
-                onChange={handleAthleteChange}
-                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-                required
-              />
-            </label>
-            <label htmlFor="panNumber">
-              PAN Number (Optional):
-              <input
-                type="text"
-                id="panNumber"
-                name="panNumber"
-                placeholder="PAN Number (Optional)"
-                value={athleteFormData.panNumber}
-                onChange={handleAthleteChange}
-                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-              />
-            </label>
-            <label htmlFor="academyName">
-              Name of the Academy:
-              <input
-                type="text"
-                id="academyName"
-                name="academyName"
-                placeholder="Name of the Academy"
-                value={athleteFormData.academyName}
-                onChange={handleAthleteChange}
-                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-                required
-              />
-            </label>
-            <label htmlFor="coachName">
-              Name of the Coach:
-              <input
-                type="text"
-                id="coachName"
-                name="coachName"
-                placeholder="Name of the Coach"
-                value={athleteFormData.coachName}
-                onChange={handleAthleteChange}
-                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-                required
-              />
-            </label>
-            <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
-              <label htmlFor="photo" className="block mb-2 font-semibold">
-                Upload Photo:
-              </label>
-              <input
-                type="file"
-                name="photo"
-                id="photo"
-                onChange={handlePhotoUpload}
-                className="border-none"
-                required
-              />
-              {athleteFormData.photo && (
-                <img
-                  src={athleteFormData.photo}
-                  alt="Cropped athlete photo"
-                  className="mt-2 w-32 h-32 object-cover rounded-md"
-                />
-              )}
-              {/* Instruction Image */}
-              <div className="mt-3">
-                <img
-                  src="instructionImg2.png"
-                  alt="Instruction for Athlete Photo"
-                  className="w-full h-auto rounded-md"
-                />
-              </div>
+        fields.forEach((fieldGroup) => {
+            fieldGroup.fields.forEach((field) => {
+                const value = athleteFormData[field.name];
+
+                if (field.required && !value) {
+                    errors[field.name] = `${field.label} is required`;
+                } else if (field.validation?.pattern) {
+                    const isValid = field.validation.pattern.value.test(value);
+                    if (!isValid) {
+                        errors[field.name] = field.validation.pattern.message;
+                    }
+                }
+            });
+        });
+
+        if (Object.keys(errors).length === 0) {
+            const formData = new FormData();
+
+            // Append all fields from athleteFormData to formData (handles file uploads)
+            Object.keys(athleteFormData).forEach((key) => {
+                if (athleteFormData[key] instanceof File) {
+                    formData.append(key, athleteFormData[key]);
+                } else if (
+                    typeof athleteFormData[key] === "string" &&
+                    athleteFormData[key].startsWith("data:image")
+                ) {
+                    // Convert base64 image data to binary Blob
+                    const binaryBlob = base64ToBinary(athleteFormData[key]);
+                    formData.append(key, binaryBlob);
+                } else {
+                    formData.append(key, athleteFormData[key]);
+                }
+            });
+
+            axios
+                .post(`${BACKEND_URL}${backendPaymentUrl}`, formData, {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                    },
+                })
+                .then((res) => {
+                    const { orderId, amount, currency, userId } = res.data;
+
+                    const options = {
+                        key: import.meta.env.VITE_KEY_RAZORPAY,
+                        amount: amount,
+                        currency: currency,
+                        order_id: orderId,
+                        handler: function (response) {
+                            axios
+                                .post(
+                                    `${BACKEND_URL}${backendPaymentVerifyUrl}`,
+                                    {
+                                        razorpay_order_id:
+                                            response.razorpay_order_id,
+                                        razorpay_payment_id:
+                                            response.razorpay_payment_id,
+                                        razorpay_signature:
+                                            response.razorpay_signature,
+                                        userId: userId,
+                                    }
+                                )
+                                .then((verifyRes) => {
+                                    console.log(verifyRes);
+                                    setRegData(verifyRes);
+                                    setRegSuccess(true);
+
+                                    setLoading(false);
+                                })
+                                .catch((err) => {
+                                    console.error(err);
+                                    setErrorMsg(
+                                        "An error occurred while verifying your payment. Please contact administrator."
+                                    );
+                                });
+                        },
+                        prefill: {
+                            name: athleteFormData.athleteName,
+                            email: athleteFormData.email,
+                            contact: athleteFormData.mob,
+                        },
+                        notes: {
+                            address: athleteFormData.address,
+                        },
+                        theme: {
+                            color: "#3399cc",
+                        },
+                    };
+
+                    const rzp1 = new Razorpay(options);
+                    rzp1.open();
+                })
+                .catch((err) => {
+                    console.error(err);
+
+                    setErrorMsg(
+                        "An error occurred while processing your request. Please try again later."
+                    );
+
+                    setLoading(false);
+                });
+        } else {
+            setFormErrors(errors);
+
+            setLoading(false);
+        }
+    };
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        const field = fields
+            .flatMap((fieldGroup) => fieldGroup.fields)
+            .find((f) => f.name === name);
+
+        if (field.maxLength && value.length > field.maxLength) {
+            return;
+        }
+
+        // Update the form data
+        setAthleteFormData((prevState) => ({
+            ...prevState,
+            [name]: value,
+        }));
+
+        // Validate the field
+        let error = "";
+
+        if (field) {
+            if (field.required && !value) {
+                error = `${field.label} is required`;
+            } else if (field.validation?.pattern) {
+                const isValid = field.validation.pattern.value.test(value);
+                if (!isValid) {
+                    error = field.validation.pattern.message;
+                }
+            }
+        }
+
+        // Update the form errors state
+        setFormErrors((prevState) => ({
+            ...prevState,
+            [name]: error,
+        }));
+    };
+
+    const handleFileChange = (e) => {
+        const { name, files } = e.target;
+
+        if (files.length > 0) {
+            const file = files[0];
+
+            // Assuming you need to convert file to base64
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setAthleteFormData((prevState) => ({
+                    ...prevState,
+                    [name]: reader.result,
+                }));
+            };
+            reader.readAsDataURL(file);
+        } else {
+            setAthleteFormData((prevState) => ({
+                ...prevState,
+                [name]: null,
+            }));
+        }
+    };
+
+    if (!regSuccess)
+        return (
+            <div className="container px-8 m-auto mt-10 mb-16">
+                <div className="flex items-center gap-2">
+                    <a
+                        href={nextFormLink}
+                        className="text-blue-500 font-semibold px-4 py-2 rounded-md text-center ml-auto"
+                        rel="noreferrer"
+                    >
+                        {nextFormLabel}
+                        <i className="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+
+                <div className="bg-white lg:p-8 rounded-md lg:shadow-md mt-8 lg:border">
+                    <h1 className="text-3xl font-bold text-center">
+                        {fromTitle}
+                    </h1>
+                    <p className="text-gray-800 text-sm font-semibold text-center max-w-lg m-auto">
+                        {formDesc}
+                    </p>
+                    <form onSubmit={handleSubmit}>
+                        {fields.map((fieldGroup) => (
+                            <div
+                                key={fieldGroup.label}
+                                className="grid lg:grid-cols-2 gap-4"
+                            >
+                                <h2 className="text-xl font-semibold mt-4 lg:col-span-2">
+                                    {fieldGroup.label}
+                                </h2>
+                                <hr className="lg:col-span-2 border-gray-500" />
+                                {fieldGroup.fields.map((field) => (
+                                    <FormField
+                                        name={field.name}
+                                        key={field.name}
+                                        label={field.label}
+                                        type={field.type}
+                                        options={field.options}
+                                        value={
+                                            athleteFormData[field.name] || ""
+                                        }
+                                        handleChange={handleChange}
+                                        placeholder={field.placeholder}
+                                        required={field.required}
+                                        error={formErrors[field.name]}
+                                        img={field.image}
+                                        loading={loading}
+                                        // charLimitText only show if field.maxLength
+                                        charLimitText={
+                                            field.maxLength
+                                                ? `${
+                                                      athleteFormData[
+                                                          field.name
+                                                      ]?.length || 0
+                                                  }/${field.maxLength}`
+                                                : ""
+                                        }
+                                    />
+                                ))}
+                            </div>
+                        ))}
+                        {
+                            <div className="grid lg:grid-cols-2 gap-4">
+                                <h2 className="text-xl font-semibold mt-4 lg:col-span-2">
+                                    Document Details
+                                </h2>
+                                <hr className="lg:col-span-2 border-gray-500" />
+                                <span className="lg:col-span-2">
+                                    <ProfilePictureUpload
+                                        setAthleteFormData={setAthleteFormData}
+                                        loading={loading}
+                                    />
+                                </span>
+                                {DocumentDetails.map((field) => (
+                                    <FormField
+                                        name={field.name}
+                                        key={field.name}
+                                        label={field.label}
+                                        type={field.type}
+                                        options={field.options}
+                                        value={
+                                            athleteFormData[field.name] || ""
+                                        }
+                                        handleChange={handleFileChange}
+                                        placeholder={field.placeholder}
+                                        required={field.required}
+                                        error={formErrors[field.name]}
+                                        img={field.image}
+                                        loading={loading}
+                                    />
+                                ))}
+                            </div>
+                        }
+
+                        <p className="text-gray-800 text-sm font-medium mt-4 flex items-center">
+                            <input type="checkbox" required id="terms" />
+                            <label htmlFor="terms" className="ml-2">
+                                I agree that all the information provided is
+                                correct and I am willing to pay the registration
+                                fee. I understand that the registration fee is
+                                non-refundable.
+                            </label>
+                        </p>
+                        {!loading && (
+                            <div className="text-center w-fit mt-5">
+                                <button
+                                    type="submit"
+                                    className="bg-blue-500 text-white px-4 py-2 rounded-md mt-4"
+                                >
+                                    <span>Proceed to Payment</span>
+                                </button>
+                                {fee && (
+                                    <p className="text-gray-800 text-xs font-semibold mt-1">
+                                        Registration fee:{" "}
+                                        <span className="text-green-500">
+                                            {fee}
+                                        </span>
+                                    </p>
+                                )}
+                            </div>
+                        )}
+
+                        {loading && (
+                            <div className="text-center w-fit mt-5 min-w-96 flex gap-5 items-center">
+                                <i className="fas fa-spinner fa-spin text-3xl text-blue-500"></i>
+                                <p className="text-gray-800 text-xs font-semibold mt-1">
+                                    {fakeLoadingText}
+                                </p>
+                            </div>
+                        )}
+
+                        {errorMsg && (
+                            <div className="text-center w-fit mt-5 ml-auto">
+                                <p className="bg-red-100 text-red-500 p-2 rounded-md">
+                                    {errorMsg}
+                                </p>
+                                <p className="text-gray-800 text-xs mt-1">
+                                    If issue persists, please contaact
+                                    administator
+                                </p>
+                            </div>
+                        )}
+                    </form>
+                </div>
             </div>
-            <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
-              <label htmlFor="certificate" className="block mb-2 font-semibold">
-                Upload Birth Certificate:
-              </label>
-              <input
-                type="file"
-                id="certificate"
-                name="certificate"
-                onChange={handleAthleteChange}
-                className="border-none"
-                required
-              />
-              {/* Instruction Image */}
-              <div className="mt-3">
-                <img
-                  src="instructionImg3.png"
-                  alt="Instruction for Aadhar Back Photo"
-                  className="w-full h-auto rounded-md"
-                />
-              </div>
-            </div>
-            <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
-              <label
-                htmlFor="residentCertificate"
-                className="block mb-2 font-semibold"
-              >
-                Upload Resident Certificate:
-              </label>
-              <input
-                type="file"
-                id="residentCertificate"
-                name="residentCertificate"
-                onChange={handleAthleteChange}
-                className="border-none"
-                required
-              />
-              {/* Instruction Image */}
-              <div className="mt-3">
-                <img
-                  src="instructionImg3.png"
-                  alt="Instruction for Aadhar Back Photo"
-                  className="w-full h-auto rounded-md"
-                />
-              </div>
-            </div>
-            <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
-              <label
-                htmlFor="adharFrontPhoto"
-                className="block mb-2 font-semibold"
-              >
-                Upload Aadhar Front Photo:
-              </label>
-              <input
-                type="file"
-                name="adharFrontPhoto"
-                id="adharFrontPhoto"
-                onChange={handleAthleteChange}
-                className="border-none"
-                required
-              />
-              {/* Instruction Image */}
-              <div className="mt-3">
-                <img
-                  src="instructionImg1.png"
-                  alt="Instruction for Aadhar Back Photo"
-                  className="w-full h-auto rounded-md"
-                />
-              </div>
-            </div>
-            <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
-              <label
-                htmlFor="adharBackPhoto"
-                className="block mb-2 font-semibold"
-              >
-                Upload Aadhar Back Photo:
-              </label>
-              <input
-                type="file"
-                id="adharBackPhoto"
-                name="adharBackPhoto"
-                onChange={handleAthleteChange}
-                className="border-none"
-                required
-              />
-              {/* Instruction Image */}
-              <div className="mt-3">
-                <img
-                  src="instructionImg1.png"
-                  alt="Instruction for Aadhar Back Photo"
-                  className="w-full h-auto rounded-md"
-                />
-              </div>
-            </div>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <label htmlFor="playerName">
-              Name of the Coach:
-              <input
-                type="text"
-                id="playerName"
-                name="playerName"
-                placeholder="Name"
-                value={coachFormData.playerName}
-                onChange={handleCoachChange}
-                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-                required
-              />
-            </label>
-            <label htmlFor="fatherName">
-              Father's Name:
-              <input
-                type="text"
-                id="fatherName"
-                name="fatherName"
-                placeholder="Father's Name"
-                value={coachFormData.fatherName}
-                onChange={handleCoachChange}
-                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-                required
-              />
-            </label>
-            <label htmlFor="dob">
-              Date of Birth:
-              <input
-                type="date"
-                id="dob"
-                name="dob"
-                value={coachFormData.dob}
-                onChange={handleCoachChange}
-                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-                required
-              />
-            </label>
-            <label htmlFor="gender">
-              Gender:
-              <select
-                name="gender"
-                id="gender"
-                value={coachFormData.gender}
-                onChange={handleCoachChange}
-                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-                required
-              >
-                <option value="">Select Gender</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
-              </select>
-            </label>
-            <label htmlFor="district">
-              District:
-              <select
-                name="district"
-                id="district"
-                value={coachFormData.district}
-                onChange={handleCoachChange}
-                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-                required
-              >
-                <option value="">Select District</option>
-                {districts.map((district) => (
-                  <option key={district} value={district}>
-                    {district}
-                  </option>
-                ))}
-              </select>
-            </label>
-            <label htmlFor="mob">
-              Mobile Number:
-              <input
-                type="tel"
-                id="mob"
-                name="mob"
-                placeholder="Mobile Number"
-                value={coachFormData.mob}
-                onChange={handleCoachChange}
-                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-                required
-              />
-            </label>
-            <label htmlFor="email">
-              Email:
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Email Address"
-                value={coachFormData.email}
-                onChange={handleCoachChange}
-                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-                required
-              />
-            </label>
-            <label htmlFor="adharNumber">
-              Aadhar Number:
-              <input
-                type="text"
-                id="adharNumber"
-                name="adharNumber"
-                placeholder="Aadhar Number"
-                value={coachFormData.adharNumber}
-                onChange={handleCoachChange}
-                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-                required
-              />
-            </label>
-            <label htmlFor="address">
-              Address:
-              <input
-                type="text"
-                id="address"
-                name="address"
-                placeholder="Address"
-                value={coachFormData.address}
-                onChange={handleCoachChange}
-                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-                required
-              />
-            </label>
-            <label htmlFor="pin">
-              Pincode:
-              <input
-                type="text"
-                id="pin"
-                name="pin"
-                placeholder="Pincode"
-                value={coachFormData.pin}
-                onChange={handleCoachChange}
-                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-                required
-              />
-            </label>
-            <label htmlFor="panNumber">
-              PAN Number:
-              <input
-                type="text"
-                id="panNumber"
-                name="panNumber"
-                placeholder="PAN Number (Optional)"
-                value={coachFormData.panNumber}
-                onChange={handleCoachChange}
-                className="border border-[#06A77D] p-3 rounded-md w-full focus:outline-none focus:ring-2 focus:ring-[#F1A208]"
-              />
-            </label>
-            <hr />
-            <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
-              <label htmlFor="photo" className="block mb-2 font-semibold">
-                Upload Photo:
-              </label>
-              <input
-                type="file"
-                id="photo"
-                name="photo"
-                onChange={handlePhotoUpload}
-                className="border-none"
-                required
-              />
-              {coachFormData.photo && (
-                <img
-                  src={coachFormData.photo}
-                  alt="Cropped coach photo"
-                  className="mt-2 w-32 h-32 object-cover rounded-md"
-                />
-              )}
-              {/* Instruction Image */}
-              <div className="mt-3">
-                <img
-                  src="instructionImg2.png"
-                  alt="Instruction for Coach Photo"
-                  className="w-full h-auto rounded-md"
-                />
-              </div>
-            </div>
-            <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
-              <label
-                htmlFor="blackBeltCertificate"
-                className="block mb-2 font-semibold"
-              >
-                Upload Black Belt Certificate:
-              </label>
-              <input
-                type="file"
-                id="blackBeltCertificate"
-                name="blackBeltCertificate"
-                onChange={handleCoachChange}
-                className="border-none"
-                required
-              />
-              {/* Instruction Image */}
-              <div className="mt-3">
-                <img
-                  src="instructionImg3.png"
-                  alt="Instruction for Aadhar Back Photo"
-                  className="w-full h-auto rounded-md"
-                />
-              </div>
-            </div>
-            {/* <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
-              <label className="block mb-2 font-semibold">
-                Upload Resident Certificate
-              </label>
-              <input
-                type="file"
-                name="residentCertificate"
-                onChange={handleCoachChange}
-                className="border-none"
-                required
-              />
-            </div> */}
-            <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
-              <label
-                htmlFor="adharFrontPhoto"
-                className="block mb-2 font-semibold"
-              >
-                Upload Aadhar Front Photo:
-              </label>
-              <input
-                type="file"
-                name="adharFrontPhoto"
-                id="adharFrontPhoto"
-                onChange={handleCoachChange}
-                className="border-none"
-                required
-              />
-              {/* Instruction Image */}
-              <div className="mt-3">
-                <img
-                  src="instructionImg1.png"
-                  alt="Instruction for Aadhar Back Photo"
-                  className="w-full h-auto rounded-md"
-                />
-              </div>
-            </div>
-            <div className="border border-[#06A77D] p-3 rounded-md focus:outline-none focus:ring-2 focus:ring-[#F1A208]">
-              <label
-                htmlFor="adharBackPhoto"
-                className="block mb-2 font-semibold"
-              >
-                Upload Aadhar Back Photo:
-              </label>
-              <input
-                type="file"
-                id="adharBackPhoto"
-                name="adharBackPhoto"
-                onChange={handleCoachChange}
-                className="border-none"
-                required
-              />
-              {/* Instruction Image */}
-              <div className="mt-3">
-                <img
-                  src="instructionImg1.png"
-                  alt="Instruction for Aadhar Back Photo"
-                  className="w-full h-auto rounded-md"
-                />
-              </div>
-            </div>
-          </div>
-        )}
+        );
 
-        <button
-          type="submit"
-          className="bg-[#005377] text-white font-semibold py-3 px-6 rounded-md shadow-md hover:bg-[#052F5F] transition duration-300"
-        >
-          Proceed to Pay Fee
-        </button>
-      </form>
+    if (regSuccess)
+        return (
+            <div className="container px-8 m-auto mt-10 mb-16" id="#success">
+                <img
+                    src={geeenTick}
+                    alt="Success"
+                    className="w-20 m-auto my-5"
+                />
+                <h2 className="text-3xl font-bold text-center">
+                    Congratulations!
+                </h2>
+                <p className="text-gray-800 text-sm font-semibold text-center max-w-lg m-auto">
+                    Your registration is successful. Please check your email for
+                    confirmation.
+                </p>
 
-      {showCropper && tempPhoto && (
-        <ImageCrop
-          imageSrc={tempPhoto}
-          onComplete={handleCroppedImage}
-          aspect={1}
-        />
-      )}
-    </div>
-  );
-};
+                {/* download ID card button  */}
+                <a
+                    className="bg-green-500 text-white px-4 py-2 rounded-md mt-4 m-auto block w-fit font-medium"
+                    href={regData?.data?.pdfUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    <i className="fas fa-download mr-2"></i>
+                    Download ID Card
+                </a>
+
+                {regData?.data && (
+                    <table className="m-auto my-5 bg-white border border-gray-200">
+                        <tbody>
+                            <tr>
+                                <td className="px-6 py-4 border-b border-gray-200 text-gray-800 text-sm font-semibold">
+                                    Registration Status
+                                </td>
+                                <td className="px-6 py-4 border-b border-gray-200 text-green-500 text-sm font-semibold">
+                                    {regData.data.message}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className="px-6 py-4 border-b border-gray-200 text-gray-800 text-sm font-semibold">
+                                    Registration No
+                                </td>
+                                <td className="px-6 py-4 border-b border-gray-200 text-gray-800 text-sm font-semibold">
+                                    {regData.data.regNo}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className="px-6 py-4 border-b border-gray-200 text-gray-800 text-sm font-semibold">
+                                    Payment ID
+                                </td>
+                                <td className="px-6 py-4 border-b border-gray-200 text-gray-800 text-sm font-semibold">
+                                    {regData.data.paymentId}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className="px-6 py-4 border-b border-gray-200 text-gray-800 text-sm font-semibold">
+                                    Name
+                                </td>
+                                <td className="px-6 py-4 border-b border-gray-200 text-gray-800 text-sm font-semibold">
+                                    {regData.data.name}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td className="px-6 py-4 border-b border-gray-200 text-gray-800 text-sm font-semibold">
+                                    Email
+                                </td>
+                                <td className="px-6 py-4 border-b border-gray-200 text-gray-800 text-sm font-semibold">
+                                    {regData.data.email}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                )}
+
+                <div className="flex items-center w-fit m-auto divide-x-2 text-sm">
+                    <button
+                        className="text-blue-500 px-4 rounded-md text-center m-auto"
+                        onClick={() => window.location.reload()}
+                    >
+                        <i className="fas fa-redo-alt mr-2"></i>
+                        Submit New Registration
+                    </button>
+
+                    <a
+                        href={nextFormLink}
+                        className="text-blue-500 px-4 rounded-md text-center"
+                    >
+                        {nextFormLabel}
+                        <i className="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        );
+}
 
 export default Form;
+
+Form.propTypes = {
+    fields: propTypes.array.isRequired,
+    DocumentDetails: propTypes.array.isRequired,
+    fee: propTypes.string,
+    fromTitle: propTypes.string.isRequired,
+    formDesc: propTypes.string.isRequired,
+    nextFormLabel: propTypes.string.isRequired,
+    nextFormLink: propTypes.string.isRequired,
+};
+
+// sample regSuccess object
+// {
+//     "message": "Email Sent successfully",
+//     "success": true,
+//     "paymentId": "pay_Oxt4oaJcTQidSD",
+//     "email": "rahulksingh3907@gmail.com",
+//     "regNo": "ATH1726500492558",
+//     "name": "Gabbar Singh"
+// }

@@ -6,7 +6,7 @@ import propTypes from "prop-types";
 
 Modal.setAppElement("#root");
 
-function ProfilePictureUpload({ setAthleteFormData }) {
+function ProfilePictureUpload({ setAthleteFormData, loading }) {
     const [image, setImage] = useState(null);
     const [croppedImage, setCroppedImage] = useState(null);
     const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -66,6 +66,7 @@ function ProfilePictureUpload({ setAthleteFormData }) {
                     type="file"
                     accept="image/*"
                     onChange={handleImageChange}
+                    disabled={loading}
                     className="mb-4 px-4 py-2 border border-gray-300 rounded-md shadow-sm w-full"
                     required
                 />
@@ -132,4 +133,5 @@ export default ProfilePictureUpload;
 
 ProfilePictureUpload.propTypes = {
     setAthleteFormData: propTypes.func.isRequired,
+    loading: propTypes.bool.isRequired,
 };

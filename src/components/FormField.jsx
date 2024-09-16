@@ -12,6 +12,7 @@ const FormField = ({
     error = "",
     charLimitText = "",
     img = null,
+    loading,
 }) => {
     return (
         <div className="">
@@ -35,6 +36,7 @@ const FormField = ({
                     onChange={handleChange}
                     placeholder={placeholder}
                     required={required}
+                    disabled={loading}
                     className={`mt-1 p-2 border outline-none ${
                         error ? "border-red-500" : "border-gray-300"
                     } rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm`}
@@ -46,7 +48,8 @@ const FormField = ({
                     value={value}
                     onChange={handleChange}
                     required={required}
-                    className="mt-1 p-2 border outline-none bg-white border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm"
+                    disabled={loading}
+                    className="mt-1 p-2 border outline-none bg-white border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm disabled:bg-gray-100"
                 >
                     {options.map((option) => (
                         <option key={option.value} value={option.value}>
@@ -62,6 +65,8 @@ const FormField = ({
                         type={type}
                         accept="image/*"
                         onChange={handleChange}
+                        required={required}
+                        disabled={loading}
                         className="mb-4 px-4 py-2 border border-gray-300 rounded-md shadow-sm w-full"
                     />
                     {img && (
@@ -98,6 +103,7 @@ FormField.propTypes = {
     error: PropTypes.string,
     charLimitText: PropTypes.string,
     img: PropTypes.string,
+    loading: PropTypes.bool,
 };
 
 export default FormField;
