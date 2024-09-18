@@ -404,7 +404,7 @@ function Form({
                 </p>
 
                 {/* download ID card button  */}
-                <a
+                {/* <a
                     className="bg-green-500 text-white px-4 py-2 rounded-md mt-4 m-auto block w-fit font-medium"
                     href={regData?.data?.pdfUrl}
                     target="_blank"
@@ -412,7 +412,11 @@ function Form({
                 >
                     <i className="fas fa-download mr-2"></i>
                     Download ID Card
-                </a>
+                </a> */}
+
+                <p className="text-green-600 text-sm font-semibold text-center max-w-lg m-auto mt-5">
+                    ID Card sent to {regData?.data?.email}
+                </p>
 
                 {regData?.data && (
                     <table className="m-auto my-5 bg-white border border-gray-200">
