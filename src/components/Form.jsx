@@ -427,7 +427,7 @@ function Form({
                             </tr>
                             <tr>
                                 <td className="px-6 py-4 border-b border-gray-200 text-gray-800 text-sm font-semibold">
-                                    Registration No
+                                    Tracking ID
                                 </td>
                                 <td className="px-6 py-4 border-b border-gray-200 text-gray-800 text-sm font-semibold">
                                     {regData.data.regNo}
@@ -492,14 +492,6 @@ Form.propTypes = {
     formDesc: propTypes.string.isRequired,
     nextFormLabel: propTypes.string.isRequired,
     nextFormLink: propTypes.string.isRequired,
+    backendPaymentUrl: propTypes.string.isRequired,
+    backendPaymentVerifyUrl: propTypes.string.isRequired,
 };
-
-// sample regSuccess object
-// {
-//     "message": "Email Sent successfully",
-//     "success": true,
-//     "paymentId": "pay_Oxt4oaJcTQidSD",
-//     "email": "rahulksingh3907@gmail.com",
-//     "regNo": "ATH1726500492558",
-//     "name": "Gabbar Singh"
-// }
