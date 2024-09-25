@@ -44,7 +44,7 @@ const Footer = () => {
                     />
                     <div>
                         <h2 className="text-xl md:text-2xl font-bold">
-                            J & K Taekwondo Association of India
+                            J & K Taekwondo Association
                         </h2>
                     </div>
                 </div>
