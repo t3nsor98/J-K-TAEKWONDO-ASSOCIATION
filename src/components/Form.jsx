@@ -399,8 +399,7 @@ function Form({
                     Congratulations!
                 </h2>
                 <p className="text-gray-800 text-sm font-semibold text-center max-w-lg m-auto">
-                    Your registration is successful. Please check your email for
-                    confirmation.
+                    Your payment was successful.
                 </p>
 
                 {/* download ID card button  */}
@@ -415,7 +414,12 @@ function Form({
                 </a> */}
 
                 <p className="text-green-600 text-sm font-semibold text-center max-w-lg m-auto mt-5">
-                    ID Card sent to {regData?.data?.email}
+                    Admin will verify your documents and you will receive an
+                    email on {regData?.data?.email}
+                </p>
+                <p className="text-gray-800 text-sm font-semibold text-center max-w-lg m-auto mt-5">
+                    Kindly note down the tracking ID for future reference. Same
+                    has been sent to your email.
                 </p>
 
                 {regData?.data && (
