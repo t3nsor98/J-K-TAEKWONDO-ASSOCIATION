@@ -57,6 +57,22 @@ const PersonalDetails = [
         },
     },
     {
+        name: "motherName",
+        label: "Mother Name",
+        type: "text",
+        image: null,
+        required: true,
+        placeholder: "Enter your mother's name",
+        maxLength: 30,
+        validation: {
+            pattern: {
+                value: /^[A-Za-z\s]{1,30}$/,
+                message:
+                    "Mother's name can only contain letters and spaces, up to 30 characters",
+            },
+        },
+    },
+    {
         name: "dob",
         label: "Date of Birth",
         type: "date",
