@@ -115,6 +115,15 @@ const PersonalDetails = [
         placeholder: "Enter your PAN number",
         maxLength: 10,
     },
+    {
+        name: "academyName",
+        label: "Academy Name",
+        type: "text",
+        image: null,
+        required: true,
+        placeholder: "Enter your academy name",
+        maxLength: 30,
+    },
 ];
 
 const ContactDetails = [
