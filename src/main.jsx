@@ -8,6 +8,6 @@ createRoot(document.getElementById("root")).render(
     <StrictMode>
         {/* <App /> */}
 
-        {window.location.host === "www.jkta.in" && <OutOfBandwidth />}
+        {window.location.host === "www.jkta.in" ? <OutOfBandwidth /> : <App />}
     </StrictMode>
 );
