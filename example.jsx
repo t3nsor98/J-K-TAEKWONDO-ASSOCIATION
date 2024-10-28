@@ -71,6 +71,7 @@ const taekwondoAssociations = [
       },
     ],
   },
+  // Other districts...
   {
     district: "Bandipora",
     association: "Taekwondo Association of District Bandipora",
@@ -180,7 +181,7 @@ const taekwondoAssociations = [
     officeBearers: ["A.R Malik", "Kehkashan Bashir"],
     image: kupwara2,
   },
-].sort((a, b) => a.district.localeCompare(b.district)); 
+].sort((a, b) => a.district.localeCompare(b.district)); // Sorting by district name
 
 const Affiliated = () => {
   const [expandedDistrict, setExpandedDistrict] = useState(null);
@@ -190,7 +191,7 @@ const Affiliated = () => {
   };
 
   return (
-    <div className="py-10 container m-auto flex flex-wrap justify-around items-center gap-8 cursor-pointer select-none">
+    <div className="py-10 container m-auto flex flex-wrap justify-around items-center gap-8 cursor-pointer">
       {taekwondoAssociations.map((association, index) => (
         <motion.div
           key={index}
@@ -224,7 +225,7 @@ const Affiliated = () => {
             </div>
             {/* Dropdown content only for Doda and Poonch */}
             {expandedDistrict === association.district && (
-              <div className="absolute top-full left-0 mt-2 p-8 w-full bg-gray-100 rounded-lg shadow-lg z-10">
+              <div className="absolute top-full left-0 mt-2 p-4 w-full bg-gray-100 rounded-lg shadow-lg z-10">
                 {association.clubs?.map((club, i) => (
                   <div key={i} className="mb-2">
                     <h3 className="text-[#052F5F] text-sm font-semibold">
