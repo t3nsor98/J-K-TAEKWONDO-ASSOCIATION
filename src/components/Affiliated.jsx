@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 
 // associations images
 // import kupwara from "/associations/KUPWARA.png";
@@ -29,6 +29,12 @@ import bhaderwah from "/clubs/bhaderwah.png";
 import chinar from "/clubs/chinar.png";
 import ntc from "/clubs/ntc.jpg";
 import poonch_club from "/clubs/poonch_club.jpg";
+//new
+import warrior from "/clubs/warrior.jpg";
+import pearls from "/clubs/pearls.jpg";
+import power_punch from "/clubs/power_punch.jpg";
+import and_edu_serv from "/clubs/and_edu_serv.jpg";
+import pahalwon from "/clubs/pahalwon.jpg";
 
 const taekwondoAssociations = [
   {
@@ -83,6 +89,65 @@ const taekwondoAssociations = [
     ],
   },
   {
+    district: "Budgam",
+    association: "Taekwondo Association of District Budgam",
+    officeBearers: ["A.R Qureshi", "Bashir Ahmad Sheikh"],
+    image: budgam,
+    clubs: [
+      {
+        name: "Power Punch Martial Arts Academy",
+        president: "Mohammad Shafi Ganaie",
+        secretary: "Abrar ul Akbar Bhat",
+        address: "Kawoosa Khalisa Narbal Budgam",
+        image: power_punch,
+      },
+      {
+        name: "Pearls Taekwondo Academy",
+        president: "Reyaz Ahmad",
+        secretary: "Ishfaq Ahmed Wani",
+        address: "Khomani Chowk Bemina Budgam",
+        image: pearls,
+      },
+      {
+        name: "Andleeb Taekwondo Academy",
+        president: null,
+        secretary: "Lateef Ahmad Tali",
+        address: "Khag Budgam",
+        image: and_edu_serv,
+      },
+      {
+        name: "Pahalwon Sports Club",
+        president: "Syed Ashiq Hussain Bukhari",
+        secretary: "Bashir Ahmad Sheikh",
+        address: "Soibugh Budgam",
+        image: pahalwon,
+      },
+    ],
+  },
+
+  {
+    district: "Baramulla",
+    association: "Taekwondo Association of District Baramulla",
+    officeBearers: ["Adv Neelofar Masood", "H. Rameez Mehraj"],
+    image: baramulla,
+    clubs: [
+      {
+        name: "Warrior's Taekwondo Academy",
+        president: "Neelofar Masood",
+        coach: "Mohsin Ali",
+        address: "Dangiwacha Rafiabad, Baramulla",
+        image: warrior,
+      },
+      {
+        name: "Power Punch Taekwondo Academy",
+        president: "Rouf Ahmad Wani",
+        coach: "Aubrar Ul Akbar Bhat",
+        address: "Chichlora Magam, Baramulla",
+        image: power_punch,
+      },
+    ],
+  },
+  {
     district: "Bandipora",
     association: "Taekwondo Association of District Bandipora",
     officeBearers: ["Fasil Ali", "Shabir Ahmad Dar"],
@@ -99,12 +164,6 @@ const taekwondoAssociations = [
     association: "Taekwondo Association of District Kishtwar",
     officeBearers: ["Ghulam Qadir Mir", "Arslan Ahmed"],
     image: kishtwar,
-  },
-  {
-    district: "Budgam",
-    association: "Taekwondo Association of District Budgam",
-    officeBearers: ["A.R Qureshi", "Bashir Ahmad Sheikh"],
-    image: budgam,
   },
 
   {
@@ -149,12 +208,7 @@ const taekwondoAssociations = [
     officeBearers: ["Atta Mohd Khan", "Mashkoor Ahmad Lone"],
     image: kulgam,
   },
-  {
-    district: "Baramulla",
-    association: "Taekwondo Association of District Baramulla",
-    officeBearers: ["Adv Neelofar Masood", "H. Rameez Mehraj"],
-    image: baramulla,
-  },
+
   {
     district: "Ramban",
     association: "Taekwondo Association of District Ramban",
@@ -206,9 +260,7 @@ const Affiliated = () => {
         <div
           key={index}
           onClick={() =>
-            (association.district === "Doda" ||
-              association.district === "Poonch") &&
-            toggleExpanded(association.district)
+            association.clubs && toggleExpanded(association.district)
           }
           className={`rounded-xl shadow-lg p-4 w-64 transform transition-transform duration-300 border relative hover:scale-105 ${
             association.clubs ? "z-10" : "z-1"
@@ -233,7 +285,7 @@ const Affiliated = () => {
                 </p>
               ))}
             </div>
-            {/* Dropdown content only for Doda and Poonch */}
+            {/* Dropdown content only for those who have clubs in the district (t3nsor) */}
             {expandedDistrict === association.district && (
               <div className="absolute top-full left-0 mt-2 p-8 w-full bg-gray-100 rounded-lg shadow-lg">
                 {association.clubs?.map((club, i) => (
