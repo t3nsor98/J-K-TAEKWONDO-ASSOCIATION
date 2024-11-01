@@ -298,10 +298,10 @@ const Affiliated = () => {
                     <h3 className="text-[#052F5F] text-sm font-semibold">
                       {club.name}
                     </h3>
-                    <p className="text-[#000000] text-xs">
+                    <p className="text-[#000000] text-sm font-medium">
                       President: {club.president}
                     </p>
-                    <p className="text-[#000000] text-xs">
+                    <p className="text-[#000000] text-xs font-normal">
                       Secretary: {club.secretary}
                     </p>
                     <p className="text-[#000000] text-xs">
