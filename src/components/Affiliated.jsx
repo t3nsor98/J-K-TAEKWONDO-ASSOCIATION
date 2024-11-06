@@ -273,7 +273,7 @@ const Affiliated = () => {
   };
 
   return (
-    <div className="relative py-10 container m-auto flex flex-wrap justify-around items-center gap-8 cursor-pointer select-none">
+    <div className="relative py-10 container m-auto flex flex-wrap justify-around items-start gap-8 cursor-pointer select-none">
       {taekwondoAssociations.map((association, index) => (
         <div
           key={index}
@@ -304,9 +304,9 @@ const Affiliated = () => {
               ))}
             </div>
             {expandedDistrict === association.district && (
-              <div className="absolute top-full left-0 mt-2 p-8 w-full bg-gray-100 rounded-lg shadow-lg">
+              <div className="relative mt-2 p-4 w-full bg-gray-100 rounded-lg shadow-lg z-20">
                 {association.clubs?.map((club, i) => (
-                  <div key={i} className="mb-2">
+                  <div key={i} className="mb-2 text-center">
                     <img
                       src={club.image}
                       alt={`${club.name} Logo`}
