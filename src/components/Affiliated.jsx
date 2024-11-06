@@ -29,12 +29,14 @@ import bhaderwah from "/clubs/bhaderwah.png";
 import chinar from "/clubs/chinar.png";
 import ntc from "/clubs/ntc.jpg";
 import poonch_club from "/clubs/poonch_club.jpg";
-//new
 import warrior from "/clubs/warrior.jpg";
 import pearls from "/clubs/pearls.jpg";
 import power_punch from "/clubs/power_punch.jpg";
 import and_edu_serv from "/clubs/and_edu_serv.jpg";
 import pahalwon from "/clubs/pahalwon.jpg";
+//new
+import gundAdalkote from "/clubs/gundAdalkote.jpg";
+import martialArtsClubBanihal from "/clubs/martialArtsClubBanihal.jpg";
 
 const taekwondoAssociations = [
   {
@@ -148,6 +150,29 @@ const taekwondoAssociations = [
     ],
   },
   {
+    district: "Ramban",
+    association: "Taekwondo Association of District Ramban",
+    officeBearers: ["Sohaib Masroor", "Yasir Ali"],
+    image: ramban,
+    clubs: [
+      {
+        name: "Martial Arts Club Banihal",
+        president: "Sohaib Masroor",
+        secretary: "Yasir Ali",
+        address: "Main Market, Banihal",
+        image: martialArtsClubBanihal,
+      },
+      {
+        name: "Gund Adalkote Taekwondo Academy",
+        president: "Munazar Ahmed Malik",
+        secretary: "Faazil Ahmed",
+        address: "Gund Adalkote, Banihal",
+        image: gundAdalkote,
+      },
+    ],
+  },
+
+  {
     district: "Bandipora",
     association: "Taekwondo Association of District Bandipora",
     officeBearers: ["Fasil Ali", "Shabir Ahmad Dar"],
@@ -207,13 +232,6 @@ const taekwondoAssociations = [
     association: "Taekwondo Association of District Kulgam",
     officeBearers: ["Atta Mohd Khan", "Mashkoor Ahmad Lone"],
     image: kulgam,
-  },
-
-  {
-    district: "Ramban",
-    association: "Taekwondo Association of District Ramban",
-    officeBearers: ["Sohaib Masroor", "Yasir Ali"],
-    image: ramban,
   },
   {
     district: "Reasi",
@@ -285,7 +303,6 @@ const Affiliated = () => {
                 </p>
               ))}
             </div>
-            {/* Dropdown content only for those who have clubs in the district (t3nsor) */}
             {expandedDistrict === association.district && (
               <div className="absolute top-full left-0 mt-2 p-8 w-full bg-gray-100 rounded-lg shadow-lg">
                 {association.clubs?.map((club, i) => (
@@ -313,8 +330,9 @@ const Affiliated = () => {
             )}
             {association.clubs && (
               <span className="text-xs mt-0.5 flex justify-center items-center gap-1 bg-blue-700 text-white w-fit m-auto px-2 rounded-full py-0.5">
-                {expandedDistrict ? "Hide" : "Show"} Clubs
-                {expandedDistrict ? (
+                {expandedDistrict === association.district ? "Hide" : "Show"}{" "}
+                Clubs
+                {expandedDistrict === association.district ? (
                   <i className="fa-solid fa-chevron-up"></i>
                 ) : (
                   <i className="fa-solid fa-chevron-down"></i>
@@ -322,7 +340,6 @@ const Affiliated = () => {
               </span>
             )}
           </div>
-          {/* </motion.div> */}
         </div>
       ))}
     </div>
