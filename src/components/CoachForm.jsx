@@ -1,4 +1,7 @@
+import ClubDetails from "./ClubDetails";
 import Form from "./Form";
+
+// const districts = ClubDetails.map((club) => club.district);
 
 const districts = [
     "Anantnag",

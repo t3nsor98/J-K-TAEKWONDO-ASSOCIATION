@@ -5,6 +5,7 @@ import base64ToBinary from "./base64ToBinary";
 import FormField from "./FormField";
 import propTypes from "prop-types";
 import geeenTick from "../assets/greenTick.png";
+import ClubDetails from "./ClubDetails";
 
 const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -40,6 +41,22 @@ function Form({
     );
     const [regSuccess, setRegSuccess] = useState(false);
     const [regData, setRegData] = useState({});
+    const [academyNameOptions, setAcademyNameOptions] = useState([]);
+
+    useEffect(() => {
+        if (athleteFormData?.district) {
+            ClubDetails.map((district) => {
+                if (district.district === athleteFormData.district) {
+                    setAcademyNameOptions(
+                        district.clubs.map((club) => ({
+                            value: club.clubName,
+                            label: club.clubName,
+                        }))
+                    );
+                }
+            });
+        }
+    }, [athleteFormData]);
 
     useEffect(() => {
         // Function to pick a random loading text from the array
@@ -277,7 +294,19 @@ function Form({
                                         key={field.name}
                                         label={field.label}
                                         type={field.type}
-                                        options={field.options}
+                                        options={
+                                            field.name === "academyName"
+                                                ? [
+                                                      {
+                                                          value: "",
+                                                          label: athleteFormData?.district
+                                                              ? `Select Academy in ${athleteFormData?.district}`
+                                                              : "Select District First",
+                                                      },
+                                                      ...academyNameOptions,
+                                                  ]
+                                                : field.options
+                                        }
                                         value={
                                             athleteFormData[field.name] || ""
                                         }

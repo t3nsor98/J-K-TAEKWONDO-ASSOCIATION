@@ -1,27 +1,29 @@
+import ClubDetails from "./ClubDetails";
 import Form from "./Form";
 
-const districts = [
-    "Anantnag",
-    "Bandipora",
-    "Baramulla",
-    "Budgam",
-    "Doda",
-    "Ganderbal",
-    "Jammu",
-    "Kathua",
-    "Kishtwar",
-    "Kulgam",
-    "Kupwara",
-    "Poonch",
-    "Pulwama",
-    "Rajouri",
-    "Ramban",
-    "Reasi",
-    "Samba",
-    "Shopian",
-    "Srinagar",
-    "Udhampur",
-];
+const districts = ClubDetails.map((club) => club.district);
+// const districts = [
+//     "Anantnag",
+//     "Bandipora",
+//     "Baramulla",
+//     "Budgam",
+//     "Doda",
+//     "Ganderbal",
+//     "Jammu",
+//     "Kathua",
+//     "Kishtwar",
+//     "Kulgam",
+//     "Kupwara",
+//     "Poonch",
+//     "Pulwama",
+//     "Rajouri",
+//     "Ramban",
+//     "Reasi",
+//     "Samba",
+//     "Shopian",
+//     "Srinagar",
+//     "Udhampur",
+// ];
 
 const PersonalDetails = [
     {
@@ -189,7 +191,7 @@ const AcademyDetails = [
     {
         name: "academyName",
         label: "Academy Name",
-        type: "text",
+        type: "dropdown",
         image: null,
         required: true,
         maxLength: 50,
