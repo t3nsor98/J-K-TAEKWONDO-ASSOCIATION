@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 
 // associations images
 // import kupwara from "/associations/KUPWARA.png";
@@ -29,6 +29,14 @@ import bhaderwah from "/clubs/bhaderwah.png";
 import chinar from "/clubs/chinar.png";
 import ntc from "/clubs/ntc.jpg";
 import poonch_club from "/clubs/poonch_club.jpg";
+import warrior from "/clubs/warrior.jpg";
+import pearls from "/clubs/pearls.jpg";
+import power_punch from "/clubs/power_punch.jpg";
+import and_edu_serv from "/clubs/and_edu_serv.jpg";
+import pahalwon from "/clubs/pahalwon.jpg";
+//new
+import gundAdalkote from "/clubs/gundAdalkote.jpg";
+import martialArtsClubBanihal from "/clubs/martialArtsClubBanihal.jpg";
 
 const taekwondoAssociations = [
   {
@@ -83,6 +91,88 @@ const taekwondoAssociations = [
     ],
   },
   {
+    district: "Budgam",
+    association: "Taekwondo Association of District Budgam",
+    officeBearers: ["A.R Qureshi", "Bashir Ahmad Sheikh"],
+    image: budgam,
+    clubs: [
+      {
+        name: "Power Punch Martial Arts Academy",
+        president: "Mohammad Shafi Ganaie",
+        secretary: "Abrar ul Akbar Bhat",
+        address: "Kawoosa Khalisa Narbal Budgam",
+        image: power_punch,
+      },
+      {
+        name: "Pearls Taekwondo Academy",
+        president: "Reyaz Ahmad",
+        secretary: "Ishfaq Ahmed Wani",
+        address: "Khomani Chowk Bemina Budgam",
+        image: pearls,
+      },
+      {
+        name: "Andleeb Taekwondo Academy",
+        president: null,
+        secretary: "Lateef Ahmad Tali",
+        address: "Khag Budgam",
+        image: and_edu_serv,
+      },
+      {
+        name: "Pahalwon Sports Club",
+        president: "Syed Ashiq Hussain Bukhari",
+        secretary: "Bashir Ahmad Sheikh",
+        address: "Soibugh Budgam",
+        image: pahalwon,
+      },
+    ],
+  },
+
+  {
+    district: "Baramulla",
+    association: "Taekwondo Association of District Baramulla",
+    officeBearers: ["Adv Neelofar Masood", "H. Rameez Mehraj"],
+    image: baramulla,
+    clubs: [
+      {
+        name: "Warrior's Taekwondo Academy",
+        president: "Neelofar Masood",
+        coach: "Mohsin Ali",
+        address: "Dangiwacha Rafiabad, Baramulla",
+        image: warrior,
+      },
+      {
+        name: "Power Punch Taekwondo Academy",
+        president: "Rouf Ahmad Wani",
+        coach: "Aubrar Ul Akbar Bhat",
+        address: "Chichlora Magam, Baramulla",
+        image: power_punch,
+      },
+    ],
+  },
+  {
+    district: "Ramban",
+    association: "Taekwondo Association of District Ramban",
+    officeBearers: ["Sohaib Masroor", "Yasir Ali"],
+    image: ramban,
+    clubs: [
+      {
+        name: "Martial Arts Club Banihal",
+        president: "Sohaib Masroor",
+        secretary: "Yasir Ali",
+        address: "Main Market, Banihal",
+        image: martialArtsClubBanihal,
+      },
+      {
+        name: "Gund Adalkote Taekwondo Academy",
+        president: "Munazar Ahmed Malik",
+        secretary: "Faazil Ahmed",
+        address: "Gund Adalkote, Banihal",
+        image: gundAdalkote,
+      },
+    ],
+  },
+
+  {
     district: "Bandipora",
     association: "Taekwondo Association of District Bandipora",
     officeBearers: ["Fasil Ali", "Shabir Ahmad Dar"],
@@ -99,12 +189,6 @@ const taekwondoAssociations = [
     association: "Taekwondo Association of District Kishtwar",
     officeBearers: ["Ghulam Qadir Mir", "Arslan Ahmed"],
     image: kishtwar,
-  },
-  {
-    district: "Budgam",
-    association: "Taekwondo Association of District Budgam",
-    officeBearers: ["A.R Qureshi", "Bashir Ahmad Sheikh"],
-    image: budgam,
   },
 
   {
@@ -150,18 +234,6 @@ const taekwondoAssociations = [
     image: kulgam,
   },
   {
-    district: "Baramulla",
-    association: "Taekwondo Association of District Baramulla",
-    officeBearers: ["Adv Neelofar Masood", "H. Rameez Mehraj"],
-    image: baramulla,
-  },
-  {
-    district: "Ramban",
-    association: "Taekwondo Association of District Ramban",
-    officeBearers: ["Sohaib Masroor", "Yasir Ali"],
-    image: ramban,
-  },
-  {
     district: "Reasi",
     association: "Taekwondo Association of District Reasi",
     officeBearers: ["Shiv Kumar Sharma", "Danish Sharma"],
@@ -201,14 +273,12 @@ const Affiliated = () => {
   };
 
   return (
-    <div className="relative py-10 container m-auto flex flex-wrap justify-around items-center gap-8 cursor-pointer select-none">
+    <div className="relative py-10 container m-auto flex flex-wrap justify-around items-start gap-8 cursor-pointer select-none">
       {taekwondoAssociations.map((association, index) => (
         <div
           key={index}
           onClick={() =>
-            (association.district === "Doda" ||
-              association.district === "Poonch") &&
-            toggleExpanded(association.district)
+            association.clubs && toggleExpanded(association.district)
           }
           className={`rounded-xl shadow-lg p-4 w-64 transform transition-transform duration-300 border relative hover:scale-105 ${
             association.clubs ? "z-10" : "z-1"
@@ -233,11 +303,10 @@ const Affiliated = () => {
                 </p>
               ))}
             </div>
-            {/* Dropdown content only for Doda and Poonch */}
             {expandedDistrict === association.district && (
-              <div className="absolute top-full left-0 mt-2 p-8 w-full bg-gray-100 rounded-lg shadow-lg">
+              <div className="relative mt-2 p-4 w-full bg-gray-100 rounded-lg shadow-lg z-20">
                 {association.clubs?.map((club, i) => (
-                  <div key={i} className="mb-2">
+                  <div key={i} className="mb-2 text-center">
                     <img
                       src={club.image}
                       alt={`${club.name} Logo`}
@@ -246,10 +315,10 @@ const Affiliated = () => {
                     <h3 className="text-[#052F5F] text-sm font-semibold">
                       {club.name}
                     </h3>
-                    <p className="text-[#000000] text-xs">
+                    <p className="text-[#000000] text-sm font-medium">
                       President: {club.president}
                     </p>
-                    <p className="text-[#000000] text-xs">
+                    <p className="text-[#000000] text-xs font-normal">
                       Secretary: {club.secretary}
                     </p>
                     <p className="text-[#000000] text-xs">
@@ -261,8 +330,9 @@ const Affiliated = () => {
             )}
             {association.clubs && (
               <span className="text-xs mt-0.5 flex justify-center items-center gap-1 bg-blue-700 text-white w-fit m-auto px-2 rounded-full py-0.5">
-                {expandedDistrict ? "Hide" : "Show"} Clubs
-                {expandedDistrict ? (
+                {expandedDistrict === association.district ? "Hide" : "Show"}{" "}
+                Clubs
+                {expandedDistrict === association.district ? (
                   <i className="fa-solid fa-chevron-up"></i>
                 ) : (
                   <i className="fa-solid fa-chevron-down"></i>
@@ -270,7 +340,6 @@ const Affiliated = () => {
               </span>
             )}
           </div>
-          {/* </motion.div> */}
         </div>
       ))}
     </div>
