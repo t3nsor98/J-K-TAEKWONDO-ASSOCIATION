@@ -1,30 +1,30 @@
 import ClubDetails from "./ClubDetails";
 import Form from "./Form";
 
-// const districts = ClubDetails.map((club) => club.district);
+const districts = ClubDetails.map((club) => club.district);
 
-const districts = [
-    "Anantnag",
-    "Bandipora",
-    "Baramulla",
-    "Budgam",
-    "Doda",
-    "Ganderbal",
-    "Jammu",
-    "Kathua",
-    "Kishtwar",
-    "Kulgam",
-    "Kupwara",
-    "Poonch",
-    "Pulwama",
-    "Rajouri",
-    "Ramban",
-    "Reasi",
-    "Samba",
-    "Shopian",
-    "Srinagar",
-    "Udhampur",
-];
+// const districts = [
+//     "Anantnag",
+//     "Bandipora",
+//     "Baramulla",
+//     "Budgam",
+//     "Doda",
+//     "Ganderbal",
+//     "Jammu",
+//     "Kathua",
+//     "Kishtwar",
+//     "Kulgam",
+//     "Kupwara",
+//     "Poonch",
+//     "Pulwama",
+//     "Rajouri",
+//     "Ramban",
+//     "Reasi",
+//     "Samba",
+//     "Shopian",
+//     "Srinagar",
+//     "Udhampur",
+// ];
 
 const PersonalDetails = [
     {
@@ -118,10 +118,13 @@ const PersonalDetails = [
         placeholder: "Enter your PAN number",
         maxLength: 10,
     },
+];
+
+const academyDetails = [
     {
         name: "academyName",
         label: "Academy Name",
-        type: "text",
+        type: "dropdown",
         image: null,
         required: true,
         placeholder: "Enter your academy name",
@@ -244,6 +247,10 @@ const fields = [
     {
         label: "Contact Details",
         fields: ContactDetails,
+    },
+    {
+        label: "Academy Details",
+        fields: academyDetails,
     },
 ];
 
