@@ -49,7 +49,7 @@ function Form({
                 if (district.district === athleteFormData.district) {
                     setAcademyNameOptions(
                         district.clubs.map((club) => ({
-                            value: club.clubName,
+                            value: club.clubName.replace(" ", "_"),
                             label: club.clubName,
                         }))
                     );

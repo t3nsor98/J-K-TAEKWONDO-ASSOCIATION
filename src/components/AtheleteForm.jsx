@@ -194,7 +194,6 @@ const AcademyDetails = [
         type: "dropdown",
         image: null,
         required: true,
-        maxLength: 50,
         placeholder: "Enter the academy name",
     },
     {

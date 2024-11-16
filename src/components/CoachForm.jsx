@@ -128,7 +128,6 @@ const academyDetails = [
         image: null,
         required: true,
         placeholder: "Enter your academy name",
-        maxLength: 30,
     },
 ];
 
