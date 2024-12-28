@@ -6,7 +6,7 @@ import OutOfBandwidth from "./components/OutOfBandwidth.jsx";
 
 createRoot(document.getElementById("root")).render(
     <StrictMode>
-        <App />
+        <OutOfBandwidth />
 
         {/* {window.location.host === "www.jkta.in" ? <OutOfBandwidth /> : <App />} */}
     </StrictMode>
