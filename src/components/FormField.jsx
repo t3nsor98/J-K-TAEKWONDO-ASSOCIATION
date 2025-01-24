@@ -6,6 +6,7 @@ const FormField = ({
     type,
     options = [],
     value,
+    style,
     handleChange,
     placeholder = "",
     required = false,
@@ -32,6 +33,7 @@ const FormField = ({
                     type={type}
                     name={name}
                     id={name}
+                    style={style}
                     value={value}
                     onChange={handleChange}
                     placeholder={placeholder}
@@ -101,6 +103,7 @@ FormField.propTypes = {
     placeholder: PropTypes.string,
     required: PropTypes.bool,
     error: PropTypes.string,
+    style: PropTypes.object,
     charLimitText: PropTypes.string,
     img: PropTypes.string,
     loading: PropTypes.bool,

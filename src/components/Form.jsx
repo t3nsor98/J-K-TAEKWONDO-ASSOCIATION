@@ -294,6 +294,7 @@ function Form({
                                         key={field.name}
                                         label={field.label}
                                         type={field.type}
+                                        style={field.name === "academyName" ? {textTransform: "uppercase"} : {}} // Capitalize academy name
                                         options={
                                             field.name === "academyName"
                                                 ? [

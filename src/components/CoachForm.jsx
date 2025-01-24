@@ -124,7 +124,7 @@ const academyDetails = [
     {
         name: "academyName",
         label: "Academy Name",
-        type: "dropdown",
+        type: "text", // make it dropdown later
         image: null,
         required: true,
         placeholder: "Enter your academy name",
