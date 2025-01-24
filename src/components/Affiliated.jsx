@@ -34,9 +34,12 @@ import pearls from "/clubs/pearls.jpg";
 import power_punch from "/clubs/power_punch.jpg";
 import and_edu_serv from "/clubs/and_edu_serv.jpg";
 import pahalwon from "/clubs/pahalwon.jpg";
-//new
 import gundAdalkote from "/clubs/gundAdalkote.jpg";
 import martialArtsClubBanihal from "/clubs/martialArtsClubBanihal.jpg";
+//new
+import atul from "/clubs/atul.jpg";
+import vishal from "/clubs/vishal.jpg";
+import kic from "/clubs/kic.jpg";
 
 const taekwondoAssociations = [
   {
@@ -169,6 +172,12 @@ const taekwondoAssociations = [
         address: "Gund Adalkote, Banihal",
         image: gundAdalkote,
       },
+      {
+        name: "KIC TAEKWONDO RAMBAN",
+        secretary: "ARVIND KUMAR SATTI",
+        image: kic,
+        address: "Ramban",
+      },
     ],
   },
 
@@ -202,18 +211,50 @@ const taekwondoAssociations = [
     association: "Taekwondo Association of District Srinagar",
     officeBearers: ["Nissar Hussain", "Junaid Mayer Qasba"],
     image: srinagar,
+    clubs: [
+      {
+        name: "KIC TAEKWONDO SRINAGAR",
+        secretary: "ROHIT SHARMA",
+        image: kic,
+        address: "Srinagar",
+      },
+    ],
   },
   {
     district: "Jammu",
     association: "Taekwondo Association of District Jammu",
     officeBearers: ["Ramesh Chander Sharma", "Amit Gupta"],
     image: jammu,
+    clubs: [
+      {
+        name: "Atul International Taekwondo Academy (AITA)",
+        president: "Anuj Sharma",
+        secretary: "Amit Kumar",
+        address: "Channi Himat Jammu",
+        image: atul,
+      },
+      {
+        name: "Vishal Academy of Taekwondo",
+        president: "Ramesh Chander Sharma",
+        secretary: "Amit Gupta",
+        address: "Dogra Brahmin Pratinidhi Sabha Parade, Jammu",
+        image: vishal,
+      },
+    ],
   },
   {
     district: "Kathua",
     association: "Taekwondo Association of District Kathua",
     officeBearers: ["Munish Sharma", "Amit Badculia"],
     image: kathua,
+    clubs: [
+      {
+        name: "KIC TAEKWONDO KATHUA",
+        secretary: "VISHESH THAKUR",
+        image: kic,
+        address: "Kathua",
+      },
+    ],
   },
   {
     district: "Samba",
