@@ -348,6 +348,7 @@ function Form({
                                         name={field.name}
                                         key={field.name}
                                         label={field.label}
+                                        accept={"image/*"} // Accept only images
                                         type={field.type}
                                         options={field.options}
                                         value={
