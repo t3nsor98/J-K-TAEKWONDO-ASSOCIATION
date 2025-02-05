@@ -5,6 +5,7 @@ const NotFound = () => {
       <p className="mt-4 text-lg">
         Sorry, the page you're looking for does not exist.
       </p>
+      v2.0.0
     </div>
   );
 };
