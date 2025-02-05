@@ -89,6 +89,20 @@ function Form({
 
         const errors = {};
 
+        // check if all files are uploaded and are images only
+        DocumentDetails.forEach((field) => {
+            if (!athleteFormData[field.name]) {
+                errors[field.name] = `${field.label} is required`;
+            } else if (
+                athleteFormData[field.name] &&
+                athleteFormData[field.name].startsWith("data:image") &&
+                !athleteFormData[field.name].includes("image/jpeg") &&
+                !athleteFormData[field.name].includes("image/png")
+            ) {
+                errors[field.name] = `${field.label} must be an image`;
+            }
+        });
+
         fields.forEach((fieldGroup) => {
             fieldGroup.fields.forEach((field) => {
                 const value = athleteFormData[field.name];
@@ -294,7 +308,11 @@ function Form({
                                         key={field.name}
                                         label={field.label}
                                         type={field.type}
-                                        style={field.name === "academyName" ? {textTransform: "uppercase"} : {}} // Capitalize academy name
+                                        style={
+                                            field.name === "academyName"
+                                                ? { textTransform: "uppercase" }
+                                                : {}
+                                        } // Capitalize academy name
                                         options={
                                             field.name === "academyName"
                                                 ? [
