@@ -369,7 +369,8 @@ const Affiliated = () => {
                 ))}
               </div>
             )}
-            {association.clubs && (
+            {/* Commented by t3nsor. Will update when all the club data will be availbale. */}
+            {/* {association.clubs && (
               <span className="text-xs mt-0.5 flex justify-center items-center gap-1 bg-blue-700 text-white w-fit m-auto px-2 rounded-full py-0.5">
                 {expandedDistrict === association.district ? "Hide" : "Show"}{" "}
                 Clubs
@@ -379,7 +380,7 @@ const Affiliated = () => {
                   <i className="fa-solid fa-chevron-down"></i>
                 )}
               </span>
-            )}
+            )} */}
           </div>
         </div>
       ))}
